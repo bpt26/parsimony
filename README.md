@@ -6,6 +6,8 @@ unxz publicMsa.2021-03-18.masked.fa.
 wget https://hgwdev.gi.ucsc.edu/~angie/publicMsa/publicMsa.2021-03-18.nwk  
 wget https://hgwdev.gi.ucsc.edu/~angie/publicMsa/publicMsa.2021-03-18.masked.pb  
 usher -t publicMsa.2021-03-18.nwk -v publicMsa.2021-03-18.masked.vcf -o publicMsa.2021-03-18.remake.pb # make pb to ensure no inclusion of masked sites  
+
+
 matUtils extract -i publicMsa.2021-03-18.remake.pb -A mutation_paths.txt  
 python readPathLens.py mutation_paths.txt  
 wc -l samples_prune.txt # converged when this file is empty  
@@ -21,6 +23,8 @@ python readPathLens.py mutation_paths.txt
 wc -l samples_prune.txt  
 &#35; 0 samples_prune.txt  
 matUtils summary -i extract2.pb -s final_samples.tsv # get list of samples in final tree  
+
+
 &#35; now, ensure that for each of these samples, must have at least 28kb of nt at positions where ref is non-N  
 &#35; vcf is 29111 sites long, but only 251 Ns in wuhan ref sequence, meaning a few hundred non-N sites excluded from VCF. so we must use MSA  
 python getFaCount.py # outputs count for each sample in bases conditional on that position not being N in reference, and .fa of those >28000  
