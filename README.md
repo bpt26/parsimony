@@ -9,23 +9,23 @@ usher -t publicMsa.2021-03-18.nwk -v publicMsa.2021-03-18.masked.vcf -o publicMs
 matUtils extract -i publicMsa.2021-03-18.remake.pb -A mutation_paths.txt
 python readPathLens.py mutation_paths.txt
 wc -l samples_prune.txt # converged when this file is empty
-# 3860 
+/# 3860 
 matUtils extract -i publicMsa.2021-03-18.remake.pb --samples samples_prune.txt --prune -o extract1.pb
 matUtils extract -i extract1.pb -A mutation_paths.txt
 python readPathLens.py mutation_paths.txt
 wc -l samples_prune.txt
-# 1 # this is the internal node 86112. we will rpune using -b option:
+/# 1 # this is the internal node 86112. we will rpune using -b option:
 matUtils extract -i extract1.pb -b 30 -o extract2.pb
 matUtils extract -i extract2.pb -A mutation_paths.txt
 python readPathLens.py mutation_paths.txt
 wc -l samples_prune.txt
-# 0 samples_prune.txt
+/# 0 samples_prune.txt
 matUtils summary -i extract2.pb -s final_samples.tsv # get list of samples in final tree
-# now, ensure that for each of these samples, must have at least 28kb of nt at positions where ref is non-N
-# vcf is 29111 sites long, but only 251 Ns in wuhan ref sequence, meaning a few hundred non-N sites excluded from VCF. so we must use MSA
+/# now, ensure that for each of these samples, must have at least 28kb of nt at positions where ref is non-N
+/# vcf is 29111 sites long, but only 251 Ns in wuhan ref sequence, meaning a few hundred non-N sites excluded from VCF. so we must use MSA
 python getFaCount.py # outputs count for each sample in bases conditional on that position not being N in reference, and .fa of those >28000
 awk '$2 >= 28000 {print}' sample_to_count.txt  | wc -l
-# 384621
+/# 384621
 wc -l 28000_samples.fa
-# 769242 (2*384621)
+/# 769242 (2*384621)
 gzip 28000_samples.fa
