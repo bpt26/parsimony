@@ -2,7 +2,8 @@
 
 # March 25  
 wget https://hgwdev.gi.ucsc.edu/~angie/publicMsa/publicMsa.2021-03-18.masked.fa.xz  
-unxz publicMsa.2021-03-18.masked.fa.  
+unxz publicMsa.2021-03-18.masked.fa  
+gzip publicMsa.2021-03-18.masked.fa  
 wget https://hgwdev.gi.ucsc.edu/~angie/publicMsa/publicMsa.2021-03-18.nwk  
 wget https://hgwdev.gi.ucsc.edu/~angie/publicMsa/publicMsa.2021-03-18.masked.pb  
 usher -t publicMsa.2021-03-18.nwk -v publicMsa.2021-03-18.masked.vcf -o publicMsa.2021-03-18.remake.pb # make pb to ensure no inclusion of masked sites  
@@ -16,7 +17,7 @@ matUtils extract -i publicMsa.2021-03-18.remake.pb --samples samples_prune.txt -
 matUtils extract -i extract1.pb -A mutation_paths.txt  
 python readPathLens.py mutation_paths.txt  
 wc -l samples_prune.txt  
-&#35; 1 # this is the internal node 86112. we will rpune using -b option:  
+&#35; 1 # this is the internal node 86112. we will prune using -b option:  
 matUtils extract -i extract1.pb -b 30 -o extract2.pb  
 matUtils extract -i extract2.pb -A mutation_paths.txt  
 python readPathLens.py mutation_paths.txt  
