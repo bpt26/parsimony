@@ -38,6 +38,7 @@ xz 28000_samples.fa
 python getTable.py  
 awk '$4 < 2 {print}' 28000_samples.tsv | wc -l  
 &#35; 364834  
-wc -l prune_ambiguities.txt  
-&#35; 19787 # (384621-364834)  
-matUtils extract -i publicMsa.2021-03-18.remake.pb --samples prune_ambiguities.txt --prune -o publicMsa.2021-03-18.pruned.pb  
+awk '$4 < 2 {print}' 28000_samples.tsv | cut -f1 > retain_samples.txt  
+matUtils extract -i publicMsa.2021-03-18.remake.pb --samples retain_samples.txt -o publicMsa.2021-03-18.pruned.pb  
+gzip publicMsa.2021-03-18.pruned.pb  
+xz 28000_samples_less_than_2_ambiguities.fa  
