@@ -1,14 +1,15 @@
 # parsimony
 
 # March 25  
+
+###### First, download files and create MAT using UShER. This ensures that the MAT used in these experiments is derived directly from the masked VCF and MSA.
 wget https://hgwdev.gi.ucsc.edu/~angie/publicMsa/publicMsa.2021-03-18.masked.fa.xz  
 unxz publicMsa.2021-03-18.masked.fa  
 gzip publicMsa.2021-03-18.masked.fa  
 wget https://hgwdev.gi.ucsc.edu/~angie/publicMsa/publicMsa.2021-03-18.nwk  
-wget https://hgwdev.gi.ucsc.edu/~angie/publicMsa/publicMsa.2021-03-18.masked.pb  
 usher -t publicMsa.2021-03-18.nwk -v publicMsa.2021-03-18.masked.vcf -o publicMsa.2021-03-18.remake.pb # *make pb to ensure no inclusion of masked sites*  
 
-
+###### Remove long terminal branches (maximum length 6) and very long internal branches (max length 30). Repeat this process, recalculating parsimony scores after each round, until convergence.
 matUtils extract -i publicMsa.2021-03-18.remake.pb -A mutation_paths.txt  
 python readPathLens.py mutation_paths.txt  
 wc -l samples_prune.txt # *converged when this file is empty*  
@@ -25,12 +26,18 @@ wc -l samples_prune.txt
 &#35; *0 samples_prune.txt*  
 matUtils summary -i extract2.pb -s final_samples.tsv # *get list of samples in final tree*  
 
-
-&#35; *now, ensure that for each of these samples, must have at least 28kb of nt at positions where ref is non-N*  
-&#35; *vcf is 29111 sites long, but only 251 Ns in wuhan ref sequence, meaning a few hundred non-N sites excluded from VCF. so we must use MSA*  
+###### Retain only samples with 28kb of nt at positions where reference is non-N. VCF does not contain all sites, so use MSA.
 python getFaCount.py # *outputs count for each sample in bases conditional on that position not being N in ref, and .fa of those with counts >28000*  
 awk '$2 >= 28000 {print}' sample_to_count.txt  | wc -l  
 &#35; 384621  
 wc -l 28000_samples.fa  
 &#35; 769242 (2*384621)  
 xz 28000_samples.fa
+
+###### Retain only samples with fewer than 2 characters that are not ['A','C','G','T','N','-'] and prune these from the .pb.
+python getTable.py  
+awk '$4 < 2 {print}' 28000_samples.tsv | wc -l  
+&#35; 364834  
+wc -l prune_ambiguities.txt  
+&#35; 19787 # (384621-364834)  
+matUtils extract -i publicMsa.2021-03-18.remake.pb --samples prune_ambiguities.txt --prune -o publicMsa.2021-03-18.pruned.pb  
