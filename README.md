@@ -33,4 +33,4 @@ awk '$2 >= 28000 {print}' sample_to_count.txt  | wc -l
 &#35; 384621  
 wc -l 28000_samples.fa  
 &#35; 769242 (2*384621)  
-gzip 28000_samples.fa
+xz 28000_samples.fa
