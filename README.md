@@ -1,7 +1,5 @@
 # parsimony
 
-# March 25  
-
 #### First, download files and create MAT using UShER. This ensures that the MAT used in these experiments is derived directly from the masked VCF and MSA.
 wget https://hgwdev.gi.ucsc.edu/~angie/publicMsa/publicMsa.2021-03-18.masked.fa.xz  
 unxz publicMsa.2021-03-18.masked.fa  
