@@ -40,3 +40,4 @@ awk '$4 < 2 {print}' 28000_samples.tsv | cut -f1 > retain_samples.txt
 matUtils extract -i publicMsa.2021-03-18.remake.pb --samples retain_samples.txt -o publicMsa.2021-03-18.pruned.pb  
 gzip publicMsa.2021-03-18.pruned.pb # in sample_selection directory   
 xz 28000_samples_less_than_2_ambiguities.fa # in sample_selection directory   
+matUtils extract -i publicMsa.2021-03-18.pruned.pb -t publicMsa.2021-03-18.pruned.nwk  
