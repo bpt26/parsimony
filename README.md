@@ -1,3 +1,3 @@
 # parsimony
 
-This directory contains all notes and commands run in order to prepare and later optimize a pruned tree via parsimony.
+This repository contains the input data, results, and analysis code to infer and optimize a sars-cov-2 tree using a variety of approaches including parsimony and maximum likelihood.
