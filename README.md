@@ -17,4 +17,4 @@ conda config --add channels conda-forge
 conda install usher
 ```
 
-For more details on these programs, please see [the wiki](https://usher-wiki.readthedocs.io/en/latest/index.html).
+For more details on these programs, please see [the corresponding wiki](https://usher-wiki.readthedocs.io/en/latest/index.html).
