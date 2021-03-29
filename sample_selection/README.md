@@ -16,17 +16,17 @@ These files consist entirely of public sequences using scripts from [this reposi
 matUtils extract -i publicMsa.2021-03-18.remake.pb -A mutation_paths.txt  
 python readPathLens.py mutation_paths.txt  
 wc -l samples_prune.txt # *converged when this file is empty*  
-&#35; *3860*   
+# 3860   
 matUtils extract -i publicMsa.2021-03-18.remake.pb --samples samples_prune.txt --prune -o extract1.pb  
 matUtils extract -i extract1.pb -A mutation_paths.txt  
 python readPathLens.py mutation_paths.txt  
 wc -l samples_prune.txt  
-&#35; 1 # *this is the internal node 86112. we will prune using -b option:*  
+# 1 # *this is the internal node 86112. we will prune using -b option:*  
 matUtils extract -i extract1.pb -b 30 -o extract2.pb  
 matUtils extract -i extract2.pb -A mutation_paths.txt  
 python readPathLens.py mutation_paths.txt  
 wc -l samples_prune.txt  
-&#35; *0 samples_prune.txt*  
+# 0 samples_prune.txt
 matUtils summary -i extract2.pb -s final_samples.tsv # *get list of samples in final tree*  
 ```
 
@@ -34,9 +34,9 @@ matUtils summary -i extract2.pb -s final_samples.tsv # *get list of samples in f
 ```
 python getFaCount.py # *outputs count for each sample in bases conditional on that position not being N in ref, and .fa of those with counts >28000*  
 awk '$2 >= 28000 {print}' sample_to_count.txt  | wc -l  
-&#35; 384621  
+# 384621  
 wc -l 28000_samples.fa  
-&#35; 769242 (2*384621)  
+# 769242 (2*384621)  
 xz 28000_samples.fa
 ```
 
@@ -44,7 +44,7 @@ xz 28000_samples.fa
 ```
 python getTable.py  
 awk '$4 < 2 {print}' 28000_samples.tsv | wc -l  
-&#35; 364834  
+# 364834  
 awk '$4 < 2 {print}' 28000_samples.tsv | cut -f1 > retain_samples.txt  
 matUtils extract -i publicMsa.2021-03-18.remake.pb --samples retain_samples.txt -o publicMsa.2021-03-18.pruned.pb  
 gzip publicMsa.2021-03-18.pruned.pb # in sample_selection directory   
