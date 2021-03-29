@@ -18,3 +18,5 @@ conda install usher
 ```
 
 For more details on these programs, please see [the corresponding wiki](https://usher-wiki.readthedocs.io/en/latest/index.html).
+
+Each subdirectory will contain a series of steps outlined in code blocks. To reproduce everything done for this project, follow the numbered directories (e.g. 1_sample_selection, etc.).
