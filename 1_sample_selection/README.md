@@ -54,12 +54,20 @@ xz 28000_samples.fa
 
 #### Retain only samples with fewer than 2 characters that are not ['A','C','G','T','N','-'] and prune these from the .pb.
 ```
+# Run getTable.py, which outputs a tab-separated file containing the sample, ACGT count, N count, and non ACGTN- count, respectively.
 python getTable.py  
+# Count the number of samples whose non ACGTN- count is less than 2:
 awk '$4 < 2 {print}' 28000_samples.tsv | wc -l  
 # 364834  
+# Output these samples to a separate file.
 awk '$4 < 2 {print}' 28000_samples.tsv | cut -f1 > retain_samples.txt  
+# Use matUtils to produce a tree that contains *only* the samples in retain_samples.txt.
 matUtils extract -i publicMsa.2021-03-18.remake.pb --samples retain_samples.txt -o publicMsa.2021-03-18.pruned.pb  
-gzip publicMsa.2021-03-18.pruned.pb # in sample_selection directory   
-xz 28000_samples_less_than_2_ambiguities.fa # in sample_selection directory   
+gzip publicMsa.2021-03-18.pruned.pb
+# Compress the .fasta file that contains only these samples. This .fa was output by getTable.py.
+xz 28000_samples_less_than_2_ambiguities.fa 
+# Use matUtils to extract a .nwk file from publicMsa.2021-03-18.pruned.pb.
 matUtils extract -i publicMsa.2021-03-18.pruned.pb -t publicMsa.2021-03-18.pruned.nwk  
 ```
+
+#### This concludes the sample selection process. From here, our "reference" tree will be publicMsa.2021-03-18.pruned.nwk, and the corresponding reference multiple sequence alignment is 28000_samples_less_than_2_ambiguities.fa.
