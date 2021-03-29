@@ -13,16 +13,27 @@ These files consist entirely of public sequences using scripts from [this reposi
 
 #### Remove long terminal branches (maximum length 6) and very long internal branches (max length 30). Repeat this process, recalculating parsimony scores after each round, until convergence.
 ```
+# Get mutation paths for each sample in our tree.
 matUtils extract -i publicMsa.2021-03-18.remake.pb -A mutation_paths.txt  
+# Count the number of mutations at each node. 
+# If an internal node has parsimony ≥ 30 or a leaf has parsimony ≥ 6, output to samples_prune.txt.
 python readPathLens.py mutation_paths.txt  
 wc -l samples_prune.txt # converged when this file is empty
 # 3860   
-matUtils extract -i publicMsa.2021-03-18.remake.pb --samples samples_prune.txt --prune -o extract1.pb  
+# Build subtree by pruning all but 430204 samples.
+matUtils extract -i publicMsa.2021-03-18.remake.pb --samples samples_prune.txt --prune -o extract1.pb  # prune 3860 samples
+
+# Get mutation paths for newly pruned tree, and repeat the process.
 matUtils extract -i extract1.pb -A mutation_paths.txt  
 python readPathLens.py mutation_paths.txt  
+# This time, our samples_prune.txt file has only one entry. This is the internal node 86112, which we can prune using the -b option in matUtils.
 wc -l samples_prune.txt  
-# 1 # this is the internal node 86112. we will prune using -b option:  
-matUtils extract -i extract1.pb -b 30 -o extract2.pb  
+# 1 
+# Build subtree by pruning all but 430202 samples.
+matUtils extract -i extract1.pb -b 30 -o extract2.pb  # prune node 86112 and descendent
+
+# Repeat the process one more time. In this round, we find that our samples_prune.txt file is empty.
+# This means that no internal node has parsimony ≥ 30 and no leaf has parsimony ≥ 6.
 matUtils extract -i extract2.pb -A mutation_paths.txt  
 python readPathLens.py mutation_paths.txt  
 wc -l samples_prune.txt  
@@ -36,8 +47,9 @@ python getFaCount.py # outputs count for each sample in bases conditional on tha
 awk '$2 >= 28000 {print}' sample_to_count.txt  | wc -l  
 # 384621  
 wc -l 28000_samples.fa  
-# 769242 (2*384621)  
-xz 28000_samples.fa
+# 769242 # This is 2*384621, and this file contains two lines for each sample: a header and a sequence.  
+# Compress the .fasta file.
+xz 28000_samples.fa 
 ```
 
 #### Retain only samples with fewer than 2 characters that are not ['A','C','G','T','N','-'] and prune these from the .pb.
