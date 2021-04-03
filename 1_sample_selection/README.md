@@ -43,4 +43,5 @@ xz 28000_samples_less_than_2_ambiguities.fa # in sample_selection directory
 faToVcf -maskSites=problematic_sites_sarsCov2.vcf 28000_samples_less_than_2_ambiguities.fa 28000_samples_less_than_2_ambiguities.vcf
 usher -v 28000_samples_less_than_2_ambiguities.vcf -t empty.nwk -o 28000_samples_less_than_2_ambiguities.save.pb
 # empty.nwk is a custom "tree" containing the first sample from the .vcf.
+matUtils extract -i publicMsa.2021-03-18.masked.retain_samples.save.pb -t publicMsa.2021-03-18.masked.retain_samples.save.nwk
 ```
