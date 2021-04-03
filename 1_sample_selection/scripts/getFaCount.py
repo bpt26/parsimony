@@ -24,7 +24,7 @@ def getFaCount():
                 myIgnores = [k.start() for k in re.finditer('N', l.upper())]
 
     keepSamples = {}
-    with open('final_samples.tsv') as f:
+    with open('samples.tsv') as f:
         for line in f:
             splitLine = (line.strip()).split('\t')
             if splitLine[0] != 'sample':
