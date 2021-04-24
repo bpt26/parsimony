@@ -43,6 +43,15 @@ xz 28000_samples_less_than_2_ambiguities.fa # in sample_selection directory
 faToVcf -maskSites=problematic_sites_sarsCov2.vcf 28000_samples_less_than_2_ambiguities.fa 28000_samples_less_than_2_ambiguities.vcf
 usher -v 28000_samples_less_than_2_ambiguities.vcf -t empty.nwk -o 28000_samples_less_than_2_ambiguities.save.pb
 # empty.nwk is a custom "tree" containing the first sample from the .vcf.
-matUtils extract -i publicMsa.2021-03-18.masked.retain_samples.save.pb -t publicMsa.2021-03-18.masked.retain_samples.save.nwk
-gzip publicMsa.2021-03-18.masked.retain_samples.save.*
+matUtils extract -i publicMsa.2021-03-18.masked.retain_samples.save.pb
 ```
+
+#### Remove high parsimony samples from the tree.
+```
+matUtils extract -i publicMsa.2021-03-18.masked.retain_samples.save.pb -a 6 -o temp.pb
+matUtils extract -i temp.pb -b 30 -o temp2.pb
+matUtils extract -i temp2.pb -a 6 -o temp.pb
+# Once no additional samples have been removed by parsimony score filters, we can save this tree.
+mv temp.pb publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.pb
+matUtils extract -i publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.pb -t publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.nwk
+gzip publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.*
