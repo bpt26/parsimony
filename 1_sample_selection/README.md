@@ -41,9 +41,8 @@ xz 28000_samples_less_than_2_ambiguities.fa # in sample_selection directory
 #### Use UShER to make our starting tree.
 ```
 faToVcf -maskSites=problematic_sites_sarsCov2.vcf 28000_samples_less_than_2_ambiguities.fa 28000_samples_less_than_2_ambiguities.vcf
-usher -v 28000_samples_less_than_2_ambiguities.vcf -t empty.nwk -o 28000_samples_less_than_2_ambiguities.save.pb
+usher -v 28000_samples_less_than_2_ambiguities.vcf -t empty.nwk -o publicMsa.2021-03-18.masked.retain_samples.save.pb
 # empty.nwk is a custom "tree" containing the first sample from the .vcf.
-matUtils extract -i publicMsa.2021-03-18.masked.retain_samples.save.pb
 ```
 
 #### Remove high parsimony samples from the tree.
