@@ -21,9 +21,9 @@ These files consist entirely of public sequences using scripts from [this reposi
 matUtils summary -i publicMsa.2021-03-18.masked.pb -s samples.tsv
 python getFaCount.py # outputs count for each sample in bases conditional on that position not being N in ref, and .fa of those with counts >28000  
 awk '$2 >= 28000 {print}' sample_to_count.txt  | wc -l  
-# 387737  
-wc -l 28000_samples.fa  
-# 775474 (2*387737)  
+# 385753
+gzip -dc 28000_samples.fa.gz | grep ">" | wc -l  
+# 385753
 gzip 28000_samples.fa
 ```
 
@@ -31,8 +31,10 @@ gzip 28000_samples.fa
 ```
 python getTable.py  
 awk '$4 < 2 {print}' 28000_samples.tsv | wc -l  
-# 367744  
+# 366492  
 awk '$4 < 2 {print}' 28000_samples.tsv | cut -f1 > retain_samples.txt  
+wc -l retain_samples.txt  
+# 366492  
 matUtils extract -i publicMsa.2021-03-18.masked.pb --samples retain_samples.txt -o publicMsa.2021-03-18.pruned.pb  
 gzip publicMsa.2021-03-18.pruned.pb # in sample_selection directory   
 xz 28000_samples_less_than_2_ambiguities.fa # in sample_selection directory     
@@ -40,8 +42,10 @@ xz 28000_samples_less_than_2_ambiguities.fa # in sample_selection directory
 
 #### Use UShER to make our starting tree.
 ```
-faToVcf -maskSites=problematic_sites_sarsCov2.vcf 28000_samples_less_than_2_ambiguities.fa 28000_samples_less_than_2_ambiguities.vcf
-usher -v 28000_samples_less_than_2_ambiguities.vcf -t empty.nwk -o publicMsa.2021-03-18.masked.retain_samples.save.pb
+cat wuhan.ref.fa 28000_samples_less_than_2_ambiguities.fa > 28000_samples_less_than_2_ambiguities_with_ref.fa  
+faToVcf -maskSites=problematic_sites_sarsCov2.vcf 28000_samples_less_than_2_ambiguities_with_ref.fa 28000_samples_less_than_2_ambiguities.vcf  
+python checkSites.py # Ensures that problematic sites are masked and output VCF without them. Prints message if problematic site is found.  
+usher -v fixedVCF.vcf -t empty.nwk -o publicMsa.2021-03-18.masked.retain_samples.save.pb
 # empty.nwk is a custom "tree" containing the first sample from the .vcf.
 ```
 
