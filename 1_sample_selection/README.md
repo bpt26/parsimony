@@ -57,4 +57,9 @@ matUtils extract -i temp2.pb -a 6 -o temp.pb
 # Once no additional samples have been removed by parsimony score filters, we can save this tree.
 mv temp.pb publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.pb
 matUtils extract -i publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.pb -t publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.nwk
-gzip publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.*
+matUtils extract -i publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.pb -v publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.vcf
+xz publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.vcf
+matUtils summary -i publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.pb -s publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.samples.tsv
+python makeFa.py
+xz publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.samples.fasta
+
