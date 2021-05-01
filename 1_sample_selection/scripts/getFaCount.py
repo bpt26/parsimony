@@ -17,6 +17,13 @@ import re
 ##########################
 
 def getFaCount():
+    problematicSites = {}
+    with open('problematic_sites_sarsCov2.vcf') as f:
+        for line in f:
+            splitLine = (line.strip()).split('\t')
+            if not splitLine[0].startswith('#'):
+                problematicSites[int(splitLine[1])] = True
+
     with open('wuhan.ref.fa') as f:
         for line in f:
             l = line.strip()
@@ -36,14 +43,17 @@ def getFaCount():
     sampleToCount = {}
     with gzip.open('publicMsa.2021-03-18.masked.fa.gz') as f:
         for line in f:
-            l = line.strip()
+            l = (line.decode('utf8').strip())
             if l.startswith('>'):
                 if mySample in keepSamples:
                     myList = list(myString.upper())
+                    for k in problematicSites:
+                        myList[k-1] = 'N'
+                    newString = ''.join(myList)
                     for k in myIgnores[::-1]:
                         myList.pop(k)
                     if len(myList)-myList.count('N') >= 28000:
-                        sampleToString[mySample] = myString
+                        sampleToString[mySample] = newString
                     sampleToCount[mySample] = len(myList)-myList.count('N') 
                 mySample = l[1:]
                 myString = ''
