@@ -21,7 +21,7 @@ def getTable():
 	toPrune = ''
 	with gzip.open('28000_samples.fa.gz') as f:
 		for line in f:
-			l = line.strip()
+			l = (line.decode('utf8').strip())
 			if l.startswith('>'):
 				mySampleName = l[1:]
 			else:
