@@ -7,7 +7,7 @@ output.tree.filename = args[2]
 
 input.tree = read.tree(input.tree.filename)
 
-input.tree$edge.length = ifelse(is.na(tree$edge.length), 0, tree$edge.length)
+input.tree$edge.length = ifelse(is.na(input.tree$edge.length), 0, input.tree$edge.length)
 
 output.tree = multi2di(input.tree)
 
