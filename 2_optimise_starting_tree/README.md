@@ -29,3 +29,10 @@ FastTreeMP -nt -gamma -sprlength 1000 -nni 0 -spr 2 -log fasttree1.log -nosuppor
 FastTreeMP -nt -gamma -sprlength 1000 -nni 0 -spr 2 -log fasttree2.log -nosupport -intree iteration1.tree alignment.fa > iteration2.tree
 unset OMP_NUM_THREADS
 ```
+
+
+## 2.4 Clean up
+
+```
+xz -e alignment.fa
+```
