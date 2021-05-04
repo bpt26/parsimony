@@ -10,6 +10,8 @@ mkdir BATCH_SAMPLES/
 python getBatches.py  
 mkdir BATCH_VCFs/
 bash getVCFs.sh
+mkdir BATCH_FASTAS/
+python makeFastas.py
 ```
 
 #### Test UShER and matUtils tree-building and optimization:
