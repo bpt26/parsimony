@@ -13,4 +13,7 @@ output.tree = multi2di(input.tree)
 
 output.tree = unroot(output.tree)
 
+# thanks to David Winter on Twitter, but also others: https://twitter.com/RobLanfear/status/1389392629431869440
+output.tree = collapse.singles(output.tree)
+
 write.tree(output.tree, output.tree.filename)
