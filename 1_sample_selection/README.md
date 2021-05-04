@@ -62,4 +62,11 @@ xz publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.vcf
 matUtils summary -i publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.pb -s publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.samples.tsv
 python makeFa.py
 xz publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.samples.fasta
+```
+
+#### Binarize tree
+```
+matUtils extract -i publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.pb -R -o publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.binary.pb
+matUtils extract -i publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.binary.pb -t publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.binary.nwk
+gzip publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.binary.*
 
