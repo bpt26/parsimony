@@ -29,6 +29,13 @@ cp ../1_sample_selection/publicMsa.2021-03-18.masked.retain_samples.save.minus_p
 ./matOptimize -i usher-optimized-publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.pb -v publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.vcf.gz -o usher-optimized-publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.pb -T 32 -s 259200
 ```
 
+| Iteration | Parsimony score | Runtime (seconds) |
+|-----------|-----------------|-------------------|
+| 0         | 297562          | N/A               |
+| 1         | 295405          | 24085             |
+| 2         | 295349          | 24574             |
+| 3         | 295342          | 23966             |
+
 ## 2.3 Optimise starting tree with pseudo-likelihood in FastTreeMP
 
 ```
