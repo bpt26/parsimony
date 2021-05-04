@@ -55,11 +55,29 @@ iqtree -n 0 -no-ml-dist -m JC -t iteration1.tree -s alignment_trimmed.fa -parsim
 | IQ-TREE   | 1         | 294719          |                   |
 
 
-These parsimony scores are obviously being calculated differently. Not quite sure what the differences are, but we will cross-run the two trees in the opposite pieces of software to delve into it...
+These parsimony scores are obviously being calculated differently. Regardless, UShER improves its parsimony score by 2220, and IQ-TREE (so far) by 1528. So the differences seem (proportionally) rather large and favour UShER. This is rendered more odd by the fact that IQ-TREE *seems* to get the best parsimony tree, with no possible NNI improvements:
+
+```
+Before doing (up to) 100 rounds of parsimony SPR, parsimony score was 296247
+Applied 1209 moves (out of 3335) (1482 still possible) in iteration 1 (parsimony now 294950) after 11 min 26 sec
+Applied 191 moves (out of 395) (202 still possible) in iteration 2 (parsimony now 294754) after 14 min 12 sec
+Applied 26 moves (out of 52) (26 still possible) in iteration 3 (parsimony now 294728) after 15 min 53 sec
+Applied 2 moves (out of 3) (2 still possible) in iteration 4 (parsimony now 294726) after 17 min 28 sec
+Applied 0 moves (out of 0) (0 still possible) in last iteration  (parsimony now 294726) (total SPR moves examined 1873678400)
+Before doing (up to) 100 rounds of parsimony TBR, parsimony score was 294726
+Applied 7 moves (out of 7) (7 still possible) in iteration 1 (parsimony now 294719) after 11 min 40 sec
+Applied 0 moves (out of 0) (0 still possible) in last iteration  (parsimony now 294719) (total TBR moves examined 3194642308)
+Before doing (up to) 100 rounds of parsimony NNI, parsimony score was 294719
+Applied 0 moves (out of 0) (0 still possible) in last iteration  (parsimony now 294719) (total NNI moves examined 728850)
+```
+
+Not quite sure what the differences are, but we will cross-run the two trees in the opposite pieces of software to delve into it...
 
 * Best UShER tree parsimony score in IQ-TREE: 
 * Best IQ-TREE tree parsimony score in UShER:
 
+
+Another option is to look closely at a couple of differences in the trees themselves...
 
 ## 2.3 Optimise starting tree with pseudo-likelihood in FastTreeMP
 
