@@ -24,3 +24,10 @@ bash makeTrees.sh # This script adds each batch in order, optimizing after each 
 ```
 bash makeTreesML.sh # This script binarizes the starting trees and calls FastTree to optimize, logging each step.
 ```
+
+#### Clean up
+```
+mkdir KEEP
+mv *_samples.fasta KEEP/
+tar cfJ batch.fastas.tar.xz KEEP/*
+```
