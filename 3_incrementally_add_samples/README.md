@@ -20,6 +20,13 @@ mkdir INCREMENTAL_PBS/
 bash makeTrees.sh # This script adds each batch in order, optimizing after each step with matOptimize, and logging each optimization step.
 ```
 
+#### After 50 batches have finished, extract trees and compress files:
+```
+parallel -j 12 < extractTrees.sh  
+tar cfJ opt.pbs.tar.xz *.opt.pb  
+tar cfJ opt.nwk.tar.xz *.opt.nwk  
+```
+
 #### Test ML optimization via FastTree:
 ```
 bash makeTreesML.sh # This script binarizes the starting trees and calls FastTree to optimize, logging each step.
@@ -31,3 +38,4 @@ mkdir KEEP
 mv *_samples.fasta KEEP/
 tar cfJ batch.fastas.tar.xz KEEP/*
 ```
+
