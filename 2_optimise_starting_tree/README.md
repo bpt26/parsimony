@@ -29,7 +29,13 @@ faSomeRecords alignment.fa exclude.txt alignment_trimmed.fa -exclude
 
 iqtree -n 0 -no-ml-dist -m JC -t starting.tree -s alignment_trimmed.fa -parsimony-spr 100 -parsimony-nni 100 -parsimony-tbr 100 -spr-radius 20 -tbr-radius 20 --suppress-list-of-sequences -nt 100 -fast -pre iqtree_iteration1
 
-iqtree -n 0 -no-ml-dist -m JC -t iteration1.tree -s alignment_trimmed.fa -parsimony-spr 100 -parsimony-nni 100 -parsimony-tbr 100 -spr-radius 20 -tbr-radius 20 --suppress-list-of-sequences -nt 100 -fast -pre iqtree_iteration2
+iqtree -n 0 -no-ml-dist -m JC -t iqtree_iteration1.treefile -s alignment_trimmed.fa -parsimony-spr 100 -parsimony-nni 100 -parsimony-tbr 100 -spr-radius 40 -tbr-radius 20 --suppress-list-of-sequences -blfix -nt 100 -fast -pre iqtree_iteration2
+
+iqtree -n 0 -no-ml-dist -m JC -t iqtree_iteration2.treefile -s alignment_trimmed.fa -parsimony-spr 100 -parsimony-nni 100 -spr-radius 60 --suppress-list-of-sequences -blfix -nt 100 -fast -pre iqtree_iteration3
+
+iqtree -n 0 -no-ml-dist -m JC -t iqtree_iteration3.treefile -s alignment_trimmed.fa -parsimony-spr 100 -parsimony-nni 100 -spr-radius 80 --suppress-list-of-sequences -blfix -nt 100 -fast -pre iqtree_iteration4
+
+iqtree -n 0 -no-ml-dist -m JC -t iqtree_iteration4.treefile -s alignment_trimmed.fa -parsimony-spr 100 -parsimony-nni 100 -spr-radius 60 --suppress-list-of-sequences -blfix -nt 100 -fast -pre iqtree_iteration5
 
 
 # Optimization using UShER (matOptimize)
@@ -44,40 +50,28 @@ iqtree -n 0 -no-ml-dist -m JC -t iteration1.tree -s alignment_trimmed.fa -parsim
 
 
 
+TODO: try UShER starting from the best FastTree tree once the latter is done.
+
 
 | Program   | Iteration | Parsimony score | Runtime (seconds) |
 |-----------|-----------|-----------------|-------------------|
-| UShER     | 0         | 297562          | N/A               |
+| UShER     | 0         | 297562          | NA                |
 | UShER     | 1         | 295405          | 24085             |
 | UShER     | 2         | 295349          | 24574             |
 | UShER     | 3         | 295342          | 23966             |
-| IQ-TREE   | 0         | 296247          |              	  |
-| IQ-TREE   | 1         | 294719          |                   |
+| IQ-TREE   | 0         | 296247          | NA                |
+| IQ-TREE   | 1         | 294719          | 46311*            |
+| IQ-TREE   | 2         | 294519          | 11324*            |
+| IQ-TREE   | 3         | 294411          | 21459             |
+| IQ-TREE   | 4         | 294330          | 48675             |
+| IQ-TREE   | 5         | 294250          | 112034            |
 
+* longer because I forgot to switch of ml branch length optimisation, and/or because it had TBR moves in as well (which never helped so I turned off)
+The other IQ-TREE times increase because I was tentatively increasing the SPR radius. I think one can usually expect that a single run with a larger SPR radius is sufficient.
 
-These parsimony scores are obviously being calculated differently. Regardless, UShER improves its parsimony score by 2220, and IQ-TREE (so far) by 1528. So the differences seem (proportionally) rather large and favour UShER. This is rendered more odd by the fact that IQ-TREE *seems* to get the best parsimony tree, with no possible NNI improvements:
+These parsimony scores are obviously being calculated differently, and the best guess here is that it's because IQ-TREE ignores ambiguous sites while UShER doesn't. 
 
-```
-Before doing (up to) 100 rounds of parsimony SPR, parsimony score was 296247
-Applied 1209 moves (out of 3335) (1482 still possible) in iteration 1 (parsimony now 294950) after 11 min 26 sec
-Applied 191 moves (out of 395) (202 still possible) in iteration 2 (parsimony now 294754) after 14 min 12 sec
-Applied 26 moves (out of 52) (26 still possible) in iteration 3 (parsimony now 294728) after 15 min 53 sec
-Applied 2 moves (out of 3) (2 still possible) in iteration 4 (parsimony now 294726) after 17 min 28 sec
-Applied 0 moves (out of 0) (0 still possible) in last iteration  (parsimony now 294726) (total SPR moves examined 1873678400)
-Before doing (up to) 100 rounds of parsimony TBR, parsimony score was 294726
-Applied 7 moves (out of 7) (7 still possible) in iteration 1 (parsimony now 294719) after 11 min 40 sec
-Applied 0 moves (out of 0) (0 still possible) in last iteration  (parsimony now 294719) (total TBR moves examined 3194642308)
-Before doing (up to) 100 rounds of parsimony NNI, parsimony score was 294719
-Applied 0 moves (out of 0) (0 still possible) in last iteration  (parsimony now 294719) (total NNI moves examined 728850)
-```
-
-Not quite sure what the differences are, but we will cross-run the two trees in the opposite pieces of software to delve into it...
-
-* Best UShER tree parsimony score in IQ-TREE: 
-* Best IQ-TREE tree parsimony score in UShER:
-
-
-Another option is to look closely at a couple of differences in the trees themselves...
+Becuase of this, we'll use UShER as the final arbiter of the parsimony scores of the trees, i.e. to choose the tree with the best parsimony score.
 
 ## 2.3 Optimise starting tree with pseudo-likelihood in FastTreeMP
 
@@ -85,10 +79,16 @@ Another option is to look closely at a couple of differences in the trees themse
 export OMP_NUM_THREADS=3
 FastTreeMP -nt -gamma -sprlength 1000 -nni 0 -spr 2 -log fasttree1.log -nosupport -intree starting.tree alignment_trimmed.fa > fasttree_iteration1.tree
 FastTreeMP -nt -gamma -sprlength 1000 -nni 0 -spr 2 -log fasttree2.log -nosupport -intree fasttree_iteration1.tree alignment_trimmed.fa > fasttree_iteration2.tree
+FastTreeMP -nt -gamma -sprlength 1000 -nni 0 -spr 2 -log fasttree3.log -nosupport -intree fasttree_iteration2.tree alignment_trimmed.fa > fasttree_iteration3.tree
 unset OMP_NUM_THREADS
 ```
 
-NB: this will take a while. The SPR moves are going slow... maybe a week or so...
+| Program   | Iteration | Likelihood score| Runtime (seconds) |
+|-----------|-----------|-----------------|-------------------|
+| FastTree2 | 1         | -3216096.685    | 154416.68         |
+| FastTree2 | 2         | -3214132.001    | 139342.44         |
+| FastTree2 | 3         |     |          |
+
 
 
 ## 2.4 Clean up
