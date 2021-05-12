@@ -1,5 +1,26 @@
 # sample selection
 
+#### Tl;dr
+
+The file you are likely most interested in is:
+
+`publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.samples.fasta.xz`
+
+You can decompress it like this:
+
+`xz -d publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.samples.fasta`
+
+This file contains 364,428 SARS-CoV-2 sequences that are in the public domain. The idea is that it will be useful for testing and benchmarking various inference methods.
+
+One thing to note is that this file also contains a reference sequence used by UShER to create the protobuffer. For many application you might want to remove this sequence as follows:
+
+```
+echo "NC_045512v2" > exclude.txt
+faSomeRecords publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.samples.fasta exclude.txt publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.samples.fasta_noreference.fa -exclude
+```
+
+If you're using this file for methods development, do note of course that there are currently around 1.5 million SARS-CoV-2 genomes in GISAID. So you should probably consider that any method you develop will likely have to scale to datasets around 10x bigger than this public dataset in the relatively near future. 
+
 #### First, download files that we will use to make our starting tree.
 ```
 wget https://hgwdev.gi.ucsc.edu/~angie/publicMsa/publicMsa.2021-03-18.masked.pb
