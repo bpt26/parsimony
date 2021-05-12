@@ -69,9 +69,7 @@ TODO: try UShER starting from the best FastTree tree once the latter is done.
 * longer because I forgot to switch of ml branch length optimisation, and/or because it had TBR moves in as well (which never helped so I turned off)
 The other IQ-TREE times increase because I was tentatively increasing the SPR radius. I think one can usually expect that a single run with a larger SPR radius is sufficient.
 
-These parsimony scores are obviously being calculated differently, and the best guess here is that it's because IQ-TREE ignores ambiguous sites while UShER doesn't. 
-
-Becuase of this, we'll use UShER as the final arbiter of the parsimony scores of the trees, i.e. to choose the tree with the best parsimony score.
+TODO: we do not yet know why UShER and IQ-TREE get different parsimony scores.
 
 ## 2.3 Optimise starting tree with pseudo-likelihood in FastTreeMP
 
@@ -80,6 +78,7 @@ export OMP_NUM_THREADS=3
 FastTreeMP -nt -gamma -sprlength 1000 -nni 0 -spr 2 -log fasttree1.log -nosupport -intree starting.tree alignment_trimmed.fa > fasttree_iteration1.tree
 FastTreeMP -nt -gamma -sprlength 1000 -nni 0 -spr 2 -log fasttree2.log -nosupport -intree fasttree_iteration1.tree alignment_trimmed.fa > fasttree_iteration2.tree
 FastTreeMP -nt -gamma -sprlength 1000 -nni 0 -spr 2 -log fasttree3.log -nosupport -intree fasttree_iteration2.tree alignment_trimmed.fa > fasttree_iteration3.tree
+FastTreeMP -nt -gamma -sprlength 1000 -nni 0 -spr 2 -log fasttree4.log -nosupport -intree fasttree_iteration2.tree alignment_trimmed.fa > fasttree_iteration4.tree
 unset OMP_NUM_THREADS
 ```
 
@@ -87,7 +86,7 @@ unset OMP_NUM_THREADS
 |-----------|-----------|-----------------|-------------------|
 | FastTree2 | 1         | -3216096.685    | 154416.68         |
 | FastTree2 | 2         | -3214132.001    | 139342.44         |
-| FastTree2 | 3         |     |          |
+| FastTree2 | 3         | -3213128.398    | 160561.60         |
 
 
 
