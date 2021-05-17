@@ -44,14 +44,15 @@ iqtree -n 0 -no-ml-dist -m JC -t iqtree_iteration4.treefile -s alignment_trimmed
 faToVcf -ref=NC_045512v2 alignment.fa alignment.vcf
 usher -t starting.tree -v alignment.vcf -o iter-0.pb
 
-# 2. Three rounds of matOptimize
+# 2. Three rounds of matOptimize with radius 10 followed by one round with radius 40
 for i in `seq 0 2`; do
     j=$((i+1))
     matOptimize -i iter-${i}.pb -v alignment.vcf -o iter-${j}.pb -r 10 -T 32 -s 259200 2>&1 | tee iter_$j.log 
 done 
+matOptimize -i iter-3.pb -v alignment.vcf -o iter-4.pb -r 40 -T 32 -s 259200 2>&1 | tee iter_4.log 
 
 # 3. Get output trees for each iteration and compress files
-for i in `seq 1 3`; do
+for i in `seq 1 4`; do
     matUtils extract -i iter-${i}.pb -t iter-${i}.tree 
     xz -e iter-${i}.tree 
 done 
@@ -69,6 +70,7 @@ TODO: try UShER starting from the best FastTree tree once the latter is done.
 | UShER     | 1         | 294476          | 24358             |
 | UShER     | 2         | 294353          | 24203             |
 | UShER     | 3         | 294343          | 23241             |
+| UShER     | 4         | 294307          | 71972             |
 | IQ-TREE   | 0         | 296247          | NA                |
 | IQ-TREE   | 1         | 294719          | 46311*            |
 | IQ-TREE   | 2         | 294519          | 11324*            |
