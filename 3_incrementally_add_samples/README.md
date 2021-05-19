@@ -27,9 +27,11 @@ tar cfJ opt.pbs.tar.xz *.opt.pb
 tar cfJ opt.nwk.tar.xz *.opt.nwk  
 ```
 
-#### Test ML optimization via FastTree:
+#### Test ML optimization via several programs:
 ```
 bash makeTreesFastTreeML.sh # This script binarizes the starting trees and calls FastTree to optimize, logging each step.
+bash makeTreesRaxmlML.sh # Binarizes starting trees and calls RaxML-NG to optimize.
+bash makeTreesIQTreeML.sh # Binarizes starting trees and calls IQ-TREE 2 to optimize.
 ```
 
 #### Clean up
