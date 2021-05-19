@@ -35,7 +35,7 @@ iqtree -n 0 -no-ml-dist -m JC -t iqtree_iteration2.treefile -s alignment_trimmed
 
 iqtree -n 0 -no-ml-dist -m JC -t iqtree_iteration3.treefile -s alignment_trimmed.fa -parsimony-spr 100 -parsimony-nni 100 -spr-radius 80 --suppress-list-of-sequences -blfix -nt 100 -fast -pre iqtree_iteration4
 
-iqtree -n 0 -no-ml-dist -m JC -t iqtree_iteration4.treefile -s alignment_trimmed.fa -parsimony-spr 100 -parsimony-nni 100 -spr-radius 60 --suppress-list-of-sequences -blfix -nt 100 -fast -pre iqtree_iteration5
+iqtree -n 0 -no-ml-dist -m JC -t iqtree_iteration4.treefile -s alignment_trimmed.fa -parsimony-spr 100 -parsimony-nni 100 -spr-radius 100 --suppress-list-of-sequences -blfix -nt 100 -fast -pre iqtree_iteration5
 
 
 # Optimization using UShER (matOptimize)
@@ -59,11 +59,6 @@ done
 
 ```
 
-
-
-TODO: try UShER starting from the best FastTree tree once the latter is done.
-
-
 | Program   | Iteration | Parsimony score | Runtime (seconds) |
 |-----------|-----------|-----------------|-------------------|
 | UShER     | 0         | 296248          | NA                |
@@ -79,9 +74,11 @@ TODO: try UShER starting from the best FastTree tree once the latter is done.
 | IQ-TREE   | 5         | 294250          | 112034            |
 
 * longer because I forgot to switch of ml branch length optimisation, and/or because it had TBR moves in as well (which never helped so I turned off)
-The other IQ-TREE times increase because I was tentatively increasing the SPR radius. I think one can usually expect that a single run with a larger SPR radius is sufficient.
+The other IQ-TREE times increase because I was tentatively increasing the SPR radius. I think one can usually expect that a single run with a larger SPR radius is sufficient (each attempts 100 rounds of SPR or until no further improvements are found)
 
-TODO: we do not yet know why UShER and IQ-TREE get different parsimony scores.
+NB - the difference between UShER and IQ-TREE may at first seem a little odd. Why don't both get the same parsimony score when they have the same SPR radius. There are two differences. First, UShER is doing one round (if I undersood correctly) of SPR moves, and IQ-TREE is doing 100. This should make UShER worse. But UShER gets a *better* score than IQ-TREE with a radius of 40 (294307 vs. 294519). The other difference is that UShER has 'true' polytomies. So a radius of 40 can trivially see through a large polytomy. IQ-TREE does not have true polytomies. Instead it has minimum branch lengths. This means that IQ-TREE SPR moves may not see through large true polytomies, simply because they are represented as randomly-resolved bifurcating trees. 
+
+This leads me to suspect that UShER should be able to do much better than IQ-TREE if we set the radius to 100, since IQ-TREE's score with a radius of 100 is still a little better than UShER's with a radius of 40. 
 
 ## 2.3 Optimise starting tree with pseudo-likelihood in FastTreeMP
 
@@ -99,6 +96,7 @@ unset OMP_NUM_THREADS
 | FastTree2 | 1         | -3216096.685    | 154416.68         |
 | FastTree2 | 2         | -3214132.001    | 139342.44         |
 | FastTree2 | 3         | -3213128.398    | 160561.60         |
+| FastTree2 | 4         | -3212658.998    | 154413.03         |
 
 
 
