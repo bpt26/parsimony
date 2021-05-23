@@ -91,12 +91,12 @@ FastTreeMP -nt -gamma -sprlength 1000 -nni 0 -spr 2 -log fasttree4.log -nosuppor
 unset OMP_NUM_THREADS
 ```
 
-| Program   | Iteration | Likelihood score| Runtime (seconds) |
-|-----------|-----------|-----------------|-------------------|
-| FastTree2 | 1         | -3216096.685    | 154416.68         |
-| FastTree2 | 2         | -3214132.001    | 139342.44         |
-| FastTree2 | 3         | -3213128.398    | 160561.60         |
-| FastTree2 | 4         | -3212658.998    | 154413.03         |
+| Program   | Iteration | Likelihood score| Runtime (seconds) | Parsimony |
+|-----------|-----------|-----------------|-------------------|-----------|
+| FastTree2 | 1         | -3216096.685    | 154416.68         | 294556    |
+| FastTree2 | 2         | -3214132.001    | 139342.44         | 294369    |
+| FastTree2 | 3         | -3213128.398    | 160561.60         | 294275    |
+| FastTree2 | 4         | -3212658.998    | 154413.03         | 294216    |
 
 
 
