@@ -25,7 +25,8 @@ faSomeRecords alignment.fa exclude.txt alignment_trimmed.fa -exclude
 ## 2.2 Optimise starting tree with parsimony in IQ-TREE and/or UShER
 
 ```
-# Optimisation with IQ-TREE (note that this is IQ-TREE from 27 Apr 2021 on the dev branch)
+# Optimisation with IQ-TREE (note that IQ-TREE from 27 Apr 2021 on the dev branch listed as IQTREEA27 below)
+# Newer version for comparison is from May 24, listed as IQTREEM24 below
 
 iqtree -n 0 -no-ml-dist -m JC -t starting.tree -s alignment_trimmed.fa -parsimony-spr 100 -parsimony-nni 100 -parsimony-tbr 100 -spr-radius 20 -tbr-radius 20 --suppress-list-of-sequences -nt 100 -fast -pre iqtree_iteration1
 
@@ -37,6 +38,11 @@ iqtree -n 0 -no-ml-dist -m JC -t iqtree_iteration3.treefile -s alignment_trimmed
 
 iqtree -n 0 -no-ml-dist -m JC -t iqtree_iteration4.treefile -s alignment_trimmed.fa -parsimony-spr 100 -parsimony-nni 100 -spr-radius 100 --suppress-list-of-sequences -blfix -nt 100 -fast -pre iqtree_iteration5
 
+# Newer version for comparison is from May 24, listed as IQTREEM24 below
+
+iqtree2 -n 0 -no-ml -t starting.tree -s alignment_trimmed.fa -parsimony-spr 100 -parsimony-nni 100 -spr-radius 20 --suppress-list-of-sequences -nt 100 -pre iqtreemay24_iteration1
+
+iqtree2 -n 0 -no-ml -t iqtreemay24_iteration1.treefile -s alignment_trimmed.fa -parsimony-spr 100 -parsimony-nni 100 -spr-radius 100 --suppress-list-of-sequences -nt 100 -pre iqtreemay24_iteration2
 
 # Optimization using UShER (matOptimize)
 
@@ -59,19 +65,25 @@ done
 
 ```
 
-| Program   | Iteration | Parsimony score | Runtime (seconds) |
-|-----------|-----------|-----------------|-------------------|
-| UShER     | 0         | 296248          | NA                |
-| UShER     | 1         | 294476          | 24358             |
-| UShER     | 2         | 294353          | 24203             |
-| UShER     | 3         | 294343          | 23241             |
-| UShER     | 4         | 294307          | 71972             |
-| IQ-TREE   | 0         | 296247          | NA                |
-| IQ-TREE   | 1         | 294719          | 46311*            |
-| IQ-TREE   | 2         | 294519          | 11324*            |
-| IQ-TREE   | 3         | 294411          | 21459             |
-| IQ-TREE   | 4         | 294330          | 48675             |
-| IQ-TREE   | 5         | 294250          | 112034            |
+| Program   | Iteration | Parsimony score | Runtime (seconds) | SPR radius/rounds |
+|-----------|-----------|-----------------|-------------------|-------------------|
+| UShER     | 0         | 296248          | NA                | NA/NA             |
+| UShER     | 1         | 294476          | 24358             | 10/1              |
+| UShER     | 2         | 294353          | 24203             | 10/1              |
+| UShER     | 3         | 294343          | 23241             | 10/1              |
+| UShER     | 4         | 294307          | 71972             | 40/1              |
+| IQ-TREE   | 0         | 296247          | NA                | NA/NA             |
+| IQ-TREE   | 1         | 294719          | 46311*            | 20/100            |
+| IQ-TREE   | 2         | 294519          | 11324*            | 40/100            |
+| IQ-TREE   | 3         | 294411          | 21459             | 60/100            |
+| IQ-TREE   | 4         | 294330          | 48675             | 80/100            |
+| IQ-TREE   | 5         | 294250          | 112034            | 100/100           |
+| IQ-TREEM24| 0         | 296247          | NA                | NA/NA             |
+| IQ-TREEM24| 1         | 294720    	  | 1523.970          | 20/100            |
+| IQ-TREEM24| 2         | 294259    	  |                   | 100/100           |
+
+
+* For IQ-TREEM24, I did one iteration at SPR radius 20, and one at 100.
 
 * longer because I forgot to switch of ml branch length optimisation, and/or because it had TBR moves in as well (which never helped so I turned off)
 The other IQ-TREE times increase because I was tentatively increasing the SPR radius. I think one can usually expect that a single run with a larger SPR radius is sufficient (each attempts 100 rounds of SPR or until no further improvements are found)
@@ -99,6 +111,8 @@ unset OMP_NUM_THREADS
 | FastTree2 | 2         | -3214132.001    | 139342.44         | 294369    |
 | FastTree2 | 3         | -3213128.398    | 160561.60         | 294275    |
 | FastTree2 | 4         | -3212658.998    | 154413.03         | 294216    |
+| FastTree2 | 5         | -3212241.987    | 135245.66         |     |
+
 
 
 
