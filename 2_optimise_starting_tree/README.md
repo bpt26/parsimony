@@ -80,6 +80,8 @@ NB - the difference between UShER and IQ-TREE may at first seem a little odd. Wh
 
 This leads me to suspect that UShER should be able to do much better than IQ-TREE if we set the radius to 100, since IQ-TREE's score with a radius of 100 is still a little better than UShER's with a radius of 40. 
 
+NB2: In this version of IQ-TREE (which is not finalised for release), I think the branch lengths are not meaningful. So beware of that! I.e. if we are going to simulate data on these trees, we will certainly want to re-estimate the branch lengths.
+
 ## 2.3 Optimise starting tree with pseudo-likelihood in FastTreeMP
 
 ```
