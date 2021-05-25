@@ -1,0 +1,47 @@
+IQ-TREE multicore version 2.1.2 COVID-edition for Linux 64-bit built Apr 27 2021
+Developed by Bui Quang Minh, James Barbetti, Nguyen Lam Tung,
+Olga Chernomor, Heiko Schmidt, Dominik Schrempf, Michael Woodhams.
+
+Host:    c109762 (AVX2, FMA3, 1007 GB RAM)
+Command: ../../parsimony-old/iqtree -n 0 -no-ml-dist -m JC -t iqtree_iteration2.treefile -s alignment_trimmed.fa -parsimony-spr 100 -parsimony-nni 100 -spr-radius 60 --suppress-list-of-sequences -blfix -nt 100 -fast -pre iqtree_iteration3
+Seed:    229220 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Wed May  5 10:19:52 2021
+Kernel:  AVX+FMA - 100 threads (256 CPU cores detected)
+
+Reading alignment file alignment_trimmed.fa ... Fasta format detected
+Alignment most likely contains DNA/RNA sequences
+WARNING: 385 sites contain only gaps or ambiguous characters.
+Alignment has 364427 sequences with 29903 columns, 29248 distinct patterns
+20720 parsimony-informative, 2717 singleton sites, 6466 constant sites
+Reading input tree file iqtree_iteration2.treefile ...
+Before doing (up to) 100 rounds of parsimony SPR, parsimony score was 294519
+Applied 90 moves (out of 155) (90 still possible) in iteration 1 (parsimony now 294421) after 1 hrs 58 min 57 sec
+Applied 10 moves (out of 19) (11 still possible) in iteration 2 (parsimony now 294411) after 3 hrs 56 min 1 sec
+Applied 0 moves (out of 0) (0 still possible) in last iteration  (parsimony now 294411) (total SPR moves examined 58029604976)
+Before doing (up to) 100 rounds of parsimony NNI, parsimony score was 294411
+Applied 0 moves (out of 0) (0 still possible) in last iteration  (parsimony now 294411) (total NNI moves examined 728848)
+
+NOTE: 345657 MB RAM (337 GB) is required!
+Estimate model parameters (epsilon = 0.05)
+1. Initial log-likelihood: -3.50601e+06
+Optimal log-likelihood: -3.50601e+06
+Rate parameters:  A-C: 1.00000  A-G: 1.00000  A-T: 1.00000  C-G: 1.00000  C-T: 1.00000  G-T: 1.00000
+Base frequencies:  A: 0.250  C: 0.250  G: 0.250  T: 0.250
+Parameters optimization took 1 rounds (20.348 sec)
+NOTE: 3.133 seconds to dump checkpoint file, increase to 63.000
+BEST SCORE FOUND : -3506005.839
+Total tree length: 10.531
+
+Total number of iterations: 0
+CPU time used for tree search: 0.207 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.207 sec (0h:0m:0s)
+Total CPU time used: 897999.883 sec (249h:26m:39s)
+Total wall-clock time used: 21459.441 sec (5h:57m:39s)
+
+Analysis results written to: 
+  IQ-TREE report:                iqtree_iteration3.iqtree
+  Maximum-likelihood tree:       iqtree_iteration3.treefile
+  Screen log file:               iqtree_iteration3.log
+
+NOTE: 4.709 seconds to dump checkpoint file, increase to 95.000
+Date and Time: Wed May  5 16:28:57 2021

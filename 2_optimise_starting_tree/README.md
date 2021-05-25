@@ -25,7 +25,8 @@ faSomeRecords alignment.fa exclude.txt alignment_trimmed.fa -exclude
 ## 2.2 Optimise starting tree with parsimony in IQ-TREE and/or UShER
 
 ```
-# Optimisation with IQ-TREE (note that this is IQ-TREE from 27 Apr 2021 on the dev branch)
+# Optimisation with IQ-TREE (note that IQ-TREE from 27 Apr 2021 on the dev branch listed as IQTREEA27 below)
+# Newer version for comparison is from May 24, listed as IQTREEM24 below
 
 iqtree -n 0 -no-ml-dist -m JC -t starting.tree -s alignment_trimmed.fa -parsimony-spr 100 -parsimony-nni 100 -parsimony-tbr 100 -spr-radius 20 -tbr-radius 20 --suppress-list-of-sequences -nt 100 -fast -pre iqtree_iteration1
 
@@ -35,41 +36,63 @@ iqtree -n 0 -no-ml-dist -m JC -t iqtree_iteration2.treefile -s alignment_trimmed
 
 iqtree -n 0 -no-ml-dist -m JC -t iqtree_iteration3.treefile -s alignment_trimmed.fa -parsimony-spr 100 -parsimony-nni 100 -spr-radius 80 --suppress-list-of-sequences -blfix -nt 100 -fast -pre iqtree_iteration4
 
-iqtree -n 0 -no-ml-dist -m JC -t iqtree_iteration4.treefile -s alignment_trimmed.fa -parsimony-spr 100 -parsimony-nni 100 -spr-radius 60 --suppress-list-of-sequences -blfix -nt 100 -fast -pre iqtree_iteration5
+iqtree -n 0 -no-ml-dist -m JC -t iqtree_iteration4.treefile -s alignment_trimmed.fa -parsimony-spr 100 -parsimony-nni 100 -spr-radius 100 --suppress-list-of-sequences -blfix -nt 100 -fast -pre iqtree_iteration5
 
+# Newer version for comparison is from May 24, listed as IQTREEM24 below
+
+iqtree2 -n 0 -no-ml -t starting.tree -s alignment_trimmed.fa -parsimony-spr 100 -parsimony-nni 100 -spr-radius 20 --suppress-list-of-sequences -nt 100 -pre iqtreemay24_iteration1
+
+iqtree2 -n 0 -no-ml -t iqtreemay24_iteration1.treefile -s alignment_trimmed.fa -parsimony-spr 100 -parsimony-nni 100 -spr-radius 100 --suppress-list-of-sequences -nt 100 -pre iqtreemay24_iteration2
 
 # Optimization using UShER (matOptimize)
 
-# 1. Provide input MAT and VCF for round 1 using 32 threads for atmost 259200 seconds (72 hours)
-./matOptimize -i publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.pb -v publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.vcf.gz -o usher-optimized-publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.pb -T 32 -s 259200
+# 1. Generate starting protobuf (iter-0.pb) for matOptimize
+faToVcf -ref=NC_045512v2 alignment.fa alignment.vcf
+usher -t starting.tree -v alignment.vcf -o iter-0.pb
 
-# 2. Two more rounds of optimization using 32 threads, after which the parsimony score was found to converge (note same input and output pb)
-./matOptimize -i usher-optimized-publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.pb -v publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.vcf.gz -o usher-optimized-publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.pb -T 32 -s 259200
-./matOptimize -i usher-optimized-publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.pb -v publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.vcf.gz -o usher-optimized-publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.pb -T 32 -s 259200
+# 2. Three rounds of matOptimize with radius 10 followed by one round with radius 40
+for i in `seq 0 2`; do
+    j=$((i+1))
+    matOptimize -i iter-${i}.pb -v alignment.vcf -o iter-${j}.pb -r 10 -T 32 -s 259200 2>&1 | tee iter_$j.log 
+done 
+matOptimize -i iter-3.pb -v alignment.vcf -o iter-4.pb -r 40 -T 32 -s 259200 2>&1 | tee iter_4.log 
+
+# 3. Get output trees for each iteration and compress files
+for i in `seq 1 4`; do
+    matUtils extract -i iter-${i}.pb -t iter-${i}.tree 
+    xz -e iter-${i}.tree 
+done 
+
 ```
 
+| Program   | Iteration | Parsimony score | Runtime (seconds) | SPR radius/rounds |
+|-----------|-----------|-----------------|-------------------|-------------------|
+| UShER     | 0         | 296248          | NA                | NA/NA             |
+| UShER     | 1         | 294476          | 24358             | 10/1              |
+| UShER     | 2         | 294353          | 24203             | 10/1              |
+| UShER     | 3         | 294343          | 23241             | 10/1              |
+| UShER     | 4         | 294307          | 71972             | 40/1              |
+| IQ-TREE   | 0         | 296247          | NA                | NA/NA             |
+| IQ-TREE   | 1         | 294719          | 46311*            | 20/100            |
+| IQ-TREE   | 2         | 294519          | 11324*            | 40/100            |
+| IQ-TREE   | 3         | 294411          | 21459             | 60/100            |
+| IQ-TREE   | 4         | 294330          | 48675             | 80/100            |
+| IQ-TREE   | 5         | 294250          | 112034            | 100/100           |
+| IQ-TREEM24| 0         | 296247          | NA                | NA/NA             |
+| IQ-TREEM24| 1         | 294720    	  | 1523.970          | 20/100            |
+| IQ-TREEM24| 2         | 294259    	  |                   | 100/100           |
 
 
-TODO: try UShER starting from the best FastTree tree once the latter is done.
-
-
-| Program   | Iteration | Parsimony score | Runtime (seconds) |
-|-----------|-----------|-----------------|-------------------|
-| UShER     | 0         | 297562          | NA                |
-| UShER     | 1         | 295405          | 24085             |
-| UShER     | 2         | 295349          | 24574             |
-| UShER     | 3         | 295342          | 23966             |
-| IQ-TREE   | 0         | 296247          | NA                |
-| IQ-TREE   | 1         | 294719          | 46311*            |
-| IQ-TREE   | 2         | 294519          | 11324*            |
-| IQ-TREE   | 3         | 294411          | 21459             |
-| IQ-TREE   | 4         | 294330          | 48675             |
-| IQ-TREE   | 5         | 294250          | 112034            |
+* For IQ-TREEM24, I did one iteration at SPR radius 20, and one at 100.
 
 * longer because I forgot to switch of ml branch length optimisation, and/or because it had TBR moves in as well (which never helped so I turned off)
-The other IQ-TREE times increase because I was tentatively increasing the SPR radius. I think one can usually expect that a single run with a larger SPR radius is sufficient.
+The other IQ-TREE times increase because I was tentatively increasing the SPR radius. I think one can usually expect that a single run with a larger SPR radius is sufficient (each attempts 100 rounds of SPR or until no further improvements are found)
 
-TODO: we do not yet know why UShER and IQ-TREE get different parsimony scores.
+NB - the difference between UShER and IQ-TREE may at first seem a little odd. Why don't both get the same parsimony score when they have the same SPR radius. There are two differences. First, UShER is doing one round (if I undersood correctly) of SPR moves, and IQ-TREE is doing 100. This should make UShER worse. But UShER gets a *better* score than IQ-TREE with a radius of 40 (294307 vs. 294519). The other difference is that UShER has 'true' polytomies. So a radius of 40 can trivially see through a large polytomy. IQ-TREE does not have true polytomies. Instead it has minimum branch lengths. This means that IQ-TREE SPR moves may not see through large true polytomies, simply because they are represented as randomly-resolved bifurcating trees. 
+
+This leads me to suspect that UShER should be able to do much better than IQ-TREE if we set the radius to 100, since IQ-TREE's score with a radius of 100 is still a little better than UShER's with a radius of 40. 
+
+NB2: In this version of IQ-TREE (which is not finalised for release), I think the branch lengths are not meaningful. So beware of that! I.e. if we are going to simulate data on these trees, we will certainly want to re-estimate the branch lengths.
 
 ## 2.3 Optimise starting tree with pseudo-likelihood in FastTreeMP
 
@@ -82,11 +105,14 @@ FastTreeMP -nt -gamma -sprlength 1000 -nni 0 -spr 2 -log fasttree4.log -nosuppor
 unset OMP_NUM_THREADS
 ```
 
-| Program   | Iteration | Likelihood score| Runtime (seconds) |
-|-----------|-----------|-----------------|-------------------|
-| FastTree2 | 1         | -3216096.685    | 154416.68         |
-| FastTree2 | 2         | -3214132.001    | 139342.44         |
-| FastTree2 | 3         | -3213128.398    | 160561.60         |
+| Program   | Iteration | Likelihood score| Runtime (seconds) | Parsimony |
+|-----------|-----------|-----------------|-------------------|-----------|
+| FastTree2 | 1         | -3216096.685    | 154416.68         | 294556    |
+| FastTree2 | 2         | -3214132.001    | 139342.44         | 294369    |
+| FastTree2 | 3         | -3213128.398    | 160561.60         | 294275    |
+| FastTree2 | 4         | -3212658.998    | 154413.03         | 294216    |
+| FastTree2 | 5         | -3212241.987    | 135245.66         |     |
+
 
 
 

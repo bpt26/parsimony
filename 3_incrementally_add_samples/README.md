@@ -17,7 +17,7 @@ python makeFastas.py
 #### Test UShER and matUtils tree-building and optimization:
 ```
 mkdir INCREMENTAL_PBS/
-bash makeTrees.sh # This script adds each batch in order, optimizing after each step with matOptimize, and logging each optimization step.
+bash makeTreesMatOptimizeParsimony.sh # This script adds each batch in order, optimizing after each step with matOptimize, and logging each optimization step.
 ```
 
 #### After 50 batches have finished, extract trees and compress files:
@@ -27,9 +27,11 @@ tar cfJ opt.pbs.tar.xz *.opt.pb
 tar cfJ opt.nwk.tar.xz *.opt.nwk  
 ```
 
-#### Test ML optimization via FastTree:
+#### Test ML optimization via several programs:
 ```
-bash makeTreesML.sh # This script binarizes the starting trees and calls FastTree to optimize, logging each step.
+bash makeTreesFastTreeML.sh # This script binarizes the starting trees and calls FastTree to optimize, logging each step.
+bash makeTreesRaxmlML.sh # Binarizes starting trees and calls RaxML-NG to optimize.
+bash makeTreesIQTreeML.sh # Binarizes starting trees and calls IQ-TREE 2 to optimize.
 ```
 
 #### Clean up
