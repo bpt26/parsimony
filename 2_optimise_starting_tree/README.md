@@ -94,4 +94,6 @@ unset OMP_NUM_THREADS
 
 ```
 xz -e alignment.fa
+xz -e alignment_trimmed.fa
+xz -e starting.tree
 ```
