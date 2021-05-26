@@ -24,6 +24,8 @@ faSomeRecords alignment.fa exclude.txt alignment_trimmed.fa -exclude
 
 ## 2.2 Optimise starting tree with parsimony in IQ-TREE and/or UShER
 
+#### 2.2.1 IQ-TREE Apr27 Version
+
 ```
 # Optimisation with IQ-TREE (note that IQ-TREE from 27 Apr 2021 on the dev branch listed as IQTREEA27 below)
 # Newer version for comparison is from May 24, listed as IQTREEM24 below
@@ -37,13 +39,22 @@ iqtree -n 0 -no-ml-dist -m JC -t iqtree_iteration2.treefile -s alignment_trimmed
 iqtree -n 0 -no-ml-dist -m JC -t iqtree_iteration3.treefile -s alignment_trimmed.fa -parsimony-spr 100 -parsimony-nni 100 -spr-radius 80 --suppress-list-of-sequences -blfix -nt 100 -fast -pre iqtree_iteration4
 
 iqtree -n 0 -no-ml-dist -m JC -t iqtree_iteration4.treefile -s alignment_trimmed.fa -parsimony-spr 100 -parsimony-nni 100 -spr-radius 100 --suppress-list-of-sequences -blfix -nt 100 -fast -pre iqtree_iteration5
+```
 
+
+#### 2.2.2 IQ-TREE May24 Version
+```
 # Newer version for comparison is from May 24, listed as IQTREEM24 below
 
 iqtree2 -n 0 -no-ml -t starting.tree -s alignment_trimmed.fa -parsimony-spr 100 -parsimony-nni 100 -spr-radius 20 --suppress-list-of-sequences -nt 100 -pre iqtreemay24_iteration1
 
 iqtree2 -n 0 -no-ml -t iqtreemay24_iteration1.treefile -s alignment_trimmed.fa -parsimony-spr 100 -parsimony-nni 100 -spr-radius 100 --suppress-list-of-sequences -nt 100 -pre iqtreemay24_iteration2
 
+```
+
+#### 2.2.3 UShER
+
+```
 # Optimization using UShER (matOptimize)
 
 # 1. Generate starting protobuf (iter-0.pb) for matOptimize
@@ -79,41 +90,61 @@ done
 | IQ-TREE   | 4         | 294330          | 48675             | 80/100            |
 | IQ-TREE   | 5         | 294250          | 112034            | 100/100           |
 | IQ-TREEM24| 0         | 296247          | NA                | NA/NA             |
-| IQ-TREEM24| 1         | 294720    	  | 1523.970          | 20/100            |
-| IQ-TREEM24| 2         | 294259    	  |                   | 100/100           |
+| IQ-TREEM24| 1         | 294720    	  | 1524              | 20/100            |
+| IQ-TREEM24| 2         | 294258    	  | 86729             | 100/100           |
 
 
 * For IQ-TREEM24, I did one iteration at SPR radius 20, and one at 100.
 
 * longer because I forgot to switch of ml branch length optimisation, and/or because it had TBR moves in as well (which never helped so I turned off)
+
 The other IQ-TREE times increase because I was tentatively increasing the SPR radius. I think one can usually expect that a single run with a larger SPR radius is sufficient (each attempts 100 rounds of SPR or until no further improvements are found)
 
 NB - the difference between UShER and IQ-TREE may at first seem a little odd. Why don't both get the same parsimony score when they have the same SPR radius. There are two differences. First, UShER is doing one round (if I undersood correctly) of SPR moves, and IQ-TREE is doing 100. This should make UShER worse. But UShER gets a *better* score than IQ-TREE with a radius of 40 (294307 vs. 294519). The other difference is that UShER has 'true' polytomies. So a radius of 40 can trivially see through a large polytomy. IQ-TREE does not have true polytomies. Instead it has minimum branch lengths. This means that IQ-TREE SPR moves may not see through large true polytomies, simply because they are represented as randomly-resolved bifurcating trees. 
 
-This leads me to suspect that UShER should be able to do much better than IQ-TREE if we set the radius to 100, since IQ-TREE's score with a radius of 100 is still a little better than UShER's with a radius of 40. 
 
-NB2: In this version of IQ-TREE (which is not finalised for release), I think the branch lengths are not meaningful. So beware of that! I.e. if we are going to simulate data on these trees, we will certainly want to re-estimate the branch lengths.
+#### 2.2.4 Parsimony using the best ML tree as the starting tree
+
+
 
 ## 2.3 Optimise starting tree with pseudo-likelihood in FastTreeMP
+
+#### 2.3.1 FastTree 
 
 ```
 export OMP_NUM_THREADS=3
 FastTreeMP -nt -gamma -sprlength 1000 -nni 0 -spr 2 -log fasttree1.log -nosupport -intree starting.tree alignment_trimmed.fa > fasttree_iteration1.tree
 FastTreeMP -nt -gamma -sprlength 1000 -nni 0 -spr 2 -log fasttree2.log -nosupport -intree fasttree_iteration1.tree alignment_trimmed.fa > fasttree_iteration2.tree
 FastTreeMP -nt -gamma -sprlength 1000 -nni 0 -spr 2 -log fasttree3.log -nosupport -intree fasttree_iteration2.tree alignment_trimmed.fa > fasttree_iteration3.tree
-FastTreeMP -nt -gamma -sprlength 1000 -nni 0 -spr 2 -log fasttree4.log -nosupport -intree fasttree_iteration2.tree alignment_trimmed.fa > fasttree_iteration4.tree
+FastTreeMP -nt -gamma -sprlength 1000 -nni 0 -spr 2 -log fasttree4.log -nosupport -intree fasttree_iteration3.tree alignment_trimmed.fa > fasttree_iteration4.tree
+FastTreeMP -nt -gamma -sprlength 1000 -nni 0 -spr 2 -log fasttree5.log -nosupport -intree fasttree_iteration4.tree alignment_trimmed.fa > fasttree_iteration5.tree
+FastTreeMP -nt -gamma -sprlength 1000 -nni 0 -spr 2 -log fasttree6.log -nosupport -intree fasttree_iteration5.tree alignment_trimmed.fa > fasttree_iteration6.tree
 unset OMP_NUM_THREADS
+```
+
+| Program   | Iteration | Likelihood score|delta lnL| Runtime (seconds) | Parsimony |
+|-----------|-----------|-----------------|---------|-------------------|-----------|
+| FastTree2 | 1         | -3216096.685    | NA      | 154416.68         | 294556    |
+| FastTree2 | 2         | -3214132.001    | 1965    | 139342.44         | 294369    |
+| FastTree2 | 3         | -3213128.398    | 1004    | 160561.60         | 294275    |
+| FastTree2 | 4         | -3212658.998    | 469     | 154413.03         | 294216    |
+| FastTree2 | 5         | -3212241.987    | 417     | 135245.66         |     |
+| FastTree2 | 6         | -3211964.338    | 278     | 163389.24         |     |
+
+
+
+
+#### 2.3.1 FastTree with the best MP tree as a starting tree
+
+```
+export OMP_NUM_THREADS=3
+FastTreeMP -nt -gamma -sprlength 1000 -nni 0 -spr 2 -log fasttree_mpstart.log -nosupport -intree iqtree_iteration5.treefile alignment_trimmed.fa > fasttree__iqtree5start.tree
+unset OMP_NUM_THREADS=3
 ```
 
 | Program   | Iteration | Likelihood score| Runtime (seconds) | Parsimony |
 |-----------|-----------|-----------------|-------------------|-----------|
-| FastTree2 | 1         | -3216096.685    | 154416.68         | 294556    |
-| FastTree2 | 2         | -3214132.001    | 139342.44         | 294369    |
-| FastTree2 | 3         | -3213128.398    | 160561.60         | 294275    |
-| FastTree2 | 4         | -3212658.998    | 154413.03         | 294216    |
-| FastTree2 | 5         | -3212241.987    | 135245.66         |     |
-
-
+| FastTree2 | 1         | -3213087.116    | 221528.63         |     |
 
 
 ## 2.4 Clean up
