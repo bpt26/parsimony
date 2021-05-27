@@ -120,6 +120,11 @@ FastTreeMP -nt -gamma -sprlength 1000 -nni 0 -spr 2 -log fasttree4.log -nosuppor
 FastTreeMP -nt -gamma -sprlength 1000 -nni 0 -spr 2 -log fasttree5.log -nosupport -intree fasttree_iteration4.tree alignment_trimmed.fa > fasttree_iteration5.tree
 FastTreeMP -nt -gamma -sprlength 1000 -nni 0 -spr 2 -log fasttree6.log -nosupport -intree fasttree_iteration5.tree alignment_trimmed.fa > fasttree_iteration6.tree
 unset OMP_NUM_THREADS
+
+# Compute parsimony scores using UShER
+for i in `seq 1 6`; do
+    ./usher  -t fasttree_iteration${i}.tree -v alignment.vcf -o fasttree_iteration${i}.pb -T 32 2>&1 | tee fasttree_iteration${i}.parsimony 
+done
 ```
 
 | Program   | Iteration | Likelihood score|delta lnL| Runtime (seconds) | Parsimony |
@@ -128,8 +133,8 @@ unset OMP_NUM_THREADS
 | FastTree2 | 2         | -3214132.001    | 1965    | 139342.44         | 294369    |
 | FastTree2 | 3         | -3213128.398    | 1004    | 160561.60         | 294275    |
 | FastTree2 | 4         | -3212658.998    | 469     | 154413.03         | 294216    |
-| FastTree2 | 5         | -3212241.987    | 417     | 135245.66         |     |
-| FastTree2 | 6         | -3211964.338    | 278     | 163389.24         |     |
+| FastTree2 | 5         | -3212241.987    | 417     | 135245.66         | 294181    |
+| FastTree2 | 6         | -3211964.338    | 278     | 163389.24         | 294154    |
 
 
 
