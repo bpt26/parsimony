@@ -83,6 +83,9 @@ done
 | UShER     | 2         | 294353          | 24203             | 10/1              |
 | UShER     | 3         | 294343          | 23241             | 10/1              |
 | UShER     | 4         | 294307          | 71972             | 40/1              |
+| UShER-new | 0         | 296248          | NA                | NA/NA             |
+| UShER-new | 1         | ?          | ?             | 10/1              |
+| UShER-new | 1         | ?          | ?             | 100/1              |
 | IQ-TREE   | 0         | 296247          | NA                | NA/NA             |
 | IQ-TREE   | 1         | 294719          | 46311*            | 20/100            |
 | IQ-TREE   | 2         | 294519          | 11324*            | 40/100            |
@@ -150,6 +153,17 @@ unset OMP_NUM_THREADS=3
 | Program   | Iteration | Likelihood score| Runtime (seconds) | Parsimony |
 |-----------|-----------|-----------------|-------------------|-----------|
 | FastTree2 | 1         | -3213087.116    | 221528.63         |     |
+
+
+#### 2.3.2 Optimize best ML tree for parsimony
+
+```
+./matOptimize -i fasttree_iteration6.pb -v alignment.vcf -r 100 -m 0.0 -o usher-optimized-fasttree_iteration6.pb -T 32 2>&1 | tee usher-optimized-fasttree.log
+```
+
+| Program   | Iteration | Runtime (seconds) | Parsimony |
+|-----------|-----------|-------------------|-----------|
+| UShER-new | 1         | 5603.23           | 293908    |
 
 
 ## 2.4 Clean up
