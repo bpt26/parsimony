@@ -148,11 +148,14 @@ done
 export OMP_NUM_THREADS=3
 FastTreeMP -nt -gamma -sprlength 1000 -nni 0 -spr 2 -log fasttree_mpstart.log -nosupport -intree iqtree_iteration5.treefile alignment_trimmed.fa > fasttree__iqtree5start.tree
 unset OMP_NUM_THREADS=3
+
+# Compute parsimony score using UShER
+./usher -t fasttree__iqtree5start.tree -v alignment.vcf -o fasttree__iqtree5start.pb -T 32 2>&1 | tee fasttree__iqtree5start.parsimony 
 ```
 
 | Program   | Iteration | Likelihood score| Runtime (seconds) | Parsimony |
 |-----------|-----------|-----------------|-------------------|-----------|
-| FastTree2 | 1         | -3213087.116    | 221528.63         |     |
+| FastTree2 | 1         | -3213087.116    | 221528.63         | 294240    |
 
 
 #### 2.3.2 Optimize best ML tree for parsimony
