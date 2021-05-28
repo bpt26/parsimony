@@ -162,6 +162,7 @@ unset OMP_NUM_THREADS=3
 
 ```
 ./matOptimize -i fasttree_iteration6.pb -v alignment.vcf -r 100 -m 0.0 -o usher-optimized-fasttree_iteration6.pb -T 32 2>&1 | tee usher-optimized-fasttree.log
+./matUtils extract -i usher-optimized-fasttree_iteration6.pb -t usher-optimized-fasttree_iteration6.tree
 ```
 
 | Program   | Iteration | Runtime (seconds) | Parsimony |
