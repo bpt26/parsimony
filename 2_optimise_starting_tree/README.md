@@ -166,7 +166,7 @@ unset OMP_NUM_THREADS=3
 
 | Program   | Iteration | Runtime (seconds) | Parsimony |
 |-----------|-----------|-------------------|-----------|
-| UShER-new | 1         | 5603.23           | 293908    |
+| UShER-new | 1         | 8811              | 293899    |
 
 
 ## 2.4 Clean up
