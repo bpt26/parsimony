@@ -61,6 +61,10 @@ iqtree2 -n 0 -no-ml -t iqtreemay24_iteration1.treefile -s alignment_trimmed.fa -
 faToVcf -ref=NC_045512v2 alignment.fa alignment.vcf
 usher -t starting.tree -v alignment.vcf -o iter-0.pb
 
+# Another version of matOptimize
+/usr/bin/time build/tree_rearrange_new  -v alignment.vcf -t starting.tree -o from_start_tree.pb -T 32
+matUtils extract -i from_start_tree.pb -t from_start_tree.tree 
+ 
 # 2. Three rounds of matOptimize with radius 10 followed by one round with radius 40
 for i in `seq 0 2`; do
     j=$((i+1))
@@ -74,15 +78,21 @@ for i in `seq 1 4`; do
     xz -e iter-${i}.tree 
 done 
 
+# Continue optimizing with another version of matOptimize
+/usr/bin/time build/tree_rearrange_new  -v alignment.vcf -t iter-4.tree -o continue_iter4.pb -T 32
+matUtils extract -i continue_iter4.pb -t continue_iter4.tree 
+
 ```
 
 | Program   | Iteration | Parsimony score | Runtime (seconds) | SPR radius/rounds |
 |-----------|-----------|-----------------|-------------------|-------------------|
 | UShER     | 0         | 296248          | NA                | NA/NA             |
+| UShER*    | 1         | 294022          | 4324              | 10/1              |
 | UShER     | 1         | 294476          | 24358             | 10/1              |
 | UShER     | 2         | 294353          | 24203             | 10/1              |
 | UShER     | 3         | 294343          | 23241             | 10/1              |
 | UShER     | 4         | 294307          | 71972             | 40/1              |
+| UShER*    | 5         | 294005          | 2323.05           | 10/1              |
 | UShER-new | 0         | 296248          | NA                | NA/NA             |
 | UShER-new | 1         | 294318          | 9419.3            | 10/1              |
 | UShER-new | 1         | 294313          | 6537.2            | 100/1             |
@@ -96,6 +106,7 @@ done
 | IQ-TREEM24| 1         | 294720    	  | 1524              | 20/100            |
 | IQ-TREEM24| 2         | 294258    	  | 86729             | 100/100           |
 
+UShER* denotes another version of matOptimize at https://github.com/yceh/usher/tree/Refactor-FS-cleanup.
 
 * For IQ-TREEM24, I did one iteration at SPR radius 20, and one at 100.
 
@@ -108,6 +119,17 @@ NB - the difference between UShER and IQ-TREE may at first seem a little odd. Wh
 
 #### 2.2.4 Parsimony using the best ML tree as the starting tree
 
+This use the output of 5th iteration of IQ-TREE as starting tree.
+
+```
+/usr/bin/time build/tree_rearrange_new  -v alignment.vcf -t iqtree_iteration5.treefile -o after-iqtree-iter5.pb # default 80 threads
+matUtils extract -i after-iqtree-iter5.pb -t after-iqtree-iter5.tree 
+
+```
+
+| Program   | Iteration | Parsimony score | Runtime (seconds) | SPR radius/rounds |
+|-----------|-----------|-----------------|-------------------|-------------------|
+| UShER*    | 1         | 293862          | 2400.49 (80 threads)| 10/1              |
 
 
 ## 2.3 Optimise starting tree with pseudo-likelihood in FastTreeMP
@@ -168,6 +190,17 @@ unset OMP_NUM_THREADS=3
 | Program   | Iteration | Runtime (seconds) | Parsimony |
 |-----------|-----------|-------------------|-----------|
 | UShER-new | 1         | 8811              | 293899    |
+
+```
+/usr/bin/time build/tree_rearrange_new  -v alignment.vcf -t usher-optimized-fasttree_iteration6.tree -o after_usher_optimized_fasttree_iter6.pb # default 80 threads
+matUtils extract -i after_usher_optimized_fasttree_iter6.pb -t after_usher_optimized_fasttree_iter6.tree 
+
+```
+
+| Program   | Iteration | Parsimony score | Runtime (seconds) | SPR radius/rounds |
+|-----------|-----------|-----------------|-------------------|-------------------|
+| UShER*    | 1         | 293866          | 988.16 (80 threads)| 10/1              |
+
 
 
 ## 2.4 Clean up
