@@ -51,10 +51,6 @@ The other IQ-TREE times increase because I was tentatively increasing the SPR ra
 # 1. Generate starting protobuf (iter-0.pb) for matOptimize
 faToVcf -ref=NC_045512v2 alignment.fa alignment.vcf
 usher -t starting.tree -v alignment.vcf -o iter-0.pb
-
-# Another version of matOptimize
-/usr/bin/time build/tree_rearrange_new  -v alignment.vcf -t starting.tree -o from_start_tree.pb -T 32
-matUtils extract -i from_start_tree.pb -t from_start_tree.tree 
  
 # 2. Three rounds of matOptimize with radius 10 followed by one round with radius 40
 for i in `seq 0 2`; do
@@ -69,27 +65,27 @@ for i in `seq 1 4`; do
     xz -e iter-${i}.tree 
 done 
 
-# Continue optimizing with another version of matOptimize
-/usr/bin/time build/tree_rearrange_new  -v alignment.vcf -t iter-4.tree -o continue_iter4.pb -T 32
-matUtils extract -i continue_iter4.pb -t continue_iter4.tree 
-
 ```
 
-| Program   | Iteration | Parsimony score | Runtime (seconds) | SPR radius/rounds |
-|-----------|-----------|-----------------|-------------------|-------------------|
-| UShER     | 0         | 296248          | NA                | NA/NA             |
-| UShER*    | 1         | 294022          | 4324              | 10/1              |
-| UShER     | 1         | 294476          | 24358             | 10/1              |
-| UShER     | 2         | 294353          | 24203             | 10/1              |
-| UShER     | 3         | 294343          | 23241             | 10/1              |
-| UShER     | 4         | 294307          | 71972             | 40/1              |
-| UShER*    | 5         | 294005          | 2323.05           | 10/1              |
-| UShER-new | 0         | 296248          | NA                | NA/NA             |
-| UShER-new | 1         | 294318          | 9419.3            | 10/1              |
-| UShER-new | 1         | 294313          | 6537.2            | 100/1             |
+| Program   | Iteration | Parsimony score | Runtime (seconds) | SPR radius/rounds | Command |
+|-----------|-----------|-----------------|-------------------|-------------------|---------|
+| UShER     | 0         | 296248          | NA                | NA/NA             |usher -t starting.tree -v alignment.vcf -o iter-0.pb|
+| UShER     | 1         | 294476          | 24358             | 10/1              |matOptimize -i iter-0.pb -v alignment.vcf -o iter-1.pb -r 40 -T 32 -s 259200|
+| UShER     | 2         | 294353          | 24203             | 10/1              |matOptimize -i iter-1.pb -v alignment.vcf -o iter-2.pb -r 40 -T 32 -s 259200|
+| UShER     | 3         | 294343          | 23241             | 10/1              |matOptimize -i iter-2.pb -v alignment.vcf -o iter-3.pb -r 40 -T 32 -s 259200|
+| UShER     | 4         | 294307          | 71972             | 40/1              |matOptimize -i iter-3.pb -v alignment.vcf -o iter-4.pb -r 40 -T 32 -s 259200|
+| UShER-new | 0         | 296248          | NA                | NA/NA             ||
+| UShER-new | 1         | 294318          | 9419.3            | 10/1              ||
+| UShER-new | 1         | 294313          | 6537.2            | 100/1             ||
 
+### 2.2.4 TreeRearrange
 
-UShER* denotes another version of matOptimize at https://github.com/yceh/usher/tree/Refactor-FS-cleanup.
+We tested [TreeRearrange](https://github.com/yceh/usher/tree/Refactor-FS-cleanup) on both the starting tree (iteration 0) and the final tree (iteration 4) from the previous step.
+
+| Program   | Iteration | Parsimony score | Runtime (seconds) | SPR radius/rounds | Command |
+|-----------|-----------|-----------------|-------------------|-------------------|---------|
+| Refactor-FS-cleanup | 1         | 294022          | 4324           | 10/1       |/usr/bin/time build/tree_rearrange_new  -v alignment.vcf -t starting.tree -o from_start_tree.pb -T 32<br />matUtils extract -i from_start_tree.pb -t from_start_tree.tree|
+| Refactor-FS-cleanup | 5         | 294005          | 2323.05        | 10/1       |/usr/bin/time build/tree_rearrange_new -v alignment.vcf -t iter-4.tree -o continue_iter4.pb -T 32<br />matUtils extract -i continue_iter4.pb -t continue_iter4.tree|
 
 * longer because I forgot to switch of ml branch length optimisation, and/or because it had TBR moves in as well (which never helped so I turned off)
 
@@ -150,9 +146,9 @@ As in the previous step, prior to running this command, I set `export OMP_NUM_TH
 | UShER-new | 1         | 8811              | 293899    |./matOptimize -i fasttree_iteration6.pb -v alignment.vcf -r 100 -m 0.0 -o usher-optimized-fasttree_iteration6.pb -T 32 2>&1 | tee usher-optimized-fasttree.log<br />./matUtils extract -i usher-optimized-fasttree_iteration6.pb -t usher-optimized-fasttree_iteration6.tree|
 
 
-| Program   | Iteration | Parsimony score | Runtime (seconds) | SPR radius/rounds | Command |
-|-----------|-----------|-----------------|-------------------|-------------------|---------|
-| UShER*    | 1         | 293866          | 988.16 (80 threads)| 10/1             |/usr/bin/time build/tree_rearrange_new  -v alignment.vcf -t usher-optimized-fasttree_iteration6.tree -o after_usher_optimized_fasttree_iter6.pb # default 80 threads<br />matUtils extract -i after_usher_optimized_fasttree_iter6.pb -t after_usher_optimized_fasttree_iter6.tree|
+| Program   | Iteration | Runtime (seconds)  | Parsimony score | SPR radius/rounds | Command |
+|-----------|-----------|--------------------|-----------------|-------------------|---------|
+| UShER*    | 1         | 988.16 (80 threads)| 293866          | 10/1             |/usr/bin/time build/tree_rearrange_new  -v alignment.vcf -t usher-optimized-fasttree_iteration6.tree -o after_usher_optimized_fasttree_iter6.pb # default 80 threads<br />matUtils extract -i after_usher_optimized_fasttree_iter6.pb -t after_usher_optimized_fasttree_iter6.tree|
 
 ## 2.4 Clean up
 
