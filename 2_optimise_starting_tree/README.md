@@ -22,19 +22,7 @@ faSomeRecords alignment.fa exclude.txt alignment_trimmed.fa -exclude
 
 #### 2.2.1 IQ-TREE Apr27 Version
 
-```
-# Optimisation with IQ-TREE (note that IQ-TREE from 27 Apr 2021 on the dev branch listed as IQTREEA27 below)
-
-iqtree -n 0 -no-ml-dist -m JC -t starting.tree -s alignment_trimmed.fa -parsimony-spr 100 -parsimony-nni 100 -parsimony-tbr 100 -spr-radius 20 -tbr-radius 20 --suppress-list-of-sequences -nt 100 -fast -pre iqtree_iteration1
-
-iqtree -n 0 -no-ml-dist -m JC -t iqtree_iteration1.treefile -s alignment_trimmed.fa -parsimony-spr 100 -parsimony-nni 100 -parsimony-tbr 100 -spr-radius 40 -tbr-radius 20 --suppress-list-of-sequences -blfix -nt 100 -fast -pre iqtree_iteration2
-
-iqtree -n 0 -no-ml-dist -m JC -t iqtree_iteration2.treefile -s alignment_trimmed.fa -parsimony-spr 100 -parsimony-nni 100 -spr-radius 60 --suppress-list-of-sequences -blfix -nt 100 -fast -pre iqtree_iteration3
-
-iqtree -n 0 -no-ml-dist -m JC -t iqtree_iteration3.treefile -s alignment_trimmed.fa -parsimony-spr 100 -parsimony-nni 100 -spr-radius 80 --suppress-list-of-sequences -blfix -nt 100 -fast -pre iqtree_iteration4
-
-iqtree -n 0 -no-ml-dist -m JC -t iqtree_iteration4.treefile -s alignment_trimmed.fa -parsimony-spr 100 -parsimony-nni 100 -spr-radius 100 --suppress-list-of-sequences -blfix -nt 100 -fast -pre iqtree_iteration5
-```
+##### Optimisation with IQ-TREE (note that IQ-TREE from 27 Apr 2021 on the dev branch listed as IQTREEA27 below)
 
 | Program   | Iteration | Parsimony score | Runtime (seconds) | SPR radius/rounds | Command                   |
 |-----------|-----------|-----------------|-------------------|-------------------|---------------------------
