@@ -96,8 +96,8 @@ We also tested [TreeRearrange](https://github.com/yceh/usher/tree/Refactor-FS-cl
 
 | Program   | Iteration | Parsimony score | Runtime (seconds) | SPR radius/rounds | Command |
 |-----------|-----------|-----------------|-------------------|-------------------|---------|
-| Refactor-FS-cleanup | 1         | 294022          | 4324           | 10/1       |/usr/bin/time build/tree_rearrange_new  -v alignment.vcf -t starting.tree -o from_start_tree.pb -T 32<br />matUtils extract -i from_start_tree.pb -t from_start_tree.tree|
-| Refactor-FS-cleanup | 5         | 294005          | 2323.05        | 10/1       |/usr/bin/time build/tree_rearrange_new -v alignment.vcf -t iter-4.tree -o continue_iter4.pb -T 32<br />matUtils extract -i continue_iter4.pb -t continue_iter4.tree|
+|TreeRearrange| 1         | 294022          | 4324           | 10/1       |/usr/bin/time build/tree_rearrange_new  -v alignment.vcf -t starting.tree -o from_start_tree.pb -T 32<br />matUtils extract -i from_start_tree.pb -t from_start_tree.tree|
+|TreeRearrange| 5         | 294005          | 2323.05        | 10/1       |/usr/bin/time build/tree_rearrange_new -v alignment.vcf -t iter-4.tree -o continue_iter4.pb -T 32<br />matUtils extract -i continue_iter4.pb -t continue_iter4.tree|
 
 * longer because I forgot to switch of ml branch length optimisation, and/or because it had TBR moves in as well (which never helped so I turned off)
 
@@ -151,14 +151,14 @@ As in the previous step, prior to running this command, I set `export OMP_NUM_TH
 
 ### 2.3.2 Optimize best ML tree for parsimony
 
-| Program   | Iteration | Runtime (seconds) | Parsimony | Command |
-|-----------|-----------|-------------------|-----------|---------|
-| UShER-new | 1         | 8811              | 293899    |./matOptimize -i fasttree_iteration6.pb -v alignment.vcf -r 100 -m 0.0 -o usher-optimized-fasttree_iteration6.pb -T 32 2>&1 | tee usher-optimized-fasttree.log<br />./matUtils extract -i usher-optimized-fasttree_iteration6.pb -t usher-optimized-fasttree_iteration6.tree|
+| Program   | Iteration | Parsimony | Runtime (seconds) | Command |
+|-----------|-----------|-----------|-------------------|---------|
+| UShER-new | 1         | 293899    | 8811              |./matOptimize -i fasttree_iteration6.pb -v alignment.vcf -r 100 -m 0.0 -o usher-optimized-fasttree_iteration6.pb -T 32 2>&1 | tee usher-optimized-fasttree.log<br />./matUtils extract -i usher-optimized-fasttree_iteration6.pb -t usher-optimized-fasttree_iteration6.tree|
 
 
-| Program   | Iteration | Runtime (seconds)  | Parsimony score | SPR radius/rounds | Command |
-|-----------|-----------|--------------------|-----------------|-------------------|---------|
-| UShER*    | 1         | 988.16 (80 threads)| 293866          | 10/1             |/usr/bin/time build/tree_rearrange_new  -v alignment.vcf -t usher-optimized-fasttree_iteration6.tree -o after_usher_optimized_fasttree_iter6.pb # default 80 threads<br />matUtils extract -i after_usher_optimized_fasttree_iter6.pb -t after_usher_optimized_fasttree_iter6.tree|
+| Program   | Iteration | Parsimony | Runtime (seconds)  | SPR radius/rounds | Command |
+|-----------|-----------|-----------|--------------------|-------------------|---------|
+| UShER*    | 1         | 293866    | 988.16 (80 threads)| 10/1              |/usr/bin/time build/tree_rearrange_new  -v alignment.vcf -t usher-optimized-fasttree_iteration6.tree -o after_usher_optimized_fasttree_iter6.pb # default 80 threads<br />matUtils extract -i after_usher_optimized_fasttree_iter6.pb -t after_usher_optimized_fasttree_iter6.tree|
 
 ## 2.4 Clean up
 
