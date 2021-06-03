@@ -24,7 +24,6 @@ faSomeRecords alignment.fa exclude.txt alignment_trimmed.fa -exclude
 
 ```
 # Optimisation with IQ-TREE (note that IQ-TREE from 27 Apr 2021 on the dev branch listed as IQTREEA27 below)
-# Newer version for comparison is from May 24, listed as IQTREEM24 below
 
 iqtree -n 0 -no-ml-dist -m JC -t starting.tree -s alignment_trimmed.fa -parsimony-spr 100 -parsimony-nni 100 -parsimony-tbr 100 -spr-radius 20 -tbr-radius 20 --suppress-list-of-sequences -nt 100 -fast -pre iqtree_iteration1
 
@@ -37,14 +36,16 @@ iqtree -n 0 -no-ml-dist -m JC -t iqtree_iteration3.treefile -s alignment_trimmed
 iqtree -n 0 -no-ml-dist -m JC -t iqtree_iteration4.treefile -s alignment_trimmed.fa -parsimony-spr 100 -parsimony-nni 100 -spr-radius 100 --suppress-list-of-sequences -blfix -nt 100 -fast -pre iqtree_iteration5
 ```
 
-| Program   | Iteration | Parsimony score | Runtime (seconds) | SPR radius/rounds |
-|-----------|-----------|-----------------|-------------------|-------------------|
-| IQ-TREE   | 0         | 296247          | NA                | NA/NA             |
-| IQ-TREE   | 1         | 294719          | 46311*            | 20/100            |
+| Program   | Iteration | Parsimony score | Runtime (seconds) | SPR radius/rounds | Command                   |
+|-----------|-----------|-----------------|-------------------|-------------------|---------------------------
+| IQ-TREE   | 0         | 296247          | NA                | NA/NA             | |
+| IQ-TREE   | 1         | 294719          | 46311*            | 20/100            |iqtree -n 0 -no-ml-dist -m JC -t starting.tree -s alignment_trimmed.fa -parsimony-spr 100 -parsimony-nni 100 -parsimony-tbr 100 -spr-radius 20 -tbr-radius 20 --suppress-list-of-sequences -nt 100 -fast -pre iqtree_iteration1|
 | IQ-TREE   | 2         | 294519          | 11324*            | 40/100            |
-| IQ-TREE   | 3         | 294411          | 21459             | 60/100            |
-| IQ-TREE   | 4         | 294330          | 48675             | 80/100            |
+iqtree -n 0 -no-ml-dist -m JC -t iqtree_iteration1.treefile -s alignment_trimmed.fa -parsimony-spr 100 -parsimony-nni 100 -parsimony-tbr 100 -spr-radius 40 -tbr-radius 20 --suppress-list-of-sequences -blfix -nt 100 -fast -pre iqtree_iteration2|
+| IQ-TREE   | 3         | 294411          | 21459             | 60/100            |iqtree -n 0 -no-ml-dist -m JC -t iqtree_iteration2.treefile -s alignment_trimmed.fa -parsimony-spr 100 -parsimony-nni 100 -spr-radius 60 --suppress-list-of-sequences -blfix -nt 100 -fast -pre iqtree_iteration3|
+| IQ-TREE   | 4         | 294330          | 48675             | 80/100            |iqtree -n 0 -no-ml-dist -m JC -t iqtree_iteration3.treefile -s alignment_trimmed.fa -parsimony-spr 100 -parsimony-nni 100 -spr-radius 80 --suppress-list-of-sequences -blfix -nt 100 -fast -pre iqtree_iteration4|
 | IQ-TREE   | 5         | 294250          | 112034            | 100/100           |
+iqtree -n 0 -no-ml-dist -m JC -t iqtree_iteration4.treefile -s alignment_trimmed.fa -parsimony-spr 100 -parsimony-nni 100 -spr-radius 100 --suppress-list-of-sequences -blfix -nt 100 -fast -pre iqtree_iteration5|
 
 The other IQ-TREE times increase because I was tentatively increasing the SPR radius. I think one can usually expect that a single run with a larger SPR radius is sufficient (each attempts 100 rounds of SPR or until no further improvements are found)
 
