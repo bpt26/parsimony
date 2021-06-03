@@ -1,6 +1,6 @@
 # 2_optimise_starting_tree
 
-To properly test parsimony- and maximum-likelihood-based methods for tree optimization, we required a phylogeny pruned of all erroneous samples. This was accomplished in the previous step. In this section, we are most interested in taking that starting tree and testing various strategies for its optimization. In particular, we are interested in  testing [matOptimize](https://github.com/yatisht/usher), [IQ-TREE 2.1.3](http://www.iqtree.org/#download), and [FastTree2](http://www.microbesonline.org/fasttree/).
+To properly test parsimony- and maximum-likelihood-based methods for tree optimization, we required a phylogeny pruned of all potentially erroneous samples. We describe our pruning criteria, as well as how we produced a starting tree using sequential parsimony addition in section 1. In this section, we are most interested in taking that starting tree and testing various strategies for its optimization. Here we evaluate the performance of [matOptimize](https://github.com/yatisht/usher), [TreeRearrange](https://github.com/yceh/usher), [IQ-TREE 2.1.3](http://www.iqtree.org/#download), and [FastTree2](http://www.microbesonline.org/fasttree/).
 
 ## 2.1 Set up the starting tree and the alignment
 
