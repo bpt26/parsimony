@@ -155,7 +155,7 @@ As in the previous step, prior to running this command, I set `export OMP_NUM_TH
 
 | Program   | Iteration | Parsimony | Runtime (seconds) | Command |
 |-----------|-----------|-----------|-------------------|---------|
-|matOptimize| 1         | 293899    | 8811              |./matOptimize -i fasttree_iteration6.pb -v alignment.vcf -r 100 -m 0.0 -o usher-optimized-fasttree_iteration6.pb -T 32 2>&1 | tee usher-optimized-fasttree.log<br />./matUtils extract -i usher-optimized-fasttree_iteration6.pb -t usher-optimized-fasttree_iteration6.tree|
+|matOptimize| 1         | 293899    | 8811              |./matOptimize -i fasttree_iteration6.pb -v alignment.vcf -r 100 -m 0.0 -o usher-optimized-fasttree_iteration6.pb -T 32<br />./matUtils extract -i usher-optimized-fasttree_iteration6.pb -t usher-optimized-fasttree_iteration6.tree|
 
 #### 2.3.2.2 treeRearrange
 
