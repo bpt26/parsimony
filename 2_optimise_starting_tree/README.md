@@ -17,10 +17,9 @@ echo "NC_045512v2" > exclude.txt
 faSomeRecords alignment.fa exclude.txt alignment_trimmed.fa -exclude
 ```
 
-
 ## 2.2 Optimise starting tree with parsimony in IQ-TREE and/or UShER
 
-#### 2.2.1 IQ-TREE Apr27 Version
+### 2.2.1 IQ-TREE Apr27 Version
 
 | Program   | Iteration | Parsimony score | Runtime (seconds) | SPR radius/rounds | Command                   |
 |-----------|-----------|-----------------|-------------------|-------------------|---------------------------
@@ -34,7 +33,7 @@ faSomeRecords alignment.fa exclude.txt alignment_trimmed.fa -exclude
 The other IQ-TREE times increase because I was tentatively increasing the SPR radius. I think one can usually expect that a single run with a larger SPR radius is sufficient (each attempts 100 rounds of SPR or until no further improvements are found)
 
 
-#### 2.2.2 IQ-TREE May24 Version
+### 2.2.2 IQ-TREE May24 Version
 
 | Program | Iteration | Parsimony score | Runtime (seconds) | SPR radius/rounds | Command |
 |---------|-----------|-----------------|-------------------|-------------------|---------|
@@ -44,7 +43,7 @@ The other IQ-TREE times increase because I was tentatively increasing the SPR ra
 
 * For IQ-TREEM24, I did one iteration at SPR radius 20, and one at 100.
 
-#### 2.2.3 UShER
+### 2.2.3 UShER
 
 ```
 # Optimization using UShER (matOptimize)
@@ -94,12 +93,12 @@ UShER* denotes another version of matOptimize at https://github.com/yceh/usher/t
 
 * longer because I forgot to switch of ml branch length optimisation, and/or because it had TBR moves in as well (which never helped so I turned off)
 
-#### Note
+### Note
 
 The difference between UShER and IQ-TREE may at first seem a little odd. Why don't both get the same parsimony score when they have the same SPR radius. There are two differences. First, UShER is doing one round (if I undersood correctly) of SPR moves, and IQ-TREE is doing 100. This should make UShER worse. But UShER gets a *better* score than IQ-TREE with a radius of 40 (294307 vs. 294519). The other difference is that UShER has 'true' polytomies. So a radius of 40 can trivially see through a large polytomy. IQ-TREE does not have true polytomies. Instead it has minimum branch lengths. This means that IQ-TREE SPR moves may not see through large true polytomies, simply because they are represented as randomly-resolved bifurcating trees. 
 
 
-#### 2.2.4 Parsimony using the best ML tree as the starting tree
+### 2.2.4 Parsimony using the best ML tree as the starting tree
 
 This uses the output of 5th iteration of IQ-TREE as starting tree.
 
@@ -110,7 +109,7 @@ This uses the output of 5th iteration of IQ-TREE as starting tree.
 
 ## 2.3 Optimise starting tree with pseudo-likelihood in FastTreeMP
 
-#### 2.3.1 FastTree 
+### 2.3.1 FastTree 
 
 Prior to running this set of commands, I set `export OMP_NUM_THREADS=3`, and after the last iteration, I set `unset OMP_NUM_THREADS`.
 
@@ -131,7 +130,7 @@ done
 ```
 
 
-#### 2.3.1 FastTree with the best MP tree as a starting tree
+### 2.3.1 FastTree with the best MP tree as a starting tree
 
 As in the previous step, prior to running this command, I set `export OMP_NUM_THREADS=3`, and afterwards, I set `unset OMP_NUM_THREADS`.
 
@@ -144,7 +143,7 @@ As in the previous step, prior to running this command, I set `export OMP_NUM_TH
 ./usher -t fasttree__iqtree5start.tree -v alignment.vcf -o fasttree__iqtree5start.pb -T 32 2>&1 | tee fasttree__iqtree5start.parsimony 
 ```
 
-#### 2.3.2 Optimize best ML tree for parsimony
+### 2.3.2 Optimize best ML tree for parsimony
 
 | Program   | Iteration | Runtime (seconds) | Parsimony | Command |
 |-----------|-----------|-------------------|-----------|---------|
@@ -154,8 +153,6 @@ As in the previous step, prior to running this command, I set `export OMP_NUM_TH
 | Program   | Iteration | Parsimony score | Runtime (seconds) | SPR radius/rounds | Command |
 |-----------|-----------|-----------------|-------------------|-------------------|---------|
 | UShER*    | 1         | 293866          | 988.16 (80 threads)| 10/1             |/usr/bin/time build/tree_rearrange_new  -v alignment.vcf -t usher-optimized-fasttree_iteration6.tree -o after_usher_optimized_fasttree_iter6.pb # default 80 threads<br />matUtils extract -i after_usher_optimized_fasttree_iter6.pb -t after_usher_optimized_fasttree_iter6.tree|
-
-
 
 ## 2.4 Clean up
 
