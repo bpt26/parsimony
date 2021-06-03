@@ -151,14 +151,17 @@ As in the previous step, prior to running this command, I set `export OMP_NUM_TH
 
 ### 2.3.2 Optimize best ML tree for parsimony
 
+#### 2.3.2.1 matOptimize
+
 | Program   | Iteration | Parsimony | Runtime (seconds) | Command |
 |-----------|-----------|-----------|-------------------|---------|
-| UShER-new | 1         | 293899    | 8811              |./matOptimize -i fasttree_iteration6.pb -v alignment.vcf -r 100 -m 0.0 -o usher-optimized-fasttree_iteration6.pb -T 32 2>&1 | tee usher-optimized-fasttree.log<br />./matUtils extract -i usher-optimized-fasttree_iteration6.pb -t usher-optimized-fasttree_iteration6.tree|
+|matOptimize| 1         | 293899    | 8811              |./matOptimize -i fasttree_iteration6.pb -v alignment.vcf -r 100 -m 0.0 -o usher-optimized-fasttree_iteration6.pb -T 32 2>&1 | tee usher-optimized-fasttree.log<br />./matUtils extract -i usher-optimized-fasttree_iteration6.pb -t usher-optimized-fasttree_iteration6.tree|
 
+#### 2.3.2.2 treeRearrange
 
 | Program   | Iteration | Parsimony | Runtime (seconds)  | SPR radius/rounds | Command |
 |-----------|-----------|-----------|--------------------|-------------------|---------|
-| UShER*    | 1         | 293866    | 988.16 (80 threads)| 10/1              |/usr/bin/time build/tree_rearrange_new  -v alignment.vcf -t usher-optimized-fasttree_iteration6.tree -o after_usher_optimized_fasttree_iter6.pb # default 80 threads<br />matUtils extract -i after_usher_optimized_fasttree_iter6.pb -t after_usher_optimized_fasttree_iter6.tree|
+|treeRearrange| 1         | 293866    | 988.16 (80 threads)| 10/1              |/usr/bin/time build/tree_rearrange_new  -v alignment.vcf -t usher-optimized-fasttree_iteration6.tree -o after_usher_optimized_fasttree_iter6.pb # default 80 threads<br />matUtils extract -i after_usher_optimized_fasttree_iter6.pb -t after_usher_optimized_fasttree_iter6.tree|
 
 ## 2.4 Clean up
 
