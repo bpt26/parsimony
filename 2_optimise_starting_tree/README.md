@@ -136,7 +136,7 @@ done
 ```
 
 
-### 2.3.1 FastTree with the best MP tree as a starting tree
+### 2.3.2 FastTree with the best MP tree as a starting tree
 
 As in the previous step, prior to running this command, I set `export OMP_NUM_THREADS=3`, and afterwards, I set `unset OMP_NUM_THREADS`.
 
@@ -149,15 +149,15 @@ As in the previous step, prior to running this command, I set `export OMP_NUM_TH
 ./usher -t fasttree__iqtree5start.tree -v alignment.vcf -o fasttree__iqtree5start.pb -T 32 2>&1 | tee fasttree__iqtree5start.parsimony 
 ```
 
-### 2.3.2 Optimize best ML tree for parsimony
+### 2.3.3 Optimize best ML tree for parsimony
 
-#### 2.3.2.1 matOptimize
+#### 2.3.3.1 matOptimize
 
 | Program   | Iteration | Parsimony | Runtime (seconds) | Command |
 |-----------|-----------|-----------|-------------------|---------|
 |matOptimize| 1         | 293899    | 8811              |./matOptimize -i fasttree_iteration6.pb -v alignment.vcf -r 100 -m 0.0 -o usher-optimized-fasttree_iteration6.pb -T 32<br />./matUtils extract -i usher-optimized-fasttree_iteration6.pb -t usher-optimized-fasttree_iteration6.tree|
 
-#### 2.3.2.2 treeRearrange
+#### 2.3.3.2 treeRearrange
 
 | Program   | Iteration | Parsimony | Runtime (seconds)  | SPR radius/rounds | Command |
 |-----------|-----------|-----------|--------------------|-------------------|---------|
