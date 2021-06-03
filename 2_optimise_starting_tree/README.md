@@ -70,13 +70,16 @@ done
 | Program   | Iteration | Parsimony score | Runtime (seconds) | SPR radius/rounds | Command |
 |-----------|-----------|-----------------|-------------------|-------------------|---------|
 | UShER     | 0         | 296248          | NA                | NA/NA             |usher -t starting.tree -v alignment.vcf -o iter-0.pb|
-| UShER     | 1         | 294476          | 24358             | 10/1              |matOptimize -i iter-0.pb -v alignment.vcf -o iter-1.pb -r 40 -T 32 -s 259200|
-| UShER     | 2         | 294353          | 24203             | 10/1              |matOptimize -i iter-1.pb -v alignment.vcf -o iter-2.pb -r 40 -T 32 -s 259200|
-| UShER     | 3         | 294343          | 23241             | 10/1              |matOptimize -i iter-2.pb -v alignment.vcf -o iter-3.pb -r 40 -T 32 -s 259200|
+| UShER     | 1         | 294476          | 24358             | 10/1              |matOptimize -i iter-0.pb -v alignment.vcf -o iter-1.pb -r 10 -T 32 -s 259200|
+| UShER     | 2         | 294353          | 24203             | 10/1              |matOptimize -i iter-1.pb -v alignment.vcf -o iter-2.pb -r 10 -T 32 -s 259200|
+| UShER     | 3         | 294343          | 23241             | 10/1              |matOptimize -i iter-2.pb -v alignment.vcf -o iter-3.pb -r 10 -T 32 -s 259200|
 | UShER     | 4         | 294307          | 71972             | 40/1              |matOptimize -i iter-3.pb -v alignment.vcf -o iter-4.pb -r 40 -T 32 -s 259200|
-| UShER-new | 0         | 296248          | NA                | NA/NA             ||
-| UShER-new | 1         | 294318          | 9419.3            | 10/1              ||
-| UShER-new | 1         | 294313          | 6537.2            | 100/1             ||
+
+| Program   | Iteration | Parsimony score | Runtime (seconds) | SPR radius/rounds | Command |
+|-----------|-----------|-----------------|-------------------|-------------------|---------|
+| matOptimize-new | 0         | 296248          | NA                | NA/NA             |usher -t starting.tree -v alignment.vcf -o iter-0.pb|
+| matOptimize-new | 1         | 294318          | 9419.3            | 10/1              |matOptimize -i iter-0.pb -v alignment.vcf -o iter-1.pb -r 10 -T 32 -s 259200|
+| matOptimize-new | 1         | 294313          | 6537.2            | 100/1             |matOptimize -i iter-0.pb -v alignment.vcf -o iter-1.pb -r 100 -T 32 -s 259200|
 
 ### 2.2.4 TreeRearrange
 
@@ -93,15 +96,13 @@ We tested [TreeRearrange](https://github.com/yceh/usher/tree/Refactor-FS-cleanup
 
 The difference between UShER and IQ-TREE may at first seem a little odd. Why don't both get the same parsimony score when they have the same SPR radius. There are two differences. First, UShER is doing one round (if I undersood correctly) of SPR moves, and IQ-TREE is doing 100. This should make UShER worse. But UShER gets a *better* score than IQ-TREE with a radius of 40 (294307 vs. 294519). The other difference is that UShER has 'true' polytomies. So a radius of 40 can trivially see through a large polytomy. IQ-TREE does not have true polytomies. Instead it has minimum branch lengths. This means that IQ-TREE SPR moves may not see through large true polytomies, simply because they are represented as randomly-resolved bifurcating trees. 
 
-
-### 2.2.4 Parsimony using the best ML tree as the starting tree
+### 2.2.5 Parsimony using the best ML tree as the starting tree
 
 This uses the output of 5th iteration of IQ-TREE as starting tree.
 
 | Program   | Iteration | Parsimony score | Runtime (seconds)   | SPR radius/rounds | Command |
 |-----------|-----------|-----------------|---------------------|-------------------|---------|
 | UShER*    | 1         | 293862          | 2400.49 (80 threads)| 10/1              | /usr/bin/time build/tree_rearrange_new  -v alignment.vcf -t iqtree_iteration5.treefile -o after-iqtree-iter5.pb # default 80 threads<br />matUtils extract -i after-iqtree-iter5.pb -t after-iqtree-iter5.tree |
-
 
 ## 2.3 Optimise starting tree with pseudo-likelihood in FastTreeMP
 
