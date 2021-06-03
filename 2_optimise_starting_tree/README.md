@@ -103,8 +103,7 @@ This uses the output of 5th iteration of IQ-TREE as starting tree.
 
 | Program   | Iteration | Parsimony score | Runtime (seconds)   | SPR radius/rounds | Command |
 |-----------|-----------|-----------------|---------------------|-------------------|---------|
-| UShER*    | 1         | 293862          | 2400.49 (80 threads)| 10/1              | /usr/bin/time build/tree_rearrange_new  -v alignment.vcf -t iqtree_iteration5.treefile -o after-iqtree-iter5.pb # default 80 threads
-matUtils extract -i after-iqtree-iter5.pb -t after-iqtree-iter5.tree |
+| UShER*    | 1         | 293862          | 2400.49 (80 threads)| 10/1              | /usr/bin/time build/tree_rearrange_new  -v alignment.vcf -t iqtree_iteration5.treefile -o after-iqtree-iter5.pb # default 80 threads<br />matUtils extract -i after-iqtree-iter5.pb -t after-iqtree-iter5.tree |
 
 
 ## 2.3 Optimise starting tree with pseudo-likelihood in FastTreeMP
