@@ -43,7 +43,9 @@ The other IQ-TREE times increase because I was tentatively increasing the SPR ra
 
 * For IQ-TREEM24, I did one iteration at SPR radius 20, and one at 100.
 
-### 2.2.3 UShER
+### 2.2.3 matOptimize
+
+#### 2.2.3.1 General Workflow
 
 ```
 # Optimization using UShER (matOptimize)
@@ -67,13 +69,20 @@ done
 
 ```
 
+#### 2.2.3.2 May XXX version of matOptimize
+
 | Program   | Iteration | Parsimony score | Runtime (seconds) | SPR radius/rounds | Command |
 |-----------|-----------|-----------------|-------------------|-------------------|---------|
-| UShER     | 0         | 296248          | NA                | NA/NA             |usher -t starting.tree -v alignment.vcf -o iter-0.pb|
-| UShER     | 1         | 294476          | 24358             | 10/1              |matOptimize -i iter-0.pb -v alignment.vcf -o iter-1.pb -r 10 -T 32 -s 259200|
-| UShER     | 2         | 294353          | 24203             | 10/1              |matOptimize -i iter-1.pb -v alignment.vcf -o iter-2.pb -r 10 -T 32 -s 259200|
-| UShER     | 3         | 294343          | 23241             | 10/1              |matOptimize -i iter-2.pb -v alignment.vcf -o iter-3.pb -r 10 -T 32 -s 259200|
-| UShER     | 4         | 294307          | 71972             | 40/1              |matOptimize -i iter-3.pb -v alignment.vcf -o iter-4.pb -r 40 -T 32 -s 259200|
+|matOptimize| 0         | 296248          | NA                | NA/NA             |usher -t starting.tree -v alignment.vcf -o iter-0.pb|
+|matOptimize| 1         | 294476          | 24358             | 10/1              |matOptimize -i iter-0.pb -v alignment.vcf -o iter-1.pb -r 10 -T 32 -s 259200|
+|matOptimize| 2         | 294353          | 24203             | 10/1              |matOptimize -i iter-1.pb -v alignment.vcf -o iter-2.pb -r 10 -T 32 -s 259200|
+|matOptimize| 3         | 294343          | 23241             | 10/1              |matOptimize -i iter-2.pb -v alignment.vcf -o iter-3.pb -r 10 -T 32 -s 259200|
+|matOptimize| 4         | 294307          | 71972             | 40/1              |matOptimize -i iter-3.pb -v alignment.vcf -o iter-4.pb -r 40 -T 32 -s 259200|
+
+
+#### 2.2.3.3 May XXX version of matOptimize
+
+After running these iterations, we updated matOptimize such that it does less search space pruning, and evaluates pruning prior to performing pruning and placement. This update was made on XXX 2021 and is reflected in the current version of matOptimize as of June 2 2021. The results of this most current version of matOptimize are shown below.
 
 | Program   | Iteration | Parsimony score | Runtime (seconds) | SPR radius/rounds | Command |
 |-----------|-----------|-----------------|-------------------|-------------------|---------|
@@ -83,7 +92,7 @@ done
 
 ### 2.2.4 TreeRearrange
 
-We tested [TreeRearrange](https://github.com/yceh/usher/tree/Refactor-FS-cleanup) on both the starting tree (iteration 0) and the final tree (iteration 4) from the previous step.
+We also tested [TreeRearrange](https://github.com/yceh/usher/tree/Refactor-FS-cleanup) on both the starting tree (iteration 0) and the final tree (iteration 4) from step 2.2.3.2.
 
 | Program   | Iteration | Parsimony score | Runtime (seconds) | SPR radius/rounds | Command |
 |-----------|-----------|-----------------|-------------------|-------------------|---------|
