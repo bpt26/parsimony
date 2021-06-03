@@ -32,6 +32,7 @@ faSomeRecords alignment.fa exclude.txt alignment_trimmed.fa -exclude
 
 The other IQ-TREE times increase because I was tentatively increasing the SPR radius. I think one can usually expect that a single run with a larger SPR radius is sufficient (each attempts 100 rounds of SPR or until no further improvements are found)
 
+* longer because I forgot to switch of ml branch length optimisation, and/or because it had TBR moves in as well (which never helped so I turned off)
 
 ### 2.2.2 IQ-TREE May24 Version
 
@@ -96,14 +97,12 @@ We also tested [TreeRearrange](https://github.com/yceh/usher/tree/Refactor-FS-cl
 
 | Program   | Iteration | Parsimony score | Runtime (seconds) | SPR radius/rounds | Command |
 |-----------|-----------|-----------------|-------------------|-------------------|---------|
-|TreeRearrange| 1         | 294022          | 4324           | 10/1       |/usr/bin/time build/tree_rearrange_new  -v alignment.vcf -t starting.tree -o from_start_tree.pb -T 32<br />matUtils extract -i from_start_tree.pb -t from_start_tree.tree|
-|TreeRearrange| 5         | 294005          | 2323.05        | 10/1       |/usr/bin/time build/tree_rearrange_new -v alignment.vcf -t iter-4.tree -o continue_iter4.pb -T 32<br />matUtils extract -i continue_iter4.pb -t continue_iter4.tree|
-
-* longer because I forgot to switch of ml branch length optimisation, and/or because it had TBR moves in as well (which never helped so I turned off)
+|TreeRearrange| 1         | 294022          | 4324           | 10/1       |tree_rearrange_new  -v alignment.vcf -t starting.tree -o from_start_tree.pb -T 32<br />matUtils extract -i from_start_tree.pb -t from_start_tree.tree|
+|TreeRearrange| 1 (After 4 rounds of matOptimize) | 294005          | 2323.05        | 10/1       |tree_rearrange_new -v alignment.vcf -t iter-4.tree -o continue_iter4.pb -T 32<br />matUtils extract -i continue_iter4.pb -t continue_iter4.tree|
 
 ### Note
 
-The difference between UShER and IQ-TREE may at first seem a little odd. Why don't both get the same parsimony score when they have the same SPR radius. There are two differences. First, UShER is doing one round (if I undersood correctly) of SPR moves, and IQ-TREE is doing 100. This should make UShER worse. But UShER gets a *better* score than IQ-TREE with a radius of 40 (294307 vs. 294519). The other difference is that UShER has 'true' polytomies. So a radius of 40 can trivially see through a large polytomy. IQ-TREE does not have true polytomies. Instead it has minimum branch lengths. This means that IQ-TREE SPR moves may not see through large true polytomies, simply because they are represented as randomly-resolved bifurcating trees. 
+The difference between UShER and IQ-TREE may at first seem a little odd. Why don't both get the same parsimony score when they have the same SPR radius. There are two differences. First, UShER is doing one round (if I undersood correctly) of SPR moves, and IQ-TREE is doing 100. This should make UShER worse. But UShER gets a *better* score than IQ-TREE with a radius of 40 (294307 vs. 294519). The other difference is that UShER has 'true' polytomies. So a radius of 40 can trivially see through a large polytomy. IQ-TREE does not have true polytomies. Instead it has minimum branch lengths in a birfurcating tree. This means that IQ-TREE SPR moves may not see through large true polytomies, simply because they are represented as randomly-resolved bifurcating trees. 
 
 ### 2.2.5 Parsimony using the best ML tree as the starting tree
 
