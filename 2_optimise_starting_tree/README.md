@@ -111,7 +111,7 @@ This uses the output of 5th iteration of IQ-TREE as starting tree.
 
 | Program   | Iteration | Parsimony score | Runtime (seconds)   | SPR radius/rounds | Command |
 |-----------|-----------|-----------------|---------------------|-------------------|---------|
-| UShER*    | 1         | 293862          | 2400.49 (80 threads)| 10/1              | /usr/bin/time build/tree_rearrange_new  -v alignment.vcf -t iqtree_iteration5.treefile -o after-iqtree-iter5.pb # default 80 threads<br />matUtils extract -i after-iqtree-iter5.pb -t after-iqtree-iter5.tree |
+| UShER*    | 1         | 293862          | 2400.49 (80 threads)| 10/1              | /usr/bin/time build/tree_rearrange_new  -v alignment.vcf -t iqtree_iteration5.treefile -o after-iqtree-iter5.pb<br />matUtils extract -i after-iqtree-iter5.pb -t after-iqtree-iter5.tree |
 
 ## 2.3 Optimise starting tree with pseudo-likelihood in FastTreeMP
 
@@ -161,7 +161,7 @@ As in the previous step, prior to running this command, I set `export OMP_NUM_TH
 
 | Program   | Iteration | Parsimony | Runtime (seconds)  | SPR radius/rounds | Command |
 |-----------|-----------|-----------|--------------------|-------------------|---------|
-|treeRearrange| 1         | 293866    | 988.16 (80 threads)| 10/1              |/usr/bin/time build/tree_rearrange_new  -v alignment.vcf -t usher-optimized-fasttree_iteration6.tree -o after_usher_optimized_fasttree_iter6.pb # default 80 threads<br />matUtils extract -i after_usher_optimized_fasttree_iter6.pb -t after_usher_optimized_fasttree_iter6.tree|
+|treeRearrange| 1         | 293866    | 988.16 (80 threads)| 10/1              |/usr/bin/time build/tree_rearrange_new  -v alignment.vcf -t usher-optimized-fasttree_iteration6.tree -o after_usher_optimized_fasttree_iter6.pb<br />matUtils extract -i after_usher_optimized_fasttree_iter6.pb -t after_usher_optimized_fasttree_iter6.tree|
 
 ## 2.4 Clean up
 
