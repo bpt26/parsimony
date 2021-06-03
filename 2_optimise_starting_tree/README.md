@@ -1,5 +1,8 @@
 # 2_optimise_starting_tree
 
+To properly test parsimony- and maximum-likelihood-based methods for tree optimization, we required a phylogeny pruned of all erroneous samples. This was accomplished in the previous step. In this section, we are most interested in taking that starting tree and testing various strategies for its optimization. In particular, we are interested in  testing `matOptimize <https://github.com/yatisht/usher>`_ , IQ-TREE 2 (available for download here), and FastTree2 (available for download here).
+
+
 The point here is to take the starting tree that we used to filter the data, and optimise it as rigorously as possible with two methods: likelihood and parsimony.
 
 
