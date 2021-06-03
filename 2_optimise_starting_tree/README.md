@@ -52,16 +52,16 @@ The other IQ-TREE times increase because I was tentatively increasing the SPR ra
 ```
 # Newer version for comparison is from May 24, listed as IQTREEM24 below
 
-iqtree2 -n 0 -no-ml -t starting.tree -s alignment_trimmed.fa -parsimony-spr 100 -parsimony-nni 100 -spr-radius 20 --suppress-list-of-sequences -nt 100 -pre iqtreemay24_iteration1
 
-iqtree2 -n 0 -no-ml -t iqtreemay24_iteration1.treefile -s alignment_trimmed.fa -parsimony-spr 100 -parsimony-nni 100 -spr-radius 100 --suppress-list-of-sequences -nt 100 -pre iqtreemay24_iteration2
+
+
 
 ```
-| Program   | Iteration | Parsimony score | Runtime (seconds) | SPR radius/rounds |
-|-----------|-----------|-----------------|-------------------|-------------------|
-| IQ-TREEM24| 0         | 296247          | NA                | NA/NA             |
-| IQ-TREEM24| 1         | 294720    	     | 1524              | 20/100            |
-| IQ-TREEM24| 2         | 294258    	     | 86729             | 100/100           |
+| Program   | Iteration | Parsimony score | Runtime (seconds) | SPR radius/rounds | Command |
+|-----------|-----------|-----------------|-------------------|-------------------|---------|
+| IQ-TREEM24| 0         | 296247          | NA                | NA/NA             | |
+| IQ-TREEM24| 1         | 294720    	     | 1524              | 20/100            | iqtree2 -n 0 -no-ml -t starting.tree -s alignment_trimmed.fa -parsimony-spr 100 -parsimony-nni 100 -spr-radius 20 --suppress-list-of-sequences -nt 100 -pre iqtreemay24_iteration1 |
+| IQ-TREEM24| 2         | 294258    	     | 86729             | 100/100           | iqtree2 -n 0 -no-ml -t iqtreemay24_iteration1.treefile -s alignment_trimmed.fa -parsimony-spr 100 -parsimony-nni 100 -spr-radius 100 --suppress-list-of-sequences -nt 100 -pre iqtreemay24_iteration2 |
 
 
 * For IQ-TREEM24, I did one iteration at SPR radius 20, and one at 100.
