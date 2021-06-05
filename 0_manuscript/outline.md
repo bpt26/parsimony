@@ -19,8 +19,8 @@
 + Important, heretofore unresolved, issues surround how to most accurately and efficiently generate and optimize these vast phylogenies. 
 
 ### 4. We propose and evaluate a suite of approaches for maintaining a comprehensive globaly phylogeny comprised of XXX SARS-CoV-2 genomes. 
-+ Summary of main points. 
-
++ ML equivalent to parsimony?
++ Addition + optimizaiton only meanginful choice for vast scale at present. 
 
 ## Results and Discussion: 
-### 1. 
+### 1. We constructed a dataset of XXX real SARS-CoV-2 genomes and another dataset of simulated SARS-CoV-2 genomes. 
