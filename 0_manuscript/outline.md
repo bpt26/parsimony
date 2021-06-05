@@ -23,7 +23,17 @@
 + Addition + optimizaiton only meanginful choice for vast scale at present. 
 
 ## Results and Discussion: 
-### 1. We constructed datasets of real and simulated SARS-CoV-2 genomes.
-+ These real dataset is comprised of entirely public sequences, and are avaiable from the github page associated with this project. 
+### 1. We constructed datasets of real and simulated SARS-CoV-2 genomes to faciltiate comparisons of phylogenetics methods into the future.
++ To construct a simulated dataset, we first produced a starting tree by sequential parsimony addition of new samples. 
++ These real dataset is comprised of entirely public sequences, both simulated and real are avaiable from the github page associated with this project. 
 + These standardized datasets will empower future efforts to develop and evaluate phylogenetics approaches by others.
 
+### 2. Comparison of parsimony-based optimization approaches on the starting tree. 
++ Results suggest that iqtree, matOptimize and treeRearrange can improve on a given tree. 
++ Comparisons of parsimony scores, runtimes, memmory usage?
+
+### 3. Maximum likelihood optimizations produce improvements in parsimony score and vice versa. 
++ If true. should confirm and also compute the likelihood of the parsimony optimized final ML tree. Does likelihood improve?
+
+### 4. We evaluate strategies for sequence addition and tree optimization over time. 
++ results pending
