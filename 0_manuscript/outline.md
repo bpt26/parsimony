@@ -12,4 +12,7 @@
 + "State of the art" maximum likelihood approaches are expected to outperform parsimony methods when branch lengths are long. 
 + However, when branches are short, only rarely will two mutations occur on the same branch and the advantages of ML approaches is not clear.  
 
-### 3. Parsimony is vastly faster and therefore 
+### 3. Data flows in constantly, presenting an additional major challenge for typical phylgoeentics workflows. 
++ 
+
+### 3. Parsimony is an appealing alternative for both creating and maintaining the phylogeny. 
