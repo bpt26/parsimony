@@ -23,4 +23,7 @@
 + Addition + optimizaiton only meanginful choice for vast scale at present. 
 
 ## Results and Discussion: 
-### 1. We constructed a dataset of XXX real SARS-CoV-2 genomes and another dataset of simulated SARS-CoV-2 genomes. 
+### 1. We constructed datasets of real and simulated SARS-CoV-2 genomes.
++ These real dataset is comprised of entirely public sequences, and are avaiable from the github page associated with this project. 
++ These standardized datasets will empower future efforts to develop and evaluate phylogenetics approaches by others.
+
