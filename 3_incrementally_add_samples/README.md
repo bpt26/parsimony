@@ -34,6 +34,44 @@ bash makeTreesRaxmlML.sh # Binarizes starting trees and calls RaxML-NG to optimi
 bash makeTreesIQTreeML.sh # Binarizes starting trees and calls IQ-TREE 2 to optimize.
 ```
 
+## Results
+
+### FastTreeMP
+
+| Iteration | Total Sequences | Threads | Wall Clock Time |
+|-----------|-----------------|---------|-----------------|
+| 1 | 4676 | 3 | 0h:56m:50s |
+| 2 | 8902 | 3 | 1h:21m:56s |
+| 3 | 13241 | 3 | 2h:49m:53s |
+| 4 | 17941 | 3 | 3h:59m:28s |
+| 5 | 22012 | 3 | 4h:33m:13s |
+| 6 | 26486 | 10 | 6h:26m:6s |
+| 7 | 30989 | 10 | 5h:28m:2s |
+| 8 | 35323 | 10 | 7h:0m:14s |
+| 9 | 39621 | 10 |  |
+
+### IQTREE 2
+
+| Iteration | Total Sequences | Threads | CPU Time | Wall Clock Time |
+|-----------|-----------------|---------|----------|-----------------|
+| 1 | 4676 | 8 | 4h:21m:33s | 0h:39m:53s |
+| 2 | 8902 | 8 | 14h:40m:39s | 2h:11m:34s |
+| 3 | 13241 | 8 | 43h:24m:33s | 6h:7m:19s |
+| 4 | 17941 | 8 | 19h:35m:53s | 2h:44m:7s |
+| 5 | 22012 | 8 | 22h:44m:32s | 3h:28m:47s |
+| 6 | 26486 | 8 | 34h:34m:15s | 4h:59m:54s |
+| 7 | 30989 | 8 | 49h:4m:56s | 6h:59m:9s |
+| 8 | 35323 | 8 | 58h:15m:0s | 9h:8m:31s |
+| 9 | 39621 | 8 | 49h:18m:46s | 7h:42m:25s |
+| 10 | 43808 | 8 | 59h:39m:18s | 9h:50m:25s |
+| 11 | 47819 | 8 | 55h:27m:25s | 9h:16m:45s |
+| 12 | 51899 | 8 | 63h:33m:58s | 10h:31m:45s |
+| 13 | 56308 | 8 | 97h:32m:33s | 15h:33m:34s |
+| 14 | 60571 | 8 | 229h:0m:30s | 33h:31m:48s |
+
+* Note: Currently restarting with more threads at the most recent failure.
+
+
 #### Clean up
 ```
 mkdir KEEP
