@@ -34,6 +34,14 @@
 
 ### 3. Maximum likelihood optimizations produce improvements in parsimony score and vice versa. 
 + If true. should confirm and also compute the likelihood of the parsimony optimized final ML tree. Does likelihood improve?
++ Bryan to compute likelihoods for all parsimony optimized trees by holding the topology constant and optimizing brnach lengths in fasttree. 
++ Rob to try additional ML optimization starting from parsimony optimized trees. 
 
-### 4. We evaluate strategies for sequence addition and tree optimization over time. 
+### 4. Simulation of datasets using the finalized optimized tree. 
++ Decide on the tree and ask Nicola for help simulating from it.
+
+### 5. We evaluate strategies for sequence addition and tree optimization over time. 
 + results pending
++ real data
++ simulated data
++ topology compairsons at each step by RF. 
