@@ -2,6 +2,8 @@
 
 In this directory, we separate the files from our data-set by the date that the sample was taken. We then organize these dates into batches, such that each batch contains roughly 4,000 samples. The goal here is to model the phylogenetic data accumulation that occurred over the course of the pandemic, using both parsimony- and ML-based strategies.
 
+## Setup
+
 #### First, download metadata file that contains dates for each sample, sort the samples by date, and create VCFs and MSAs for each batch.
 ```
 wget https://hgwdev.gi.ucsc.edu/~angie/UShER_SARS-CoV-2/2021/03/18/public-2021-03-18.metadata.tsv.gz  
@@ -72,7 +74,7 @@ bash makeTreesIQTreeML.sh # Binarizes starting trees and calls IQ-TREE 2 to opti
 * Note: Currently restarting with more threads at the most recent failure.
 
 
-#### Clean up
+## Clean up
 ```
 mkdir KEEP
 mv *_samples.fasta KEEP/
