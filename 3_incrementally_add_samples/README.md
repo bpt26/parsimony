@@ -60,8 +60,22 @@ bash makeTreesIQTreeML.sh # Binarizes starting trees and calls IQ-TREE 2 to opti
 | 16 | 2 | 69052 | 32 | 0h:00m:41s |
 | 17 | 3 | 73231 | 32 | 0h:01m:06s |
 | 18 | 2 | 77399 | 32 | 0h:00m:48s |
+| 19 | 1 | 81802 | 32 | 0h:00m:26s |
+| 20 | 1 | 85946 | 32 | 0h:00m:29s |
+| 21 | 1 | 90062 | 32 | 0h:00m:31s |
+| 22 | 1 | 94384 | 32 | 0h:00m:33s |
+| 23 | 2 | 98578 | 32 | 0h:01m:48s |
+| 24 | 2 | 103052 | 32 | 0h:01m:57s |
+| 25 | 2 | 107441 | 32 | 0h:02m:30s |
+| 26 | 2 | 112716 | 32 | 0h:02m:48s |
+| 27 | 2 | 116999 | 32 | 0h:03m:03s |
+| 28 | 2 | 122802 | 32 | 0h:03m:15s |
+| 29 | 2 | 128292 | 32 | 0h:04m:25s |
+| 30 | 2 | 133990 | 32 | 0h:05m:18s |
+| 31 | 2 | 138764 | 32 | 0h:05m:42s |
+| 32 | 2 | 144037 | 32 | 0h:06m:07s |
 
-* Redoing with faster matOptimize
+* Need to add memory usage and fill in rest of times
 
 ### FastTreeMP
 
