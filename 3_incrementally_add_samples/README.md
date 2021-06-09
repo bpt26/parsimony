@@ -79,22 +79,31 @@ bash makeTreesIQTreeML.sh # Binarizes starting trees and calls IQ-TREE 2 to opti
 
 ### IQTREE 2
 
-| Iteration | Total Sequences | Threads | CPU Time | Wall Clock Time |
-|-----------|-----------------|---------|----------|-----------------|
-| 1 | 4676 | 8 | 4h:21m:33s | 0h:39m:53s |
-| 2 | 8902 | 8 | 14h:40m:39s | 2h:11m:34s |
-| 3 | 13241 | 8 | 43h:24m:33s | 6h:7m:19s |
-| 4 | 17941 | 8 | 19h:35m:53s | 2h:44m:7s |
-| 5 | 22012 | 8 | 22h:44m:32s | 3h:28m:47s |
-| 6 | 26486 | 8 | 34h:34m:15s | 4h:59m:54s |
-| 7 | 30989 | 8 | 49h:4m:56s | 6h:59m:9s |
-| 8 | 35323 | 8 | 58h:15m:0s | 9h:8m:31s |
-| 9 | 39621 | 8 | 49h:18m:46s | 7h:42m:25s |
-| 10 | 43808 | 8 | 59h:39m:18s | 9h:50m:25s |
-| 11 | 47819 | 8 | 55h:27m:25s | 9h:16m:45s |
-| 12 | 51899 | 8 | 63h:33m:58s | 10h:31m:45s |
-| 13 | 56308 | 8 | 97h:32m:33s | 15h:33m:34s |
-| 14 | 60571 | 8 | 229h:0m:30s | 33h:31m:48s |
+| Iteration | Total Sequences | Threads | CPU Time | Wall Clock Time | RAM Requirement |
+|-----------|-----------------|---------|----------|-----------------|-----------------|
+| 1 | 4676 | 8 | 4h:21m:33s | 0h:39m:53s | 4771 MB |
+| 2 | 8902 | 8 | 14h:40m:39s | 2h:11m:34s | 13197 MB |
+| 3 | 13241 | 8 | 43h:24m:33s | 6h:7m:19s | 23987 MB |
+| 4 | 17941 | 8 | 19h:35m:53s | 2h:44m:7s | 36334 MB |
+| 5 | 22012 | 8 | 22h:44m:32s | 3h:28m:47s | 48472 MB |
+| 6 | 26486 | 8 | 34h:34m:15s | 4h:59m:54s | 62005 MB |
+| 7 | 30989 | 8 | 49h:4m:56s | 6h:59m:9s | 75543 MB |
+| 8 | 35323 | 8 | 58h:15m:0s | 9h:8m:31s | 89021 MB |
+| 9 | 39621 | 8 | 49h:18m:46s | 7h:42m:25s | 103693 MB |
+| 10 | 43808 | 8 | 59h:39m:18s | 9h:50m:25s | 117915 MB |
+| 11 | 47819 | 8 | 55h:27m:25s | 9h:16m:45s | 131615 MB |
+| 12 | 51899 | 8 | 63h:33m:58s | 10h:31m:45s | 146499 MB |
+| 13 | 56308 | 8 | 97h:32m:33s | 15h:33m:34s | 160814 MB |
+| 14 | 60571 | 16 |  |  |  |
+
+* Note: Currently restarting with more threads at the most recent failure.
+
+### RAXML-NG
+
+| Iteration | Total Sequences | Threads | Wall Clock Time |
+|-----------|-----------------|---------|-----------------|
+| 1 | 4676 | 24 | 24h+ |
+
 
 * Note: Currently restarting with more threads at the most recent failure.
 
