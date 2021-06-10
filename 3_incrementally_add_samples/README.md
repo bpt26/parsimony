@@ -90,7 +90,10 @@ bash makeTreesIQTreeML.sh # Binarizes starting trees and calls IQ-TREE 2 to opti
 | 7 | 30989 | 10 | 5h:28m:2s |
 | 8 | 35323 | 10 | 7h:0m:14s |
 | 9 | 39621 | 10 | 8h:51m:3s |
-| 10 | 43808 | 10 | |
+| 10 | 43808 | 10 | 8h:18m:35s |
+| 11 | 47819 | 10 | 9h:10m:37s |
+| 12 | 51899 | 10 | 13h:40m:10s |
+| 13 | 56308 | 10 | |
 
 ### IQTREE 2
 
@@ -109,7 +112,7 @@ bash makeTreesIQTreeML.sh # Binarizes starting trees and calls IQ-TREE 2 to opti
 | 11 | 47819 | 8 | 55h:27m:25s | 9h:16m:45s | 131615 MB |
 | 12 | 51899 | 8 | 63h:33m:58s | 10h:31m:45s | 146499 MB |
 | 13 | 56308 | 8 | 97h:32m:33s | 15h:33m:34s | 160814 MB |
-| 14 | 60571 | 16 |  |  |  |
+| 14 | 60571 | 32 |  |  |  |
 
 * Note: Currently restarting with more threads at the most recent failure.
 
