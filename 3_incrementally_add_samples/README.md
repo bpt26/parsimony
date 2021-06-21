@@ -74,8 +74,24 @@ bash makeTreesIQTreeML.sh # Binarizes starting trees and calls IQ-TREE 2 to opti
 | 30 | 2 | 133990 | 32 | 0h:05m:18s |
 | 31 | 2 | 138764 | 32 | 0h:05m:42s |
 | 32 | 2 | 144037 | 32 | 0h:06m:07s |
-
-* Need to add memory usage and fill in rest of times
+| 33 | 2 | 149574 | 32 | 0h:06m:45s |
+| 34 | 3 | 154358 | 32 | 0h:10m:49s |
+| 35 | 2 | 158404 | 32 | 0h:08m:1s |
+| 36 | 2 | 162559 | 32 | 0h:08m:26s |
+| 37 | 2 | 166621 | 32 | 0h:09m:25s |
+| 38 | 3 | 170826 | 32 | 0h:14m:20s |
+| 39 | 3 | 176258 | 32 | 0h:15m:15s |
+| 40 | 3 | 182077 | 32 | 0h:16m:20s |
+| 41 | 3 | 187490 | 32 | 0h:16m:56s |
+| 42 | 2 | 192049 | 32 | 0h:11m:39s |
+| 43 | 2 | 196853 | 32 | 0h:12m:11s |
+| 44 | 2 | 201995 | 32 | 0h:12m:42s |
+| 45 | 3 | 207246 | 32 | 0h:19m:57s |
+| 46 | 2 | 212424 | 32 | 0h:13m:55s |
+| 47 | 2 | 217254 | 32 | 0h:14m:21s |
+| 48 | 3 | 223132 | 32 | 0h:23m:30s |
+| 49 | 2 | 227555 | 32 | 0h:15m:57s |
+| 50 | 2 | 233326 | 32 | 0h:16m:7s |
 
 ### FastTreeMP
 
@@ -117,9 +133,9 @@ bash makeTreesIQTreeML.sh # Binarizes starting trees and calls IQ-TREE 2 to opti
 | 11 | 47819 | 8 | 55h:27m:25s | 9h:16m:45s | 131615 MB |
 | 12 | 51899 | 8 | 63h:33m:58s | 10h:31m:45s | 146499 MB |
 | 13 | 56308 | 8 | 97h:32m:33s | 15h:33m:34s | 160814 MB |
-| 14 | 60571 | 32 |  |  |  |
+| 14 | 60571 | 32 | 3517h:28m:24s | 152h:42m:53s | 174432 MB |
 
-* Note: Currently restarting with more threads at the most recent failure.
+* Did not continue as the final run took more than one day to complete.
 
 ### RAXML-NG
 
@@ -128,7 +144,7 @@ bash makeTreesIQTreeML.sh # Binarizes starting trees and calls IQ-TREE 2 to opti
 | 1 | 4676 | 24 | 240h+ |
 
 
-* Note: Currently restarting with more threads at the most recent failure.
+* The initial run was killed after 240 hours of wall-clock time.
 
 
 ## Clean up
