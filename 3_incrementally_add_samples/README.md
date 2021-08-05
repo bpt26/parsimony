@@ -119,7 +119,9 @@ bash makeTreesIQTreeML.sh # Binarizes starting trees and calls IQ-TREE 2 to opti
 | 20 | 85946 | 16 | 19h:54m:26s |
 | 21 | 90062 | 16 | 18h:35m:16s |
 | 22 | 94384 | 16 | 22h:20m:16s |
-| 23 | 98578 | 16 | 27h::32m:47s |
+| 23 | 98578 | 16 | 27h:32m:47s |
+
+* Did not continue as the final run took more than one day to complete.
 
 ### IQTREE 2
 
