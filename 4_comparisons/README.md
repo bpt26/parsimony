@@ -2,7 +2,7 @@
 
 In this repository, we test each strategy on simulated data, as generated from the optimal tree in repository 2. Included are all scripts used to create trees, as well as the relevant results.
 
-## matOptimize
+## Iterative matOptimize
 
 | Iteration | Total Sequences | Threads | Wall Clock Time | RAM (kB) | Parsimony | Robinson-Foulds Distance |  
 |-----------|-----------------|---------|-----------------|----------|-----------|--------------------------|  
@@ -57,7 +57,7 @@ In this repository, we test each strategy on simulated data, as generated from t
 | 49 | 227555 | 32 | XXX | XXX | 155231 | 99379.5 |
 | 50 | 233326 | 32 | XXX | XXX | 160194 | 101829.0 |
 
-## IQ-TREE 2
+## Iterative IQ-TREE 2
 
 | Iteration | Total Sequences | Threads | Wall Clock Time | RAM (kB) | Parsimony | Robinson-Foulds Distance |
 |-----------|-----------------|---------|-----------------|----------|-----------|--------------------------|
@@ -88,7 +88,7 @@ In this repository, we test each strategy on simulated data, as generated from t
 | 25 | 107441 | 15 | 6h:58m:51s | 111773900 | 66672 | 47628.0 |
 
 
-## FastTree 2
+## Iterative FastTree 2
 
 ```
 bash makeTreesFT.sh
@@ -116,4 +116,9 @@ bash makeTreesFT.sh
 | 18 | 77399 | 31 | 21h:33m:06s | 16197900 | 48720 | 34718.0 |
 | 19 | 81802 | 31 | 23h:21m:59s | 17154900 | 51725 | 36662.5 |
 | 20 | 85946 | 31 | 25h:58m:49s | 17706764 | 54360 | 38450.0 |
+
+
+## Unoptimized UShER
+
+## Non-Iterative matOptimize
 
