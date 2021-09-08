@@ -1,37 +1,34 @@
 # comparisons
 
-In this directory, we compare the trees produced in previous steps by various tree congruence metrics, such as Robinson-Foulds distance. We have a few sets of trees that we can compare against each other:
+In this repository, we test each strategy on simulated data, as generated from the optimal tree in repository 2. Included are all scripts used to create trees, as well as the relevant results.
 
-* matOptimized batch trees (1-50) from subdirectory 3
-* fasttree optimized batch trees (1-22) from subdirectory 3
-* IQ-TREE 2 optimized batch trees (1-13) from subdirectory 3
-* unoptimized matUtils trees (1-50) created in this directory by pruning down our starting tree (Section 4.1.1)
-* unoptimized UShER trees (1-50) created in this directory using only a .VCF (Section 4.1.2)
 
-^ We will compare each of these through Robinson-Foulds scores in order to determine their congruence to each other.
-
-Additionally, we have various larger trees from subdirectory 2 that we have already compared by parsimony score, and are in the process of simulating data based on the most optimal tree (after_usher_optimized_fasttree_iter6.tree.xz). This will enable comparisons to "ground truth" data, but remains in progress.
-
-## 4.1.1: matOptimized batch trees vs pruned batch trees
+## FastTree 2
 
 ```
-mkdir MAIN_PB_PRUNED/
-bash prunePb.sh
-bash convertNwk.sh
-mkdir MATOPT_TREECMP_RESULTS/
-bash runTreeCmpMatOptimize.sh
-python plotMatOptVsPruned.py
-tar cfJ matopt_vs_pruned.tar.xz MATOPT_TREECMP_RESULTS/
-```
-## 4.1.2: matOptimized batch trees vs from-scratch batch trees
-
-```
-mkdir SAMPLES_LISTS/
-bash getSamplesLists.sh
-mkdir CUMULATIVE_VCFs/
-bash getCumulativeVCFs.sh
-mkdir FROM_SCRATCH_TREES/
-bash makeFromScratchTrees.sh
+bash makeTreesFT.sh
 ```
 
+| Iteration | Total Sequences | Threads | Wall Clock Time | Parsimony | Robinson-Foulds Distance |
+|-----------|-----------------|---------|-----------------|-----------|--------------------------|
+| 1 | 4676 | 31 | 0h:27m:05s | 996892 | 3145 | 2091.0 |
+| 2 | 8902 | 31 | 1h:10m:55s | 1910768 | 5715 | 4028.0 |
+| 3 | 13241 | 31 | 2h:04m:03s | 2784704 | 8069 | 6023.0 |
+| 4 | 17941 | 31 | 2h:56m:03s | 3914224 | 10633 | 8135.0 |
+| 5 | 22012 | 31 | 3h:08m:03s | 4555184 | 12841 | 10010.5 |
+| 6 | 26486 | 31 | 4h:07m:15s | 5683772 | 15158 | 12024.5 |
+| 7 | 30989 | 31 | 5h:15m:57s | 6656400 | 17492 | 14075.5 |
+| 8 | 35323 | 31 | 6h:05m:27s | 7419592 | 20031 | 16061.5 |
+| 9 | 39621 | 31 | 6h:47m:56s | 8334516 | 22932 | 17958.0 |
+| 10 | 43808 | 31 | 8h:01m:59s | 9237244 | 25689 | 19811.5 |
+| 11 | 47819 | 31 | 10h:06m:03s | 10135956 | 28339 | 21598.5 |
+| 12 | 51899 | 31 | 12h:08m:05s | 11207872 | 32156 | 23376.5 |
+| 13 | 56308 | 31 | 14h:03m:38s | 12143928 | 35457 | 25314.5 |
+| 14 | 60571 | 31 | 15h:36m:49s | 13304384 | 38554 | 27170.0 |
+| 15 | 64666 | 31 | 15h:49m:16s | 14026532 | 41333 | 29017.0 |
+| 16 | 69052 | 31 | 16h:58m:24s | 14810500 | 43783 | 31012.0 |
+| 17 | 73231 | 31 | 18h:51m:14s | 15590532 | 46252 | 32890.0 |
+| 18 | 77399 | 31 | 21h:33m:06s | 16197900 | 48720 | 34718.0 |
+| 19 | 81802 | 31 | 23h:21m:59s | 17154900 | 51725 | 36662.5 |
+| 20 | 85946 | 31 | 25h:58m:49s | 17706764 | 54360 | 38450.0 |
 
