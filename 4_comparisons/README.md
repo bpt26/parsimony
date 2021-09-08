@@ -9,8 +9,8 @@ In this repository, we test each strategy on simulated data, as generated from t
 bash makeTreesFT.sh
 ```
 
-| Iteration | Total Sequences | Threads | Wall Clock Time | RAM | Parsimony | Robinson-Foulds Distance |
-|-----------|-----------------|---------|-----------------|-----|-----------|--------------------------|
+| Iteration | Total Sequences | Threads | Wall Clock Time | RAM (kB) | Parsimony | Robinson-Foulds Distance |
+|-----------|-----------------|---------|-----------------|----------|-----------|--------------------------|
 | 1 | 4676 | 31 | 0h:27m:05s | 996892 | 3145 | 2091.0 |
 | 2 | 8902 | 31 | 1h:10m:55s | 1910768 | 5715 | 4028.0 |
 | 3 | 13241 | 31 | 2h:04m:03s | 2784704 | 8069 | 6023.0 |
