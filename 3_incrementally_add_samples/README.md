@@ -134,8 +134,8 @@ Currently running on root@fasttree:/mnt/FROM_SCRATCH :
 
 | Iteration | Total Sequences | Threads | Wall Clock Time | RAM (kB) | Parsimony | LogLk (FT) | LogLk (IQ) |
 |-----------|-----------------|---------|-----------------|----------|-----------|------------|------------|
-| 1 | 4676 | 15 | XXX | XXX | 3438 | XXX | -76714.884 |
-| 2 | 8902 | 15 | XXX | XXX | 6193 | XXX | -106771.327 |
+| 1 | 4676 | 15 | XXX | XXX | 3438 | -76126.711 | -76714.884 |
+| 2 | 8902 | 15 | XXX | XXX | 6193 | -105322.657 | -106771.327 |
 | 3 | 13241 | 15 | XXX | XXX | 8877 | XXX | -137179.148 |
 | 4 | 17941 | 15 | XXX | XXX | 11757 | XXX | -171107.534 |
 | 5 | 22012 | 15 | XXX | XXX | 14262 | XXX | -200743.191 |
@@ -190,8 +190,8 @@ Currently running on root@fasttree:/mnt/FROM_SCRATCH :
 
 | Iteration | Total Sequences | Threads | Wall Clock Time | RAM (kB) | Parsimony | LogLk (FT) | LogLk (IQ) |
 |-----------|-----------------|---------|-----------------|----------|-----------|------------|------------|
-| 1 | 4676 | 15 | XXX | XXX | 3464 | XXX | -76909.606 |
-| 2 | 8902 | 15 | XXX | XXX | 6247 | XXX | -107309.132 |
+| 1 | 4676 | 15 | XXX | XXX | 3464 | -76236.571 | -76909.606 |
+| 2 | 8902 | 15 | XXX | XXX | 6247 | -105498.992 | -107309.132 |
 | 3 | 13241 | 15 | XXX | XXX | 8992 | XXX | -137665.493 |
 | 4 | 17941 | 15 | XXX | XXX | 11866 | XXX | -182943.119 |
 | 5 | 22012 | 15 | XXX | XXX | 14410 | XXX | -217030.341 |
