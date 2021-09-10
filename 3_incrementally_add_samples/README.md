@@ -71,7 +71,7 @@ Currently running on root@public-tree:/mnt/PARSIMONY_REAL_DATA/ :
 | 5 | 22012 | 15 | 14h:43m:17s | 5550836 | 16103 | XXX | XXX |
 | 6 | 26486 | 15 | 12h:02m:29s | 6531484 | 19225 | XXX | XXX |
 | 7 | 30989 | 15 | 11h:31m:45s | 7616044 | 22299 | XXX | XXX |
-| 8 | 35323 | 15 | 14h:40m:36s | 8754600 | | XXX | XXX |
+| 8 | 35323 | 15 | 14h:40m:36s | 8754600 | 25584 | XXX | XXX |
 
 ## Iterative matOptimize
 
