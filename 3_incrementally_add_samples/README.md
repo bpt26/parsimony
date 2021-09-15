@@ -60,6 +60,22 @@ Currently running on root@public-tree:/mnt/PARSIMONY_REAL_DATA/ :
 | 12 | 51899 | 15 | 12h:19m:41s | 169232780 | 36763 | -518802.278 | -471017.853 |
 | 13 | 56308 | 15 | 14h:13m:57s | 185841172 | 40567 | -566200.811 | -515354.248 |
 
+#### Not enough RAM for subsequent phylogenies  
+
+## de novo IQ-TREE 2
+
+| Iteration | Total Sequences | Threads | Wall Clock Time | RAM (kB) | Parsimony | LogLk (FT) | LogLk (IQ) |
+|-----------|-----------------|---------|-----------------|----------|-----------|------------|------------|
+| 1 | 4676 | 15 | 0h:9m:50s | 5614108 | XXX | XXX | XXX |
+| 2 | 8902 | 15 | 0h:36m:24s | 15343136 | XXX | XXX | XXX |
+| 3 | 13241 | 15 | 1h:17m:51s | 28480568 | XXX | XXX | XXX |
+| 4 | 17941 | 15 | 2h:22m:55s | 42748676 | XXX | XXX | XXX |
+| 5 | 22012 | 15 | 3h:45m:58s | 56677508 | XXX | XXX | XXX |
+| 6 | 26486 | 15 | 5h:14m:45s | 72231000 | XXX | XXX | XXX |
+| 7 | 30989 | 15 | 7h:27m:08s | 87786636 | XXX | XXX | XXX |
+| 8 | 35323 | 15 | 9h:57m:17s | 103262372 | XXX | XXX | XXX |
+
+#### Not enough RAM for subsequent phylogenies  
 
 ## Iterative FastTree2
 
@@ -75,6 +91,8 @@ Currently running on root@public-tree:/mnt/PARSIMONY_REAL_DATA/ :
 | 8 | 35323 | 15 | 14h:40m:36s | 8754600 | 25584 | -336181.403| -304330.650 |
 | 9 | 39621 | 15 | 23h:58m:54s | 9912996 | 29267 | -380899.404 | -345348.909 |
 | 10 | 43808 | 15 | 39h:41m:15s | 11049192 | 32738 | XXX | -383987.839 |
+
+#### Terminated after tree did not complete in 24h  
 
 ## Iterative matOptimize
 
