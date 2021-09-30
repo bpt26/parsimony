@@ -42,7 +42,7 @@ Redone on openStack instances to ensure equal footing for time and data usage.
 
 Currently running on root@public-tree:/mnt/PARSIMONY_REAL_DATA/ :
 
-## Iterative IQ-TREE 2
+## Online IQ-TREE 2
 
 | Iteration | Total Sequences | Threads | Wall Clock Time | RAM (kB) | Parsimony | LogLk |
 |-----------|-----------------|---------|-----------------|----------|-----------|-------|
@@ -77,7 +77,7 @@ Currently running on root@public-tree:/mnt/PARSIMONY_REAL_DATA/ :
 
 #### Not enough RAM for subsequent phylogenies  
 
-## Iterative FastTree2
+## Online FastTree2
 
 | Iteration | Total Sequences | Threads | Wall Clock Time | RAM (kB) | Parsimony | LogLk |
 |-----------|-----------------|---------|-----------------|----------|-----------|-------|
@@ -111,7 +111,7 @@ Currently running on root@public-tree:/mnt/PARSIMONY_REAL_DATA/ :
 
 #### Terminated after tree did not complete in 24h   
 
-## Iterative matOptimize
+## Online matOptimize
 
 | Iteration | Total Sequences | Threads | Wall Clock Time | RAM (kB) | Parsimony | LogLk |
 |-----------|-----------------|---------|-----------------|----------|-----------|-------|
