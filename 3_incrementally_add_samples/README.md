@@ -42,7 +42,7 @@ Redone on openStack instances to ensure equal footing for time and data usage.
 
 Currently running on root@public-tree:/mnt/PARSIMONY_REAL_DATA/ :
 
-## Online IQ-TREE 2
+## 3.1: Online IQ-TREE 2
 
 | Iteration | Total Sequences | Threads | Wall Clock Time | RAM (kB) | Parsimony | LogLk | GTR LogLk |  
 |-----------|-----------------|---------|-----------------|----------|-----------|-------|-----------|  
@@ -62,7 +62,36 @@ Currently running on root@public-tree:/mnt/PARSIMONY_REAL_DATA/ :
 
 #### Not enough RAM for subsequent phylogenies  
 
-## de novo IQ-TREE 2
+## 3.2: de novo IQ-TREE 2
+
+To make trees, I used the script 
+
+#### Making Trees:
+```
+for i in {1..50}
+  do
+    rm *ckp*
+    /usr/bin/time -o ${i}.denovo.iq.time -f "%E %M" iqtree2 -s /mnt/PARSIMONY_REAL_DATA/AGGREGATE_FASTAS/${i}.fasta -n 0 -m GTR+G --suppress-list-of-sequences -nt 15 -blmin 0.000000001 -pre ${i}_samples.iqtree2.denovo
+ done;
+```
+
+#### Calculating parsimony:
+```
+for i in {1..12}
+  do
+    usher -v /mnt/PARSIMONY_REAL_DATA/CUMULATIVE_VCFS/${i}_samples.vcf -t ${i}_samples.iqtree2.denovo.treefile -o ${i}_samples.iqtree2.denovo.pb
+    matUtils summary -i ${i}_samples.iqtree2.denovo.pb
+done;
+```
+
+#### Calculating likelihood:
+```
+for i in {1..12}
+  do
+    rm *ckp*
+    iqtree2 -s /mnt/PARSIMONY_REAL_DATA/AGGREGATE_FASTAS/${i}.fasta -te ${i}_samples.iqtree2.denovo.treefile --epsilon 1.0 -m JC --no-opt-gamma-inv -blmin 0.00000000001 -nt 1 -pre JC | grep "BEST SCORE" > ${i}.denovo.likelihood.txt
+done;
+```
 
 | Iteration | Total Sequences | Threads | Wall Clock Time | RAM (kB) | Parsimony | LogLk |
 |-----------|-----------------|---------|-----------------|----------|-----------|-------|
@@ -81,7 +110,7 @@ Currently running on root@public-tree:/mnt/PARSIMONY_REAL_DATA/ :
 
 #### Not enough RAM for subsequent phylogenies  
 
-## Online FastTree2
+## 3.3: Online FastTree2
 
 | Iteration | Total Sequences | Threads | Wall Clock Time | RAM (kB) | Parsimony | LogLk |
 |-----------|-----------------|---------|-----------------|----------|-----------|-------|
@@ -98,7 +127,7 @@ Currently running on root@public-tree:/mnt/PARSIMONY_REAL_DATA/ :
 
 #### Terminated after tree did not complete in 24h  
 
-## de novo FastTree2
+## 3.4: de novo FastTree2
 
 | Iteration | Total Sequences | Threads | Wall Clock Time | RAM (kB) | Parsimony | LogLk |
 |-----------|-----------------|---------|-----------------|----------|-----------|-------|
@@ -118,7 +147,7 @@ Currently running on root@public-tree:/mnt/PARSIMONY_REAL_DATA/ :
 
 #### Terminated after tree did not complete in 24h   
 
-## Online matOptimize
+## 3.5: Online matOptimize
 
 | Iteration | Total Sequences | Threads | Wall Clock Time | RAM (kB) | Parsimony | LogLk |
 |-----------|-----------------|---------|-----------------|----------|-----------|-------|
@@ -173,7 +202,7 @@ Currently running on root@public-tree:/mnt/PARSIMONY_REAL_DATA/ :
 | 49 | 227555 | 15 | 1:24:32 | 481828 | 176514 | XXX | 
 | 50 | 233326 | 15 | 2:02:06 | 484120 | 182075 | XXX | 
 
-## de novo UShER+matOptimize
+## 3.6: de novo UShER+matOptimize
 
 Currently running on root@fasttree:/mnt/FROM_SCRATCH :
 re-doing timing because i only timed the optimize part instead of both
@@ -232,7 +261,7 @@ re-doing timing because i only timed the optimize part instead of both
 | 50 | 233326 | 15 | 1:36:19 | 418808 | 182097 | XXX | 
 
 
-## de novo UShER
+## 3.7: de novo UShER
 
 | Iteration | Total Sequences | Threads | Wall Clock Time | RAM (kB) | Parsimony | LogLk |
 |-----------|-----------------|---------|-----------------|----------|-----------|-------|
@@ -287,7 +316,7 @@ re-doing timing because i only timed the optimize part instead of both
 | 49 | 227555 | 15 | XXX | XXX | 177495 | | 
 | 50 | 233326 | 15 | XXX | XXX | 183098 | | 
 
-## RAXML-NG
+## 3.8: RAXML-NG
 
 | Iteration | Total Sequences | Threads | Wall Clock Time |
 |-----------|-----------------|---------|-----------------|
@@ -295,12 +324,4 @@ re-doing timing because i only timed the optimize part instead of both
 
 
 * The initial run was killed after 240 hours of wall-clock time.
-
-
-# Clean up
-```
-mkdir KEEP
-mv *_samples.fasta KEEP/
-tar cfJ batch.fastas.tar.xz KEEP/*
-```
 
