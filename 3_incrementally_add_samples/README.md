@@ -46,7 +46,7 @@ Currently running on root@public-tree:/mnt/PARSIMONY_REAL_DATA/ :
 
 | Iteration | Total Sequences | Threads | Wall Clock Time | RAM (kB) | Parsimony | LogLk | GTR LogLk |  
 |-----------|-----------------|---------|-----------------|----------|-----------|-------|-----------|  
-| 1 | 4676 | 15 | 0h:XXXm:XXXs | XXX | 3450 | -76785.808 | -73378.962 |
+| 1 | 4676 | 15 | 0h:05m:33s | 5613968 | 3450 | -76785.808 | -73378.962 |
 | 2 | 8902 | 15 | 0h:15m:01s | 15315600 | 6207 | -106814.412 | -101070.125 |
 | 3 | 13241 | 15 | 0h:49m:33s | 28480724 | 8895 | -137242.499 | -128738.012 |
 | 4 | 17941 | 15 | 1h:41m:58s | 42748864 | 11778 | -171191.606 | -159590.497 |
@@ -176,6 +176,7 @@ Currently running on root@public-tree:/mnt/PARSIMONY_REAL_DATA/ :
 ## de novo UShER+matOptimize
 
 Currently running on root@fasttree:/mnt/FROM_SCRATCH :
+re-doing timing because i only timed the optimize part instead of both
 
 | Iteration | Total Sequences | Threads | Wall Clock Time | RAM (kB) | Parsimony | LogLk |
 |-----------|-----------------|---------|-----------------|----------|-----------|-------|
