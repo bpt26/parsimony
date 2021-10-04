@@ -1,8 +1,8 @@
 # incrementally add samples
 
-In this directory, we separate the files from our data-set by the date that the sample was taken. We then organize these dates into batches, such that each batch contains roughly 4,000 samples. The goal here is to model the phylogenetic data accumulation that occurred over the course of the pandemic, using both parsimony- and ML-based strategies.
+In this directory, we separate the files from our data-set by the date that the sample was taken. We then organize these dates into batches, such that each batch contains roughly 5,000 samples. The goal here is to model the phylogenetic data accumulation that occurred over the course of the pandemic, using both parsimony- and ML-based strategies.
 
-## Setup
+# Setup
 
 #### First, download metadata file that contains dates for each sample, sort the samples by date, and create VCFs and MSAs for each batch.
 ```
@@ -111,7 +111,7 @@ Currently running on root@public-tree:/mnt/PARSIMONY_REAL_DATA/ :
 | 7 | 30989 | 15 | 6h:21m:37s | 7236496 | 22973 | -268238.756 | 
 | 8 | 35323 | 15 | 7h:24m:35s | 8319604 | 26373 | -304921.540 | 
 | 9 | 39621 | 15 | 13h:52m:47s | 9361220 | 30059 | -346062.335 | 
-| 10 | 43808 | 15 | 17h:13m:53s | 10358976 | 33588 | -384917.555 | 
+| 10 | 43808 | 15 | 17h:13m:53s | 10358976 | 33588 | -384917.555 |
 | 11 | 47819 | 15 | 20h:19m:50s | 11359624 | 36914 | -422337.928 |
 | 12 | 51899 | 15 | 23h:17m:51s | 12377448 |  | -472037.908 |
 | 13 | 56308 | 15 | 25h:36m:11s | 13295668 |  | -516331.142 |
