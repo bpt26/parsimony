@@ -293,6 +293,4 @@ re-doing timing because i only timed the optimize part instead of both
 |-----------|-----------------|---------|-----------------|
 | 1 | 4676 | 24 | 240h+ |
 
-
-* The initial run was killed after 240 hours of wall-clock time.
-
+* The initial run, using command `/usr/bin/time -o rax1.time.txt -f "%E %M" raxml-ng --model GTR+G --msa 1.fasta --blmin 0.000000001 --threads 24`, was killed after 240 hours of wall-clock time.
