@@ -64,35 +64,6 @@ Currently running on root@public-tree:/mnt/PARSIMONY_REAL_DATA/ :
 
 ## 3.2: de novo IQ-TREE 2
 
-To make trees, I used the script 
-
-#### Making Trees:
-```
-for i in {1..50}
-  do
-    rm *ckp*
-    /usr/bin/time -o ${i}.denovo.iq.time -f "%E %M" iqtree2 -s /mnt/PARSIMONY_REAL_DATA/AGGREGATE_FASTAS/${i}.fasta -n 0 -m GTR+G --suppress-list-of-sequences -nt 15 -blmin 0.000000001 -pre ${i}_samples.iqtree2.denovo
- done;
-```
-
-#### Calculating parsimony:
-```
-for i in {1..12}
-  do
-    usher -v /mnt/PARSIMONY_REAL_DATA/CUMULATIVE_VCFS/${i}_samples.vcf -t ${i}_samples.iqtree2.denovo.treefile -o ${i}_samples.iqtree2.denovo.pb
-    matUtils summary -i ${i}_samples.iqtree2.denovo.pb
-done;
-```
-
-#### Calculating likelihood:
-```
-for i in {1..12}
-  do
-    rm *ckp*
-    iqtree2 -s /mnt/PARSIMONY_REAL_DATA/AGGREGATE_FASTAS/${i}.fasta -te ${i}_samples.iqtree2.denovo.treefile --epsilon 1.0 -m JC --no-opt-gamma-inv -blmin 0.00000000001 -nt 1 -pre JC | grep "BEST SCORE" > ${i}.denovo.likelihood.txt
-done;
-```
-
 | Iteration | Total Sequences | Threads | Wall Clock Time | RAM (kB) | Parsimony | LogLk |
 |-----------|-----------------|---------|-----------------|----------|-----------|-------|
 | 1 | 4676 | 15 | 0h:10m:17s | 5614840 | 3894 | -76784.557 |
