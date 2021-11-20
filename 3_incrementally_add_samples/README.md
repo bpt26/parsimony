@@ -30,12 +30,12 @@ tar cfJ opt.nwk.tar.xz *.opt.nwk
 ```
 # Results
 
+## 3.1: Online IQ-TREE 2
+
 ```
 bash makeTrees.sh  
 bash getLikelihoods.sh  
 ```
-
-## 3.1: Online IQ-TREE 2
 
 | Iteration | Total Sequences | Threads | Wall Clock Time | RAM (kB) | Parsimony | LogLk |  
 |-----------|-----------------|---------|-----------------|----------|-----------|-------|  
