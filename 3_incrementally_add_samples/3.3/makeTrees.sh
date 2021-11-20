@@ -1,12 +1,12 @@
-cp 1_samples.0.pb 1_samples.ml.fasttree.0.pb
-matUtils extract -i 1_samples.ml.fasttree.0.pb -R -t 1_samples.ml.fasttree.0.nwk
-bash logOptimizeFastTreeML.sh 1
+usher -t empty.nwk -v ../CUMULATIVE_VCFS/1_with_ref.vcf -o 1_samples.ml.fasttree.gtrg.0.pb
+matUtils extract -i 1_samples.ml.fasttree.gtrg.0.pb -R -t 1_samples.ml.fasttree.gtrg.0.nwk
+bash logOptimizeFastTree.sh 1
 i=2;
 for i in {2..50}
   do
     h=$((i-1));
-    usher -t ${h}_samples.ml.fasttree.opt.nwk -v /mnt/PARSIMONY_REAL_DATA/CUMULATIVE_VCFS/${h}_samples.vcf -o ${h}_samples.ml.fasttree.opt.pb -T 15
-    usher -i ${h}_samples.ml.fasttree.opt.pb -v /mnt/PARSIMONY_REAL_DATA/CUMULATIVE_VCFS/${i}_samples.vcf -o ${i}_samples.ml.fasttree.0.pb -T 15
-    matUtils extract -i ${i}_samples.ml.fasttree.0.pb -R -t ${i}_samples.ml.fasttree.0.nwk -T 15
-    bash logOptimizeFastTreeML.sh ${i}
+    usher -t ${h}_samples.ml.fasttree.gtrg.opt.nwk -v /mnt/CUMULATIVE_VCFS/${h}_with_ref.vcf -o ${h}_samples.ml.fasttree.gtrg.opt.pb -T 15
+    usher -i ${h}_samples.ml.fasttree.gtrg.opt.pb -v /mnt/CUMULATIVE_VCFS/${i}_with_ref.vcf -o ${i}_samples.ml.fasttree.gtrg.0.pb -T 15
+    matUtils extract -i ${i}_samples.ml.fasttree.gtrg.0.pb -R -t ${i}_samples.ml.fasttree.gtrg.0.nwk -T 15
+    bash logOptimizeFastTree.sh ${i}
 done;
