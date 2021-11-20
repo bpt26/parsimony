@@ -56,7 +56,7 @@ bash getLikelihoods.sh
 
 #### 15th phylogeny prematurely terminated due to RAM requirements.   
 
-## 3.2: de novo IQ-TREE 2
+## 3.2: *de novo* IQ-TREE 2
 
 ```
 bash makeTrees.sh  
@@ -99,7 +99,7 @@ bash getLikelihoods.sh
 
 #### 7th phylogeny required 29h:08m:42s to complete.   
 
-## 3.4: de novo FastTree2
+## 3.4: *de novo* FastTree2
 
 ```
 bash makeTrees.sh  
@@ -184,7 +184,7 @@ bash getLikelihoods.sh
 | 49 | 227555 | 15 | 0h:0m:30s | 1358084 | 174729 | -2087730.079 |  
 | 50 | 233326 | 15 | 0h:0m:32s | 1414540 | 180265 | -2152422.824 |  
 
-## 3.6: de novo UShER+matOptimize
+## 3.6: *de novo* UShER+matOptimize
 
 ```
 bash makeTrees.sh  
