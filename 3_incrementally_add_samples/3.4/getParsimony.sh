@@ -1,5 +1,12 @@
-for i in {1..13}
-  do
-    usher -v /mnt/REAL_DATA/CUMULATIVE_VCFS/${i}_samples.vcf -t ${i}_samples.ml.fasttree.opt.nwk -o ${i}_samples.ft.denovo.pb -T 15
-    matUtils summary -i ${i}_samples.ft.denovo.pb
-done;
+usher -v ../CUMULATIVE_VCFS/1_with_ref.vcf -t 1_samples.ml.fasttree.gtrg.opt.nwk -o 1_samples.ml.fasttree.gtrg.opt.pb -T 30
+usher -v ../CUMULATIVE_VCFS/2_with_ref.vcf -t 2_samples.ml.fasttree.gtrg.opt.nwk -o 2_samples.ml.fasttree.gtrg.opt.pb -T 30
+usher -v ../CUMULATIVE_VCFS/3_with_ref.vcf -t 3_samples.ml.fasttree.gtrg.opt.nwk -o 3_samples.ml.fasttree.gtrg.opt.pb -T 30
+usher -v ../CUMULATIVE_VCFS/4_with_ref.vcf -t 4_samples.ml.fasttree.gtrg.opt.nwk -o 4_samples.ml.fasttree.gtrg.opt.pb -T 30
+usher -v ../CUMULATIVE_VCFS/5_with_ref.vcf -t 5_samples.ml.fasttree.gtrg.opt.nwk -o 5_samples.ml.fasttree.gtrg.opt.pb -T 30
+usher -v ../CUMULATIVE_VCFS/6_with_ref.vcf -t 6_samples.ml.fasttree.gtrg.opt.nwk -o 6_samples.ml.fasttree.gtrg.opt.pb -T 30
+usher -v ../CUMULATIVE_VCFS/7_with_ref.vcf -t 7_samples.ml.fasttree.gtrg.opt.nwk -o 7_samples.ml.fasttree.gtrg.opt.pb -T 30
+usher -v ../CUMULATIVE_VCFS/8_with_ref.vcf -t 8_samples.ml.fasttree.gtrg.opt.nwk -o 8_samples.ml.fasttree.gtrg.opt.pb -T 30
+usher -v ../CUMULATIVE_VCFS/9_with_ref.vcf -t 9_samples.ml.fasttree.gtrg.opt.nwk -o 9_samples.ml.fasttree.gtrg.opt.pb -T 30
+usher -v ../CUMULATIVE_VCFS/10_with_ref.vcf -t 10_samples.ml.fasttree.gtrg.opt.nwk -o 10_samples.ml.fasttree.gtrg.opt.pb -T 30
+usher -v ../CUMULATIVE_VCFS/11_with_ref.vcf -t 11_samples.ml.fasttree.gtrg.opt.nwk -o 11_samples.ml.fasttree.gtrg.opt.pb -T 30
+usher -v ../CUMULATIVE_VCFS/12_with_ref.vcf -t 12_samples.ml.fasttree.gtrg.opt.nwk -o 12_samples.ml.fasttree.gtrg.opt.pb -T 30
