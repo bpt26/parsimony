@@ -16,7 +16,6 @@ python makeFastas.py
 bash catBatches.sh  
 mkdir CUMULATIVE_VCFS/  
 bash getVCFs.sh  
-
 ```
 
 #### Test UShER and matUtils tree-building and optimization:
