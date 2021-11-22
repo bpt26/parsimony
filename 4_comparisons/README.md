@@ -10,8 +10,8 @@ condenseTrees.sh
 Rscript getIQComp.R
 ```
 
-| Iteration | Total Sequences | Threads | Wall Clock Time | RAM (kB) | Parsimony | Robinson-Foulds Distance |    
-|-----------|-----------------|---------|-----------------|----------|-----------|--------------------------|   
+| Iteration | Total Sequences | Threads | Wall Clock Time | RAM (kB) | Robinson-Foulds Distance |    
+|-----------|-----------------|---------|-----------------|----------|--------------------------|   
 | 1 | 4676 | 15 | 0h:0m:39s | 807624 | 4163 |  
 | 2 | 8902 | 15 | 0h:2m:03s | 2307636 | 7980 |  
 | 3 | 13241 | 15 | 0h:5m:02s | 4479860 | 11912 |  
@@ -38,5 +38,4 @@ Rscript getIQComp.R
 | 24 | 103052 | 15 | 6h:16m:58s | 103136924 | 91365 |  
 | 25 | 107441 | 15 | 6h:58m:51s | 111773900 | 95256 |  
 
-#### 26th phylogeny prematurely terminated due to RAM requirements.   
 #### 26th phylogeny prematurely terminated due to RAM requirements.   
