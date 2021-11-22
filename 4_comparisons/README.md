@@ -83,6 +83,14 @@ bash condenseTrees.sh
 Rscript getDist.R
 ```
 
+### 4.4: *de novo* FastTree 2
+
+```
+bash makeTrees.sh
+bash condenseTrees.sh
+Rscript getDist.R
+```
+
 ### 4.5: Online matOptimize  
 
 ```
