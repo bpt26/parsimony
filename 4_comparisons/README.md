@@ -76,8 +76,11 @@ Rscript getIQComp.R
 #### 22nd phylogeny took 26h:03m:11s to complete.  
 
 
-
 ### 4.6: *de novo* matOptimize
+
+```
+bash makeTrees.sh  
+```
 
 | Iteration | Total Sequences | Threads | Wall Clock Time | RAM (kB) | Robinson-Foulds Distance |    
 |-----------|-----------------|---------|-----------------|----------|--------------------------|   
