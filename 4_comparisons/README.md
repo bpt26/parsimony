@@ -75,6 +75,14 @@ Rscript getIQComp.R
 
 #### 22nd phylogeny took 26h:03m:11s to complete.  
 
+### 4.3: Online FastTree 2
+
+```
+bash makeTrees.sh
+bash condenseTrees.sh
+Rscript getDist.R
+```
+
 ### 4.5: Online matOptimize  
 
 ```
