@@ -10,10 +10,12 @@ wget https://hgwdev.gi.ucsc.edu/~angie/UShER_SARS-CoV-2/2021/03/18/public-2021-0
 python getMetadata.py  
 mkdir BATCH_SAMPLES/
 python getBatches.py  
-mkdir AGGREGATE_FASTAS/
-python makeFastas.py
-mkdir CUMULATIVE_VCFS/
-bash getVCFs.sh
+mkdir BATCH_FASTAS/  
+mkdir AGGREGATE_FASTAS/  
+python makeFastas.py  
+bash catBatches.sh  
+mkdir CUMULATIVE_VCFS/  
+bash getVCFs.sh  
 
 ```
 
