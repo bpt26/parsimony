@@ -48,4 +48,4 @@ cat 46_with_ref.fasta BATCH_FASTAS/47_samples.fasta > 47_with_ref.fasta
 cat 47_with_ref.fasta BATCH_FASTAS/48_samples.fasta > 48_with_ref.fasta
 cat 48_with_ref.fasta BATCH_FASTAS/49_samples.fasta > 49_with_ref.fasta
 cat 49_with_ref.fasta BATCH_FASTAS/50_samples.fasta > 50_with_ref.fasta
-mv *with_ref.fasta CUMULATIVE_FASTAS/
+mv *with_ref.fasta AGGREGATE_FASTAS/
