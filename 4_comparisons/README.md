@@ -20,6 +20,7 @@ parallel -j 10 < combineFastas.sh
 We then used these data to create condensed, collapsed trees representing the simulated variation data and the phylogeny on which the simulation was based.  
 
 ```
+usher -v wholeGenomeSars-cov-2_simulation_output.vcf -t after_usher_optimized_fasttree_iter6.tree -o STARTING_GROUND_TRUTH_TREE.pb -T 30  
 bash prunePB.sh
 bash getCollapsedStartingTrees.sh
 ```
