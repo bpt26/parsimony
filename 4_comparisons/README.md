@@ -17,6 +17,8 @@ mkdir COMBINED_FASTAS/
 parallel -j 10 < combineFastas.sh  
 ```
 
+We then used these data to create condensed, collapsed trees representing the simulated variation data and the phylogeny on which the simulation was based.  
+
 ```
 bash prunePB.sh
 bash getCollapsedStartingTrees.sh
