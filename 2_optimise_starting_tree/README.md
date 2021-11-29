@@ -70,7 +70,7 @@ done
 
 ```
 
-#### 2.2.3.2 May XXX version of matOptimize
+#### 2.2.3.2 May 24 version of matOptimize
 
 | Program   | Iteration | Parsimony score | Runtime (seconds) | SPR radius/rounds | Command |
 |-----------|-----------|-----------------|-------------------|-------------------|---------|
@@ -81,9 +81,9 @@ done
 |matOptimize| 4         | 294307          | 71972             | 40/1              |matOptimize -i iter-3.pb -v alignment.vcf -o iter-4.pb -r 40 -T 32 -s 259200|
 
 
-#### 2.2.3.3 May XXX version of matOptimize
+#### 2.2.3.3 May 24 version of matOptimize
 
-After running these iterations, we updated matOptimize such that it does less search space pruning, and evaluates pruning prior to performing pruning and placement. This update was made on XXX 2021 and is reflected in the current version of matOptimize as of June 2 2021. The results of this most current version of matOptimize are shown below.
+After running these iterations, we updated matOptimize such that it does less search space pruning, and evaluates pruning prior to performing pruning and placement. This update was made on May 24 2021 and is reflected in the current version of matOptimize as of June 2 2021. The results of this most current version of matOptimize are shown below.
 
 | Program   | Iteration | Parsimony score | Runtime (seconds) | SPR radius/rounds | Command |
 |-----------|-----------|-----------------|-------------------|-------------------|---------|
