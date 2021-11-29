@@ -2,6 +2,11 @@
 
 In this repository, we test each strategy on simulated data and then compute comparisons to the tree on which each simulation was based, pruned to include only the samples included in that iteration. Included are all scripts used to create trees, as well as the relevant results.
 
+```
+bash prunePB.sh
+bash getCollapsedStartingTrees.sh
+```
+
 ### 4.1: Online IQ-TREE 2
 
 ```
