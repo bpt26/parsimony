@@ -13,6 +13,7 @@ faToVcf wholeGenomeSars-cov-2_simulation_output_with_ref.fasta wholeGenomeSars-c
 bash getSamples.sh  
 bash getCuts.sh  
 parallel -j 10 < runParallelFasta.sh  
+mkdir COMBINED_FASTAS/  
 parallel -j 10 < combineFastas.sh  
 ```
 
