@@ -10,8 +10,8 @@ bash getCollapsedStartingTrees.sh
 ### 4.1: Online IQ-TREE 2
 
 ```
-makeTrees.sh
-condenseTrees.sh
+bash makeTrees.sh
+bash condenseTrees.sh
 Rscript getIQComp.R
 ```
 
@@ -49,8 +49,8 @@ Rscript getIQComp.R
 ### 4.2: *de novo* IQ-TREE 2
 
 ```
-makeTrees.sh
-condenseTrees.sh
+bash makeTrees.sh
+bash condenseTrees.sh
 Rscript getIQComp.R
 ```
 
