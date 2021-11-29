@@ -2,6 +2,15 @@
 
 In this repository, we test each strategy on simulated data and then compute comparisons to the tree on which each simulation was based, pruned to include only the samples included in that iteration. Included are all scripts used to create trees, as well as the relevant results.
 
+We first used phastSim to simulated an alignment based on the most optimized tree from subrepository 2, in which we ran 6 iterations of FastTree 2 and one iteration of matOptimize. We then used the previous batches of samples to separate this alignment into batches, as was done in subrepository 3.
+
+```
+bash getSamples.sh  
+bash getCuts.sh  
+parallel -j 10 < runParallelFasta.sh  
+parallel -j 10 < combineFastas.sh  
+```
+
 ```
 bash prunePB.sh
 bash getCollapsedStartingTrees.sh
