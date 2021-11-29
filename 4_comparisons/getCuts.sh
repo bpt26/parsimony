@@ -1,0 +1,30 @@
+head -24296 wholeGenomeSars-cov-2_simulation_output.fasta > cut1.fasta
+head -48592 wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > cut2.fasta
+head -72888 wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > cut3.fasta
+head -97184 wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > cut4.fasta
+head -121480 wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > cut5.fasta
+head -145776 wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > cut6.fasta
+head -170072 wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > cut7.fasta
+head -194368 wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > cut8.fasta
+head -218664 wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > cut9.fasta
+head -242960 wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > cut10.fasta
+head -267256 wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > cut11.fasta
+head -291552 wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > cut12.fasta
+head -315848 wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > cut13.fasta
+head -340144 wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > cut14.fasta
+head -364440 wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > cut15.fasta
+head -388736 wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > cut16.fasta
+head -413032 wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > cut17.fasta
+head -437328 wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > cut18.fasta
+head -461624 wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > cut19.fasta
+head -485920 wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > cut20.fasta
+head -510216 wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > cut21.fasta
+head -534512 wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > cut22.fasta
+head -558808 wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > cut23.fasta
+head -583104 wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > cut24.fasta
+head -607400 wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > cut25.fasta
+head -631696 wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > cut26.fasta
+head -655992 wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > cut27.fasta
+head -680288 wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > cut28.fasta
+head -704584 wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > cut29.fasta
+tail -24270 wholeGenomeSars-cov-2_simulation_output.fasta | head > cut30.fasta
