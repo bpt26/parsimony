@@ -18,20 +18,20 @@ import re
 
 def getFaCount():
     problematicSites = {}
-    with open('problematic_sites_sarsCov2.vcf') as f:
+    with open('input/problematic_sites_sarsCov2.vcf') as f:
         for line in f:
             splitLine = (line.strip()).split('\t')
             if not splitLine[0].startswith('#'):
                 problematicSites[int(splitLine[1])] = True
 
-    with open('wuhan.ref.fa') as f:
+    with open('input/wuhan.ref.fa') as f:
         for line in f:
             l = line.strip()
             if not l.startswith('>'):
                 myIgnores = [k.start() for k in re.finditer('N', l.upper())]
 
     keepSamples = {}
-    with open('samples.tsv') as f:
+    with open('tmp/samples.tsv') as f:
         for line in f:
             splitLine = (line.strip()).split('\t')
             if splitLine[0] != 'sample':
@@ -41,7 +41,7 @@ def getFaCount():
     myString = ''
     sampleToString = {}
     sampleToCount = {}
-    with gzip.open('publicMsa.2021-03-18.masked.fa.gz') as f:
+    with gzip.open('input/publicMsa.2021-03-18.masked.fa.gz') as f:
         for line in f:
             l = (line.decode('utf8').strip())
             if l.startswith('>'):
@@ -66,8 +66,8 @@ def getFaCount():
         myOutCount += s+'\t'+str(sampleToCount[s])+'\n'
         if s in sampleToString:
             myOutString += '>'+s+'\n'+sampleToString[s]+'\n'
-    open('28000_samples.fa','w').write(myOutString)
-    open('sample_to_count.txt','w').write(myOutCount)
+    open('tmp/28000_samples.fa','w').write(myOutString)
+    open('tmp/sample_to_count.txt','w').write(myOutCount)
 
 
 
