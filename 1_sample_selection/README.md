@@ -1,6 +1,13 @@
 # sample selection
 
-#### Tl;dr
+This folder contains scripts to create a starting tree for subsequent analyses.
+
+**Input**: Samples and VCFs from the [daily-updated SARS-CoV-2 database](https://academic.oup.com/mbe/article/38/12/5819/6361626) as of March 18, 2021
+
+**Output**: `output/publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.binary.pb.gz` (the filtered starting tree created with UShER)
+
+---
+### Tl;dr
 
 The file you are likely most interested in is:
 
@@ -21,8 +28,14 @@ faSomeRecords publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.sa
 
 If you're using this file for methods development, do note of course that there are currently around 1.5 million SARS-CoV-2 genomes in GISAID. So you should probably consider that any method you develop will likely have to scale to datasets around 10x bigger than this public dataset in the relatively near future. 
 
-#### First, download files that we will use to make our starting tree.
+---
+
+## Steps to reproduce
+
+### Prepare input files
+First, download files that we will use to make our starting tree.
 ```
+cd input
 wget https://hgwdev.gi.ucsc.edu/~angie/publicMsa/publicMsa.2021-03-18.masked.pb
 wget https://hgwdev.gi.ucsc.edu/~angie/publicMsa/publicMsa.2021-03-18.masked.vcf.xz 
 unxz publicMsa.2021-03-18.masked.vcf.xz 
@@ -36,16 +49,18 @@ wget https://raw.githubusercontent.com/W-L/ProblematicSites_SARS-CoV2/master/pro
 
 These files consist entirely of public sequences using scripts from [this repository](https://github.com/roblanf/sarscov2phylo). Also included in this directory is `wuhan.ref.fa`, which contains the [SARS-CoV-2 reference sequence](https://github.com/yatisht/usher/blob/master/test/NC_045512v2.fa), masked to N at all problematic sites.
 
-#### Retain only samples with 28kb of nt at positions where reference is non-N. VCF does not contain all sites, so use MSA.
+### Filter incomplete/ambiguous samples
+Retain only samples with at least 28kb of nt at positions where reference is non-N. VCF does not contain all sites, so use MSA.
 
 ```
-matUtils summary -i publicMsa.2021-03-18.masked.pb -s samples.tsv
-python getFaCount.py # outputs count for each sample in bases conditional on that position not being N in ref, and .fa of those with counts >28000  
+cd .. && mkdir tmp
+matUtils summary -i input/publicMsa.2021-03-18.masked.pb -s tmp/samples.tsv
+python3 scripts/getFaCount.py # outputs count for each sample in bases conditional on that position not being N in ref, and .fa of those with counts >28000  (takes ~30 minutes)
 awk '$2 >= 28000 {print}' sample_to_count.txt  | wc -l  
 # 385753
+gzip 28000_samples.fa
 gzip -dc 28000_samples.fa.gz | grep ">" | wc -l  
 # 385753
-gzip 28000_samples.fa
 ```
 
 #### Retain only samples with fewer than 2 characters that are not ['A','C','G','T','N','-'] and prune these from the .pb.
@@ -61,7 +76,8 @@ gzip publicMsa.2021-03-18.pruned.pb # in sample_selection directory
 xz 28000_samples_less_than_2_ambiguities.fa # in sample_selection directory     
 ```
 
-#### Use UShER to make our starting tree.
+### Construct the tree
+Use UShER to make our starting tree.
 ```
 cat wuhan.ref.fa 28000_samples_less_than_2_ambiguities.fa > 28000_samples_less_than_2_ambiguities_with_ref.fa  
 faToVcf -maskSites=problematic_sites_sarsCov2.vcf 28000_samples_less_than_2_ambiguities_with_ref.fa 28000_samples_less_than_2_ambiguities.vcf  
@@ -70,7 +86,7 @@ usher -v fixedVCF.vcf -t empty.nwk -o publicMsa.2021-03-18.masked.retain_samples
 # empty.nwk is a custom "tree" containing the first sample from the .vcf.
 ```
 
-#### Remove high parsimony samples from the tree.
+Remove high parsimony samples from the tree.
 ```
 matUtils extract -i publicMsa.2021-03-18.masked.retain_samples.save.pb -a 6 -o temp.pb
 matUtils extract -i temp.pb -b 30 -o temp2.pb
@@ -85,7 +101,7 @@ python makeFa.py
 xz publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.samples.fasta
 ```
 
-#### Binarize tree
+Binarize tree
 ```
 matUtils extract -i publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.pb -R -o publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.binary.pb
 matUtils extract -i publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.binary.pb -t publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.binary.nwk
