@@ -1,0 +1,30 @@
+head -24296 input/wholeGenomeSars-cov-2_simulation_output.fasta > tmp/cut1.fasta
+head -48592 input/wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > tmp/cut2.fasta
+head -72888 input/wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > tmp/cut3.fasta
+head -97184 input/wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > tmp/cut4.fasta
+head -121480 input/wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > tmp/cut5.fasta
+head -145776 input/wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > tmp/cut6.fasta
+head -170072 input/wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > tmp/cut7.fasta
+head -194368 input/wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > tmp/cut8.fasta
+head -218664 input/wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > tmp/cut9.fasta
+head -242960 input/wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > tmp/cut10.fasta
+head -267256 input/wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > tmp/cut11.fasta
+head -291552 input/wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > tmp/cut12.fasta
+head -315848 input/wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > tmp/cut13.fasta
+head -340144 input/wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > tmp/cut14.fasta
+head -364440 input/wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > tmp/cut15.fasta
+head -388736 input/wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > tmp/cut16.fasta
+head -413032 input/wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > tmp/cut17.fasta
+head -437328 input/wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > tmp/cut18.fasta
+head -461624 input/wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > tmp/cut19.fasta
+head -485920 input/wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > tmp/cut20.fasta
+head -510216 input/wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > tmp/cut21.fasta
+head -534512 input/wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > tmp/cut22.fasta
+head -558808 input/wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > tmp/cut23.fasta
+head -583104 input/wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > tmp/cut24.fasta
+head -607400 input/wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > tmp/cut25.fasta
+head -631696 input/wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > tmp/cut26.fasta
+head -655992 input/wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > tmp/cut27.fasta
+head -680288 input/wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > tmp/cut28.fasta
+head -704584 input/wholeGenomeSars-cov-2_simulation_output.fasta | tail -24296 > tmp/cut29.fasta
+tail -24270 input/wholeGenomeSars-cov-2_simulation_output.fasta | head > tmp/cut30.fasta

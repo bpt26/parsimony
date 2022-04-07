@@ -1,0 +1,51 @@
+mkdir -p tmp/SAMPLES_LISTS
+matUtils summary -i input/opt_pbs/1_samples.opt.pb -s tmp/SAMPLES_LISTS/1_samples.samples_list.txt -T 10
+matUtils summary -i input/opt_pbs/2_samples.opt.pb -s tmp/SAMPLES_LISTS/2_samples.samples_list.txt -T 10
+matUtils summary -i input/opt_pbs/3_samples.opt.pb -s tmp/SAMPLES_LISTS/3_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/4_samples.opt.pb -s tmp/SAMPLES_LISTS/4_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/5_samples.opt.pb -s tmp/SAMPLES_LISTS/5_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/6_samples.opt.pb -s tmp/SAMPLES_LISTS/6_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/7_samples.opt.pb -s tmp/SAMPLES_LISTS/7_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/8_samples.opt.pb -s tmp/SAMPLES_LISTS/8_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/9_samples.opt.pb -s tmp/SAMPLES_LISTS/9_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/10_samples.opt.pb -s tmp/SAMPLES_LISTS/10_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/11_samples.opt.pb -s tmp/SAMPLES_LISTS/11_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/12_samples.opt.pb -s tmp/SAMPLES_LISTS/12_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/13_samples.opt.pb -s tmp/SAMPLES_LISTS/13_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/14_samples.opt.pb -s tmp/SAMPLES_LISTS/14_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/15_samples.opt.pb -s tmp/SAMPLES_LISTS/15_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/16_samples.opt.pb -s tmp/SAMPLES_LISTS/16_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/17_samples.opt.pb -s tmp/SAMPLES_LISTS/17_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/18_samples.opt.pb -s tmp/SAMPLES_LISTS/18_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/19_samples.opt.pb -s tmp/SAMPLES_LISTS/19_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/20_samples.opt.pb -s tmp/SAMPLES_LISTS/20_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/21_samples.opt.pb -s tmp/SAMPLES_LISTS/21_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/22_samples.opt.pb -s tmp/SAMPLES_LISTS/22_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/23_samples.opt.pb -s tmp/SAMPLES_LISTS/23_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/24_samples.opt.pb -s tmp/SAMPLES_LISTS/24_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/25_samples.opt.pb -s tmp/SAMPLES_LISTS/25_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/26_samples.opt.pb -s tmp/SAMPLES_LISTS/26_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/27_samples.opt.pb -s tmp/SAMPLES_LISTS/27_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/28_samples.opt.pb -s tmp/SAMPLES_LISTS/28_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/29_samples.opt.pb -s tmp/SAMPLES_LISTS/29_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/30_samples.opt.pb -s tmp/SAMPLES_LISTS/30_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/31_samples.opt.pb -s tmp/SAMPLES_LISTS/31_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/32_samples.opt.pb -s tmp/SAMPLES_LISTS/32_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/33_samples.opt.pb -s tmp/SAMPLES_LISTS/33_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/34_samples.opt.pb -s tmp/SAMPLES_LISTS/34_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/35_samples.opt.pb -s tmp/SAMPLES_LISTS/35_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/36_samples.opt.pb -s tmp/SAMPLES_LISTS/36_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/37_samples.opt.pb -s tmp/SAMPLES_LISTS/37_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/38_samples.opt.pb -s tmp/SAMPLES_LISTS/38_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/39_samples.opt.pb -s tmp/SAMPLES_LISTS/39_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/40_samples.opt.pb -s tmp/SAMPLES_LISTS/40_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/41_samples.opt.pb -s tmp/SAMPLES_LISTS/41_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/42_samples.opt.pb -s tmp/SAMPLES_LISTS/42_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/43_samples.opt.pb -s tmp/SAMPLES_LISTS/43_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/44_samples.opt.pb -s tmp/SAMPLES_LISTS/44_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/45_samples.opt.pb -s tmp/SAMPLES_LISTS/45_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/46_samples.opt.pb -s tmp/SAMPLES_LISTS/46_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/47_samples.opt.pb -s tmp/SAMPLES_LISTS/47_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/48_samples.opt.pb -s tmp/SAMPLES_LISTS/48_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/49_samples.opt.pb -s tmp/SAMPLES_LISTS/49_samples.samples_list.txt -T 10
+# matUtils summary -i input/opt/50_samples.opt.pb -s tmp/SAMPLES_LISTS/50_samples.samples_list.txt -T 10
