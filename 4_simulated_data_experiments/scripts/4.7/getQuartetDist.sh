@@ -1,0 +1,3 @@
+java -jar ../../TreeCmp/bin/TreeCmp.jar -r ../../input/GROUND_TRUTH_NEWICKS/STARTING_GROUND_TRUTH_TREE_PRUNED_1_COLLAPSED.nwk -d qt -i TREES/iteration_1/iter1.iq.stoch.denovo.COLLAPSED.nwk -o groundtruth.vs.iq.1.txt
+java -jar ../../TreeCmp/bin/TreeCmp.jar -r ../../input/GROUND_TRUTH_NEWICKS/STARTING_GROUND_TRUTH_TREE_PRUNED_2_COLLAPSED.nwk -d qt -i TREES/iteration_2/iter2.iq.stoch.denovo.COLLAPSED.nwk -o groundtruth.vs.iq.2.txt
+java -jar ../../TreeCmp/bin/TreeCmp.jar -r ../../input/GROUND_TRUTH_NEWICKS/STARTING_GROUND_TRUTH_TREE_PRUNED_3_COLLAPSED.nwk -d qt -i TREES/iteration_3/iter3.iq.stoch.denovo.COLLAPSED.nwk -o groundtruth.vs.iq.3.txt

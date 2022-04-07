@@ -1,0 +1,3 @@
+java -jar ../../TreeCmp/bin/TreeCmp.jar -r ../../input/GROUND_TRUTH_NEWICKS/STARTING_GROUND_TRUTH_TREE_PRUNED_1_COLLAPSED.nwk -d qt -i TREES/iteration_1/1.opt.COLLAPSED.nwk -o groundtruth.vs.matOptimize.1.txt
+java -jar ../../TreeCmp/bin/TreeCmp.jar -r ../../input/GROUND_TRUTH_NEWICKS/STARTING_GROUND_TRUTH_TREE_PRUNED_2_COLLAPSED.nwk -d qt -i TREES/iteration_2/2.opt.COLLAPSED.nwk -o groundtruth.vs.matOptimize.2.txt
+java -jar ../../TreeCmp/bin/TreeCmp.jar -r ../../input/GROUND_TRUTH_NEWICKS/STARTING_GROUND_TRUTH_TREE_PRUNED_3_COLLAPSED.nwk -d qt -i TREES/iteration_3/3.opt.COLLAPSED.nwk -o groundtruth.vs.matOptimize.3.txt
