@@ -277,6 +277,7 @@ Rscript getDist.R
 # Approaches without 24-hour runtime restriction
 The following experiments were performed on only the smallest datasets, with iterations of increasing size containing ~4.5k, ~8.9k, and ~13.2k samples. Experiments were allowed to run for up to two weeks. RAxML-NG iterations 2 and 3 did not terminate within this time, so the best tree inferrred so far was chosen for comparison in these cases. We compared *de novo* inference using RAxML-NG, IQ-TREE 2 with stochastic tree search, and matOptimize.
 
+Robinson-Foulds and Quartet distances to the ground truth tree for each iteration are reported.
 
 ### 4.7: *de novo* IQ-TREE 2 (with stochastic search)  
 
