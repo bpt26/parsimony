@@ -32,7 +32,7 @@ The experiments in 3.1 to 3.6 test both *de novo* and online approaches to tree 
 
 **Notes on parameters for IQ-TREE 2 and FastTree 2**:
 
-In experiments 3.1 and 3.2, IQ-TREE 2 was run with `-n 0` which indicates that no stochastic tree search should be performed. Stochastic search is costly in time, so for the 24-hour restricted runs we elected to omit it. For online IQ-TREE 2, a fixed topology (the existing tree + new samples added by UShER) for each round is passed to IQ-TREE 2, allowing it to estimate parameters and optimize branch lengths given the topology. For *de novo* IQ-TREE 2, a starting parsimony tree is chosen (by IQ-TREE) which is then optimized.
+In experiments 3.1 and 3.2, IQ-TREE 2 was run with `-n 0` which indicates that no stochastic tree search should be performed. Stochastic search is costly in time, so for the 24-hour restricted runs we elected to omit it. For online IQ-TREE 2, a starting topology (the existing tree + new samples added by UShER) for each round is passed to IQ-TREE 2, from which it will perform NNI moves to maximize likelihood. For *de novo* IQ-TREE 2, a starting parsimony tree is chosen (by IQ-TREE) which is then optimized.
 
 Similarly, FastTree 2 (experiments 3.3 and 3.4) was run with zero rounds of nearest-neighbor interchange (`-nni 0`) and two SPR rounds (`-spr 2 -sprlength 1000`) due to runtime considerations.
 
