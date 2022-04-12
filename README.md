@@ -43,9 +43,11 @@ conda config --add channels conda-forge
 # Install packages (versions are those used in our experiments except where stated otherwise)
 conda install usher=0.4.8
 conda install raxml-ng=1.1.0
-conda install iqtree=2.1.3
 ```
-
+For IQ-TREE 2, download version 2.1.3 Linux multicore edition:
+```
+wget https://github.com/iqtree/iqtree2/releases/download/v2.1.3/iqtree-2.1.3-Linux.tar.gz
+```
 For FastTree 2, install the double-precision executable:
 ```
 wget http://www.microbesonline.org/fasttree/FastTreeDbl
