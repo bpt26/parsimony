@@ -179,4 +179,4 @@ Six iterations of FastTree2 (2.3.1) yielded the best log-likelihood. Now run one
 
 ---
 
-After running the above experiments, the tree with the lowest parsimony and highest log likelihood was the one optimized by size iterations of FastTree 2 and one iteration of matOptimize. It is available in `output/after_usher_optimized_fasttree_iter6.tree`).
+After running the above experiments, the tree with the lowest parsimony and highest log likelihood was the one optimized by six iterations of FastTree 2 and one iteration of matOptimize. It is available in `output/after_usher_optimized_fasttree_iter6.tree`).
