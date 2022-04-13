@@ -1,0 +1,6 @@
+iqtree2 -s ../../input/AGGREGATE_FASTAS/1.fasta -te 1_samples.ml.fasttree.gtrg.opt.nwk --epsilon 1.0 -m JC --no-opt-gamma-inv -blmin 0.00000000001 -nt 10 -pre 1_GTRG_JC | grep "BEST SCORE" > 1.gtrg.likelihood.txt
+iqtree2 -s ../../input/AGGREGATE_FASTAS/2.fasta -te 2_samples.ml.fasttree.gtrg.opt.nwk --epsilon 1.0 -m JC --no-opt-gamma-inv -blmin 0.00000000001 -nt 10 -pre 2_GTRG_JC | grep "BEST SCORE" > 2.gtrg.likelihood.txt
+iqtree2 -s ../../input/AGGREGATE_FASTAS/3.fasta -te 3_samples.ml.fasttree.gtrg.opt.nwk --epsilon 1.0 -m JC --no-opt-gamma-inv -blmin 0.00000000001 -nt 10 -pre 3_GTRG_JC | grep "BEST SCORE" > 3.gtrg.likelihood.txt
+iqtree2 -s ../../input/AGGREGATE_FASTAS/4.fasta -te 4_samples.ml.fasttree.gtrg.opt.nwk --epsilon 1.0 -m JC --no-opt-gamma-inv -blmin 0.00000000001 -nt 10 -pre 4_GTRG_JC | grep "BEST SCORE" > 4.gtrg.likelihood.txt
+iqtree2 -s ../../input/AGGREGATE_FASTAS/5.fasta -te 5_samples.ml.fasttree.gtrg.opt.nwk --epsilon 1.0 -m JC --no-opt-gamma-inv -blmin 0.00000000001 -nt 10 -pre 5_GTRG_JC | grep "BEST SCORE" > 5.gtrg.likelihood.txt
+iqtree2 -s ../../input/AGGREGATE_FASTAS/6.fasta -te 6_samples.ml.fasttree.gtrg.opt.nwk --epsilon 1.0 -m JC --no-opt-gamma-inv -blmin 0.00000000001 -nt 10 -pre 6_GTRG_JC | grep "BEST SCORE" > 6.gtrg.likelihood.txt

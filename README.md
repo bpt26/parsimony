@@ -1,24 +1,60 @@
-# parsimony
+# Online Phylogenetics using Parsimony Supplemental Repository
 
-In this repository, we aim to determine whether parsimony is sufficient for creating, maintaining, and optimizing a phylogeny containing SARS-CoV-2 sequences. To do this, we will be using real and simulated data, and adding samples incrementally with optimization using both parsimony- and ML-based methods, and comparing the results as they are produced. 
+This repository contains supplemental results, data, and scripts for Thornlow et al., 2022
 
-This repository contains the input data, results, and analysis code to infer and optimize a SARS-CoV-2 tree using a variety of approaches including parsimony and maximum likelihood. Here I will keep detailed notes in the README.md files in each subdirectory.
+The subfolders are outlined below.
 
-I primarily use UShER and matUtils, which are both part of the UShER package that can be easily installed using the following code:
+---
+
+`1_make_starting_tree`: This folder contains scripts to produce a filtered global phylogeny, the "starting tree" in the manuscript. Samples from the starting tree are used in `3_real_data_experiments` to infer trees from real data.
+
+
+`2_optimize_starting_tree`: The starting tree from the previous folder is optimized with various methods, and the best tree is chosen as the "ground truth" over which to simulate sequences (in folder `4_simulated_data_experiments`)
+
+`3_real_data_experiments`: This folder contains scripts and results of tree inference methods on real SARS-CoV-2 data. Each method is compared by log likelihood.
+
+`4_simulated_data_experiments`: Scripts and results of inference methods on simulated SARS-CoV-2 data. Comparisons between methods are done by computing tree distances to a ground truth phylogeny.
+
+---
+
+## Dependencies
+
+The scripts in this repository use the following programs:
+  
+  - Python 3
+  - The UShER suite (UShER, matOptimize, matUtils)
+  - FastTree 2
+  - IQ-TREE 2
+  - RAxML-NG
+  - TreeCmp
+
+Most of the above can be installed with Conda:
 
 ```
-# Create a new environment for UShER
-conda create -n usher-env
-# Activate the newly created environment
+# Create and activate a new environment
+conda create -n parsimony
 conda activate usher-env
+
 # Set up channels
 conda config --add channels defaults
 conda config --add channels bioconda
 conda config --add channels conda-forge
-# Install the UShER package
-conda install usher
+
+# Install packages (versions are those used in our experiments except where stated otherwise)
+conda install usher=0.4.8
+conda install raxml-ng=1.1.0
+```
+For IQ-TREE 2, download version 2.1.3 Linux multicore edition:
+```
+wget https://github.com/iqtree/iqtree2/releases/download/v2.1.3/iqtree-2.1.3-Linux.tar.gz
+```
+For FastTree 2, install the double-precision executable:
+```
+wget http://www.microbesonline.org/fasttree/FastTreeDbl
 ```
 
-For more details on these programs, please see [the corresponding wiki](https://usher-wiki.readthedocs.io/en/latest/index.html).
+For TreeCmp, follow the instructions at https://github.com/TreeCmp/TreeCmp
 
-Each subdirectory will contain a series of steps outlined in code blocks. To reproduce everything done for this project, follow the numbered directories (e.g. 1_sample_selection, etc.).
+
+
+For more details on the UShER suite, see [the wiki](https://usher-wiki.readthedocs.io/en/latest/index.html).
