@@ -1,6 +1,6 @@
 # Optimize starting tree
 
-In this folder, we evaluate the performance of [matOptimize](https://github.com/yatisht/usher), [TreeRearrange](https://github.com/yceh/usher), [IQ-TREE 2.1.3](http://www.iqtree.org/#download), and [FastTree2](http://www.microbesonline.org/fasttree/) as optimization strategies. The best tree (highest log likelihood, lowest parsimony) was chosen as a ground truth phylogeny for use in simulated data experiments.
+In this folder, we evaluate the performance of [matOptimize](https://github.com/yatisht/usher), [TreeRearrange](https://github.com/yceh/usher), [IQ-TREE 2](http://www.iqtree.org/#download), and [FastTree2](http://www.microbesonline.org/fasttree/) as optimization strategies on the starting tree. The best tree (highest log likelihood, lowest parsimony) was chosen as a ground truth phylogeny for use in simulated data experiments.
 
 **Input**: The "starting tree" from folder 1
 
@@ -30,6 +30,7 @@ The below steps test different strategies of optimizing the starting tree. Steps
 
 ### 2.2.1 IQ-TREE Apr27 Version
 The below experiments were performed with IQ-TREE 2.1.2 built on April 27, 2021
+https://github.com/iqtree/iqtree2/commit/0d24c6383ccb0397cd372708d4b1e9a90715169e
 
 | Program   | Iteration | Parsimony score | Runtime (seconds) | SPR radius/rounds | Command                   |
 |-----------|-----------|-----------------|-------------------|-------------------|---------------------------
@@ -46,6 +47,7 @@ The other IQ-TREE times increase because I was tentatively increasing the SPR ra
 
 ### 2.2.2 IQ-TREE May24 Version
 The below experiments were performed with IQ-TREE 2.1.2 built on May 24, 2021
+https://github.com/iqtree/iqtree2/commit/d52dab2d24e7283fc28c36228ccfa9dddbf7be5c
 
 | Program | Iteration | Parsimony score | Runtime (seconds) | SPR radius/rounds | Command |
 |---------|-----------|-----------------|-------------------|-------------------|---------|
