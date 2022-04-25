@@ -291,8 +291,8 @@ Rscript getRFDist.R
 | Iteration | Total Sequences | Robinson-Foulds Distance | Quartet Distance |     
 |-----------|-----------------|--------------------------|------------------|    
 | 1 | 4676 | 61 | 93783496108 |
-| 1 | 8902 | 166 | 14640797480427 |
-| 1 | 13241 | 388 | 94158901311645 |
+| 2 | 8902 | 166 | 14640797480427 |
+| 3 | 13241 | 388 | 94158901311645 |
 
 ### 4.8: *de novo* RAxML-NG  
 
@@ -306,8 +306,8 @@ Rscript getRFDist.R
 | Iteration | Total Sequences | Robinson-Foulds Distance | Quartet Distance |     
 |-----------|-----------------|--------------------------|------------------|    
 | 1 | 4676 | 37 | 404336973082 |
-| 1 | 8902 | 1212 | 30659616176809 |
-| 1 | 13241 | 2889 | 682388159264029 |
+| 2 | 8902 | 1212 | 30659616176809 |
+| 3 | 13241 | 2889 | 682388159264029 |
 
  ### 4.9: *de novo* matOptimize
 Files in `TREES` are from `4_simulated_data_experiments/4.6/TREES`. Results from the first
@@ -319,5 +319,5 @@ Rscript getRFDist.R
 | Iteration | Total Sequences | Robinson-Foulds Distance | Quartet Distance |     
 |-----------|-----------------|--------------------------|------------------|    
 | 1 | 4676 | 44 | 25326792228 |
-| 1 | 8902 | 115 | 277681159220 |
-| 1 | 13241 | 232 | 2585471041580 |
+| 2 | 8902 | 115 | 277681159220 |
+| 3 | 13241 | 232 | 2585471041580 |
