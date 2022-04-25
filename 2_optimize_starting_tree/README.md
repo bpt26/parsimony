@@ -44,6 +44,8 @@ The other IQ-TREE times increase because I was tentatively increasing the SPR ra
 
 * longer because I forgot to switch of ml branch length optimisation, and/or because it had TBR moves in as well (which never helped so I turned off)
 
+The folder `test-spr-radii` contains an experiment that varies SPR radius from 10 to 200, demonstrating that additional gains (decreasing parsimony score) from wider radii plateau at approximately 100.
+
 ### 2.2.2 IQ-TREE May24 Version
 The below experiments were performed with IQ-TREE 2.1.2 built on May 24, 2021
 
@@ -176,7 +178,16 @@ Six iterations of FastTree2 (2.3.1) yielded the best log-likelihood. Now run one
 |treeRearrange| 1         | 293866    | 988.16 (80 threads)| 10/1              |/usr/bin/time build/tree_rearrange_new  -v alignment.vcf -t usher-optimized-fasttree_iteration6.tree -o after_usher_optimized_fasttree_iter6.pb<br />matUtils extract -i after_usher_optimized_fasttree_iter6.pb -t after_usher_optimized_fasttree_iter6.tree|
 
 
-
 ---
+
+### 2.3.4 Sample divergence histogram 
+    cd results/2.3.4
+    python3 plotHistogram.py
+The above script plots a histogram depicting the proportion of total branches with each branch length. It demonstrates the extremely low average divergence between samples in the tree.
+
+### 2.3.5 Tree composition
+These scripts count the number of nodes, homoplasies, and unique samples in the ground truth tree.
+---
+
 
 After running the above experiments, the tree with the lowest parsimony and highest log likelihood was the one optimized by size iterations of FastTree 2 and one iteration of matOptimize. It is available in `output/after_usher_optimized_fasttree_iter6.tree`).
