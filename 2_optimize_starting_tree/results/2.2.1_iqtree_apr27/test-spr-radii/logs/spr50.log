@@ -1,0 +1,38 @@
+IQ-TREE MPI multicore version 2.1.2 COVID-edition for Linux 64-bit built Apr 13 2022
+Developed by Bui Quang Minh, James Barbetti, Nguyen Lam Tung,
+Olga Chernomor, Heiko Schmidt, Dominik Schrempf, Michael Woodhams.
+
+Host:    alex-parsimony-2 (AVX, FMA3, 115 GB RAM)
+Command: ./iqtree2-mpi -n 0 -no-ml -m JC -t resolve.nwk -s aln.fa -parsimony-spr 100 -parsimony-nni 100 -spr-radius 50 --suppress-list-of-sequences -blfix -nt 15 -fast -pre spr50
+Seed:    316909 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Wed Apr 13 04:14:04 2022
+Kernel:  AVX+FMA - 15 threads (15 CPU cores detected)
+MPI:     1 processes
+
+Reading alignment file aln.fa ... Fasta format detected
+Alignment most likely contains DNA/RNA sequences
+WARNING: 385 sites contain only gaps or ambiguous characters.
+Alignment has 5000 sequences with 29903 columns, 12098 distinct patterns
+3389 parsimony-informative, 3543 singleton sites, 22971 constant sites
+Reading input tree file resolve.nwk ... rooted tree
+Before doing (up to) 100 rounds of parsimony SPR, parsimony score was 14329
+Applied 89 moves (out of 224) (99 still possible) in iteration 1 (parsimony now 14232) after 40.96 secs
+Applied 11 moves (out of 23) (12 still possible) in iteration 2 (parsimony now 14221) after 1 min 17 sec
+Applied 1 move (out of 2) (1 still possible) in iteration 3 (parsimony now 14220) after 1 min 54 sec
+Applied 0 moves (out of 0) (0 still possible) in last iteration  (parsimony now 14220) (total SPR moves examined 192929560)
+Before doing (up to) 100 rounds of parsimony NNI, parsimony score was 14220
+Applied 0 moves (out of 0) (0 still possible) in last iteration  (parsimony now 14220) (total NNI moves examined 9996)
+
+Total tree length: 13240.037
+
+Total number of iterations: 0
+CPU time used for tree search: 0.000 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.006 sec (0h:0m:0s)
+Total CPU time used: 1413.996 sec (0h:23m:33s)
+Total wall-clock time used: 152.597 sec (0h:2m:32s)
+
+Analysis results written to: 
+  IQ-TREE report:                spr50.iqtree
+  Screen log file:               spr50.log
+
+Date and Time: Wed Apr 13 04:16:43 2022

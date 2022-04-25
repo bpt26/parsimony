@@ -1,0 +1,15 @@
+IQ-TREE MPI multicore version 2.1.2 COVID-edition for Linux 64-bit built Apr 13 2022
+Developed by Bui Quang Minh, James Barbetti, Nguyen Lam Tung,
+Olga Chernomor, Heiko Schmidt, Dominik Schrempf, Michael Woodhams.
+
+Host:    alex-parsimony-2 (AVX, FMA3, 115 GB RAM)
+Command: iqtree2-mpi -n 0 -m JC -t starttree.nwk -s ../../alignment_trimmed.fa -parsimony-spr 100
+Seed:    722874 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Wed Apr 13 03:30:41 2022
+Kernel:  AVX+FMA - 1 threads (15 CPU cores detected)
+MPI:     15 processes
+
+HINT: Use -nt option to specify number of threads because your CPU has 15 cores!
+HINT: -nt AUTO will automatically determine the best number of threads to use.
+
+Reading alignment file ../../alignment_trimmed.fa ... ERROR: File not found ../../alignment_trimmed.fa
