@@ -33,7 +33,7 @@ Most of the above can be installed with Conda:
 ```
 # Create and activate a new environment
 conda create -n parsimony
-conda activate usher-env
+conda activate parsimony
 
 # Set up channels
 conda config --add channels defaults
