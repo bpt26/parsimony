@@ -1,10 +1,10 @@
 # Optimize starting tree
 
-In this folder, we evaluate the performance of [matOptimize](https://github.com/yatisht/usher), [TreeRearrange](https://github.com/yceh/usher), [IQ-TREE 2](http://www.iqtree.org/#download), and [FastTree2](http://www.microbesonline.org/fasttree/) as optimization strategies on the starting tree. The best tree (highest log likelihood, lowest parsimony) was chosen as a ground truth phylogeny for use in simulated data experiments.
+In this folder, we evaluate the performance of [matOptimize](https://github.com/yatisht/usher), [TreeRearrange](https://github.com/yceh/usher) (an alternate version of matOptimize), [IQ-TREE 2](http://www.iqtree.org/#download), and [FastTree2](http://www.microbesonline.org/fasttree/) as optimization strategies on the starting tree. A final optimized tree was chosen as the "ground truth" phylogeny for downstream analyses.
 
 **Input**: The "starting tree" from folder 1
 
-**Output**: `output/after_usher_optimized_fasttree_iter6.tree.xz`: An optimized version of the starting tree (six iterations of FastTree2 + one iteration of matOptimize). This tree is used as input in the analyses in folder 4.
+**Output**: `output/after_usher_optimized_fasttree_iter6.tree.xz`: An optimized version of the starting tree (six iterations of FastTree2 + one iteration of matOptimize/TreeRearrange). This tree is used as input in the analyses in folder 4.
 
 The resulting trees and logs of each analysis are available in `results`.
 
@@ -193,4 +193,4 @@ These scripts count the number of nodes, homoplasies, and unique samples in the 
 
 ---
 
-After running the above experiments, the tree with the lowest parsimony and highest log likelihood was the one optimized by six iterations of FastTree 2 and one iteration of matOptimize. It is available in `output/after_usher_optimized_fasttree_iter6.tree`).
+After running the above experiments, we chose as the ground truth tree the one optimized by six iterations of FastTree 2 and one iteration of matOptimize. It is available in `output/after_usher_optimized_fasttree_iter6.tree`).
