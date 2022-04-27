@@ -165,7 +165,7 @@ As in the previous step, prior to running this command, I set `export OMP_NUM_TH
 
 ### 2.3.3 Optimize best ML tree for parsimony
 
-Six iterations of FastTree2 (2.3.1) yielded the best log-likelihood. Now run one iteration of matOptimize.
+Six iterations of FastTree2 (2.3.1) yielded the best log-likelihood. Now run one iteration of matOptimize+TreeRearrange.
 
 #### 2.3.3.1 matOptimize
 
