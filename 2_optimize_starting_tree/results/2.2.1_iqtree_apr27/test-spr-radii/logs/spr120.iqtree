@@ -1,0 +1,37 @@
+IQ-TREE 2.1.2 COVID-edition built Apr 13 2022
+
+Input file name: aln.fa
+User tree file name: resolve.nwk
+Type of analysis: 
+Random seed number: 824658
+
+REFERENCES
+----------
+
+To cite IQ-TREE please use:
+
+Bui Quang Minh, Heiko A. Schmidt, Olga Chernomor, Dominik Schrempf,
+Michael D. Woodhams, Arndt von Haeseler, and Robert Lanfear (2020)
+IQ-TREE 2: New models and efficient methods for phylogenetic inference
+in the genomic era. Mol. Biol. Evol., in press.
+https://doi.org/10.1093/molbev/msaa015
+
+SEQUENCE ALIGNMENT
+------------------
+
+Input data: 5000 sequences with 29903 nucleotide sites
+Number of constant sites: 22971 (= 76.8184% of all sites)
+Number of invariant (constant or ambiguous constant) sites: 22971 (= 76.8184% of all sites)
+Number of parsimony informative sites: 3389
+Number of distinct site patterns: 12098
+
+SUBSTITUTION PROCESS
+--------------------
+
+TIME STAMP
+----------
+
+Date and time: Wed Apr 13 05:03:53 2022
+Total CPU time used: 2735 seconds (0h:45m:35s)
+Total wall-clock time used: 239.5 seconds (0h:3m:59s)
+

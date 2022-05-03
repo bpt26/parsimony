@@ -1,10 +1,10 @@
 # Optimize starting tree
 
-In this folder, we evaluate the performance of [matOptimize](https://github.com/yatisht/usher), [TreeRearrange](https://github.com/yceh/usher), [IQ-TREE 2.1.3](http://www.iqtree.org/#download), and [FastTree2](http://www.microbesonline.org/fasttree/) as optimization strategies. The best tree (highest log likelihood, lowest parsimony) was chosen as a ground truth phylogeny for use in simulated data experiments.
+In this folder, we evaluate the performance of [matOptimize](https://github.com/yatisht/usher), [matOptimize TreeRearrange](https://github.com/yceh/usher/tree/Refactor-FS-cleanup), [IQ-TREE 2](http://www.iqtree.org/#download), and [FastTree2](http://www.microbesonline.org/fasttree/) as optimization strategies on the starting tree. A final optimized tree was chosen as the "ground truth" phylogeny for downstream analyses.
 
 **Input**: The "starting tree" from folder 1
 
-**Output**: `output/after_usher_optimized_fasttree_iter6.tree.xz`: An optimized version of the starting tree (six iterations of FastTree2 + one iteration of matOptimize). This tree is used as input in the analyses in folder 4.
+**Output**: `output/after_usher_optimized_fasttree_iter6.tree.xz`: An optimized version of the starting tree (six iterations of FastTree2 + two iterations of matOptimize). This tree is used as input in the analyses in folder 4.
 
 The resulting trees and logs of each analysis are available in `results`.
 
@@ -30,6 +30,7 @@ The below steps test different strategies of optimizing the starting tree. Steps
 
 ### 2.2.1 IQ-TREE Apr27 Version
 The below experiments were performed with IQ-TREE 2.1.2 built on April 27, 2021
+https://github.com/iqtree/iqtree2/commit/0d24c6383ccb0397cd372708d4b1e9a90715169e
 
 | Program   | Iteration | Parsimony score | Runtime (seconds) | SPR radius/rounds | Command                   |
 |-----------|-----------|-----------------|-------------------|-------------------|---------------------------
@@ -44,8 +45,11 @@ The other IQ-TREE times increase because I was tentatively increasing the SPR ra
 
 * longer because I forgot to switch of ml branch length optimisation, and/or because it had TBR moves in as well (which never helped so I turned off)
 
+The folder `test-spr-radii` contains an experiment that varies SPR radius from 10 to 200, demonstrating that additional gains (decreasing parsimony score) from wider radii plateau at approximately 100.
+
 ### 2.2.2 IQ-TREE May24 Version
 The below experiments were performed with IQ-TREE 2.1.2 built on May 24, 2021
+https://github.com/iqtree/iqtree2/commit/d52dab2d24e7283fc28c36228ccfa9dddbf7be5c
 
 | Program | Iteration | Parsimony score | Runtime (seconds) | SPR radius/rounds | Command |
 |---------|-----------|-----------------|-------------------|-------------------|---------|
@@ -101,14 +105,14 @@ After running these iterations, we updated matOptimize such that it does less se
 | matOptimize-new | 1         | 294318          | 9419.3            | 10/1              |matOptimize -i iter-0.pb -v alignment.vcf -o iter-1.pb -r 10 -T 32 -s 259200|
 | matOptimize-new | 1         | 294313          | 6537.2            | 100/1             |matOptimize -i iter-0.pb -v alignment.vcf -o iter-1.pb -r 100 -T 32 -s 259200|
 
-### 2.2.4 TreeRearrange
+### 2.2.4 matOptimize TreeRearrange
 
 We also tested [TreeRearrange](https://github.com/yceh/usher/tree/Refactor-FS-cleanup) on both the starting tree (iteration 0) and the final tree (iteration 4) from step 2.2.3.2.
 
 | Program   | Iteration | Parsimony score | Runtime (seconds) | SPR radius/rounds | Command |
 |-----------|-----------|-----------------|-------------------|-------------------|---------|
-|TreeRearrange| 1         | 294022          | 4324           | 10/1       |tree_rearrange_new  -v alignment.vcf -t starting.tree -o from_start_tree.pb -T 32<br />matUtils extract -i from_start_tree.pb -t from_start_tree.tree|
-|TreeRearrange| 1 (After 4 rounds of matOptimize) | 294005          | 2323.05        | 10/1       |tree_rearrange_new -v alignment.vcf -t iter-4.tree -o continue_iter4.pb -T 32<br />matUtils extract -i continue_iter4.pb -t continue_iter4.tree|
+|matOptimize TreeRearrange| 1         | 294022          | 4324           | 10/1       |tree_rearrange_new  -v alignment.vcf -t starting.tree -o from_start_tree.pb -T 32<br />matUtils extract -i from_start_tree.pb -t from_start_tree.tree|
+|matOptimize TreeRearrange| 1 (After 4 rounds of matOptimize) | 294005          | 2323.05        | 10/1       |tree_rearrange_new -v alignment.vcf -t iter-4.tree -o continue_iter4.pb -T 32<br />matUtils extract -i continue_iter4.pb -t continue_iter4.tree|
 
 ### Note
 
@@ -120,7 +124,7 @@ This uses the output of 5th iteration of IQ-TREE as starting tree.
 
 | Program   | Iteration | Parsimony score | Runtime (seconds)   | SPR radius/rounds | Command |
 |-----------|-----------|-----------------|---------------------|-------------------|---------|
-|TreeRearrange| 1         | 293862          | 2400.49 (80 threads)| 10/1              | /usr/bin/time build/tree_rearrange_new  -v alignment.vcf -t iqtree_iteration5.treefile -o after-iqtree-iter5.pb<br />matUtils extract -i after-iqtree-iter5.pb -t after-iqtree-iter5.tree |
+|matOptimize TreeRearrange| 1         | 293862          | 2400.49 (80 threads)| 10/1              | /usr/bin/time build/tree_rearrange_new  -v alignment.vcf -t iqtree_iteration5.treefile -o after-iqtree-iter5.pb<br />matUtils extract -i after-iqtree-iter5.pb -t after-iqtree-iter5.tree |
 
 ## 2.3 Optimise starting tree with pseudo-likelihood in FastTreeMP
 
@@ -161,7 +165,7 @@ As in the previous step, prior to running this command, I set `export OMP_NUM_TH
 
 ### 2.3.3 Optimize best ML tree for parsimony
 
-Six iterations of FastTree2 (2.3.1) yielded the best log-likelihood. Now run one iteration of matOptimize.
+Six iterations of FastTree2 (2.3.1) yielded the best log-likelihood. Now run one iteration of matOptimize and one iteration of matOptimize TreeRearrange.
 
 #### 2.3.3.1 matOptimize
 
@@ -173,10 +177,20 @@ Six iterations of FastTree2 (2.3.1) yielded the best log-likelihood. Now run one
 
 | Program   | Iteration | Parsimony | Runtime (seconds)  | SPR radius/rounds | Command |
 |-----------|-----------|-----------|--------------------|-------------------|---------|
-|treeRearrange| 1         | 293866    | 988.16 (80 threads)| 10/1              |/usr/bin/time build/tree_rearrange_new  -v alignment.vcf -t usher-optimized-fasttree_iteration6.tree -o after_usher_optimized_fasttree_iter6.pb<br />matUtils extract -i after_usher_optimized_fasttree_iter6.pb -t after_usher_optimized_fasttree_iter6.tree|
-
+|matOptimize TreeRearrange| 1         | 293866    | 988.16 (80 threads)| 10/1              |/usr/bin/time build/tree_rearrange_new  -v alignment.vcf -t usher-optimized-fasttree_iteration6.tree -o after_usher_optimized_fasttree_iter6.pb<br />matUtils extract -i after_usher_optimized_fasttree_iter6.pb -t after_usher_optimized_fasttree_iter6.tree|
 
 
 ---
 
-After running the above experiments, the tree with the lowest parsimony and highest log likelihood was the one optimized by six iterations of FastTree 2 and one iteration of matOptimize. It is available in `output/after_usher_optimized_fasttree_iter6.tree`).
+### 2.3.4 Sample divergence histogram 
+    cd results/2.3.4
+    python3 plotHistogram.py
+The above script plots a histogram depicting the proportion of total branches with each branch length. It demonstrates the extremely low average divergence between samples in the tree.
+
+### 2.3.5 Tree composition
+
+These scripts count the number of nodes, homoplasies, and unique samples in the ground truth tree.
+
+---
+
+After running the above experiments, we chose as the ground truth tree the one optimized by six iterations of FastTree 2 and one iteration of matOptimize. It is available in `output/after_usher_optimized_fasttree_iter6.tree`).

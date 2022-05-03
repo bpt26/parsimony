@@ -8,7 +8,7 @@ This folder contains scripts to create a starting tree for subsequent analyses. 
 
 
 ---
-### Tl;dr
+### Filtered SARS-CoV-2 Dataset
 
 The file you are likely most interested in is:
 
@@ -31,7 +31,7 @@ If you're using this file for methods development, do note of course that there 
 
 ---
 
-## Steps to reproduce
+## Steps to reproduce analyses
 
 ### Prepare input files
 Some files are already included in the `input` folder. Download the rest of the files that we will use to make our starting tree.

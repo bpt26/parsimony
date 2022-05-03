@@ -1,0 +1,37 @@
+IQ-TREE MPI multicore version 2.1.2 COVID-edition for Linux 64-bit built Apr 13 2022
+Developed by Bui Quang Minh, James Barbetti, Nguyen Lam Tung,
+Olga Chernomor, Heiko Schmidt, Dominik Schrempf, Michael Woodhams.
+
+Host:    alex-parsimony-2 (AVX, FMA3, 115 GB RAM)
+Command: ./iqtree2-mpi -n 0 -no-ml -m JC -t resolve.nwk -s aln.fa -parsimony-spr 100 -parsimony-nni 100 -spr-radius 170 --suppress-list-of-sequences -blfix -nt 15 -fast -pre spr170
+Seed:    257508 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Wed Apr 13 05:14:23 2022
+Kernel:  AVX+FMA - 15 threads (15 CPU cores detected)
+MPI:     1 processes
+
+Reading alignment file aln.fa ... Fasta format detected
+Alignment most likely contains DNA/RNA sequences
+WARNING: 385 sites contain only gaps or ambiguous characters.
+Alignment has 5000 sequences with 29903 columns, 12098 distinct patterns
+3389 parsimony-informative, 3543 singleton sites, 22971 constant sites
+Reading input tree file resolve.nwk ... rooted tree
+Before doing (up to) 100 rounds of parsimony SPR, parsimony score was 14329
+Applied 99 moves (out of 256) (119 still possible) in iteration 1 (parsimony now 14222) after 1 min 1 sec
+Applied 10 moves (out of 19) (10 still possible) in iteration 2 (parsimony now 14212) after 2 min 2 sec
+Applied 0 moves (out of 0) (0 still possible) in last iteration  (parsimony now 14212) (total SPR moves examined 288611824)
+Before doing (up to) 100 rounds of parsimony NNI, parsimony score was 14212
+Applied 0 moves (out of 0) (0 still possible) in last iteration  (parsimony now 14212) (total NNI moves examined 9996)
+
+Total tree length: 13125.041
+
+Total number of iterations: 0
+CPU time used for tree search: 0.001 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.006 sec (0h:0m:0s)
+Total CPU time used: 2215.927 sec (0h:36m:55s)
+Total wall-clock time used: 183.684 sec (0h:3m:3s)
+
+Analysis results written to: 
+  IQ-TREE report:                spr170.iqtree
+  Screen log file:               spr170.log
+
+Date and Time: Wed Apr 13 05:17:33 2022

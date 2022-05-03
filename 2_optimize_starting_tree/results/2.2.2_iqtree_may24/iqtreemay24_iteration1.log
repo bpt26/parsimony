@@ -1,0 +1,41 @@
+IQ-TREE multicore version 2.1.2 COVID-edition for Linux 64-bit built May 24 2021
+Developed by Bui Quang Minh, James Barbetti, Nguyen Lam Tung,
+Olga Chernomor, Heiko Schmidt, Dominik Schrempf, Michael Woodhams.
+
+Host:    c109762 (AVX2, FMA3, 1007 GB RAM)
+Command: ../../iqtree2/build/iqtree2 -n 0 -no-ml -t starting.tree -s alignment_trimmed.fa -parsimony-spr 100 -parsimony-nni 100 -spr-radius 20 --suppress-list-of-sequences -nt 100 -pre iqtreemay24_iteration1 --redo
+Seed:    170923 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Mon May 24 15:30:04 2021
+Kernel:  AVX+FMA - 100 threads (256 CPU cores detected)
+
+Reading alignment file alignment_trimmed.fa ... Fasta format detected
+Alignment most likely contains DNA/RNA sequences
+WARNING: 385 sites contain only gaps or ambiguous characters.
+Alignment has 364427 sequences with 29903 columns, 29248 distinct patterns
+20720 parsimony-informative, 2717 singleton sites, 6466 constant sites
+Reading input tree file starting.tree ... rooted tree
+Before doing (up to) 100 rounds of parsimony SPR, parsimony score was 296247
+Applied 1210 moves (out of 3335) (1560 still possible) in iteration 1 (parsimony now 294951) after 13 min 36 sec
+Applied 196 moves (out of 410) (211 still possible) in iteration 2 (parsimony now 294749) after 16 min 32 sec
+Applied 27 moves (out of 53) (27 still possible) in iteration 3 (parsimony now 294722) after 18 min 1 sec
+Applied 2 moves (out of 4) (2 still possible) in iteration 4 (parsimony now 294720) after 19 min 21 sec
+Applied 0 moves (out of 0) (0 still possible) in last iteration  (parsimony now 294720) (total SPR moves examined 1912333288)
+Before doing (up to) 100 rounds of parsimony NNI, parsimony score was 294720
+Applied 0 moves (out of 0) (0 still possible) in last iteration  (parsimony now 294720) (total NNI moves examined 728850)
+
+Parsimony score of initial tree: 294720
+BEST PARSIMONY SCORE FOUND : 294720
+Total tree length: 10.515
+
+Total number of iterations: 0
+CPU time used for tree search: 0.271 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.478 sec (0h:0m:0s)
+Total CPU time used: 65822.974 sec (18h:17m:2s)
+Total wall-clock time used: 1523.970 sec (0h:25m:23s)
+
+Analysis results written to: 
+  IQ-TREE report:                iqtreemay24_iteration1.iqtree
+  Screen log file:               iqtreemay24_iteration1.log
+
+NOTE: 4.619 seconds to dump checkpoint file, increase to 93.000
+Date and Time: Mon May 24 16:01:46 2021
