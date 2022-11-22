@@ -23,7 +23,7 @@ bash condenseTrees.sh
 Rscript getRFDist.R
 ```
 
-| Iteration | Total Sequences | Threads | Wall Clock Time | RAM (kB) | Robinson-Foulds Distance | Normalized RF Distance | Quarted Distance |   
+| Iteration | Total Sequences | Threads | Wall Clock Time | RAM (kB) | Robinson-Foulds Distance | Normalized RF Distance | Quartet Distance |   
 |-----------|-----------------|---------|-----------------|----------|--------------------------|--------|---|
 | 1 | 4676 | 15 | 0h:1m:25s | 807624 | 42 | 0.03716814 | 235496392714    
 | 2 | 8902 | 15 | 0h:5m:31s | 2307020 | 126 | 0.05937795 | 44212726383371    
