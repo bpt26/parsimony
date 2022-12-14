@@ -6,7 +6,7 @@
 # # Optimize with IQ-TREE 2
 # bash logOptimizeIQTreeMLSim.sh 1 # takes in 1_samples.ml.iqtree.0.nwk, outputs 1_samples.ml.iqtree.opt.nwk
 i=1;
-for i in {24..25}
+for i in {1..50}
   do
   # Repeat, adding ~5k samples to the existing
   # cumulative tree
