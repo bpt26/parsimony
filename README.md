@@ -1,6 +1,6 @@
 # Online Phylogenetics using Parsimony Supplemental Repository
 
-This repository contains supplemental results, data, and scripts for Thornlow et al., 2022
+This repository contains supplemental results, data, and scripts for Kramer et al. 2023
 
 The subfolders are outlined below.
 
